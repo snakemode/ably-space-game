@@ -16,8 +16,14 @@ app.post("/games", (request, response) => {
 });
 
 app.post("/games/:gameId", (request, response) => {
-  game[""]
-  console.log(request.params);
+  const activeGame = games[request.params["gameId"]];
+  const state = {};
+  const extraParams = {};
+  
+  const gameResponse = activeGame.handleMove(state, extraParams);
+  const asText = JSON.stringify(gameResponse);
+  console.log(asText);
+  response.send(asText);
 });
 
 const listener = app.listen(process.env.PORT, function() {

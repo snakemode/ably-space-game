@@ -4,13 +4,18 @@ class Game {
     constructor(numberOfMovesToGenerate) {
         this.id = this.___uuidv4();
         this.moves = [
-            1
-        ];
+            0
+        ]; // Randomly pick a selection of move ids
     }
 
     handleMove(state, extraParams) {
-        const nextMove = this.moves.peak();
-        if (nextMove(state, extraParams) === true) {
+        const nextMoveId = this.moves[this.moves.length-1];
+
+        const matcher = allMoves[nextMoveId].succeedsWhen;
+        const moveResult = matcher(state, extraParams);
+        console.log(moveResult);
+        
+        if (moveResult === true) {
             this.moves(pop);
         }
 
@@ -18,13 +23,14 @@ class Game {
             return { game: "complete", movesLeft: this.moves.length };
         }
         
-        sendNextHint(this.moves.peak().hint);
+        const activeMove = this.moves[this.moves.length-1];
+        this.sendNextHint(activeMove.hint);
 
-        return { game: "in-progress", movesLeft: this.moves.length };        
+        return { game: "in-progress", movesLeft: this.moves.length, hint: activeMove.hintText };        
     }
 
     sendNextHint(hintText) {
-        // push over channel
+        // push over channel to send text message
     }
 
     ___uuidv4() {
