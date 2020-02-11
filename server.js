@@ -9,14 +9,15 @@ app.get("/", function(request, response) {
   response.sendFile(__dirname + "/views/index.html");
 });
 
-app.post("/startGame", (request, response) => {
-  const newGame = new Game();
+app.post("/games", (request, response) => {
+  const newGame = new Game(1);
   games[newGame.id] = newGame;
   response.send({ id: newGame.id });
 });
 
 app.post("/games/:gameId", (request, response) => {
-  console.log(req.params);
+  game[""]
+  console.log(request.params);
 });
 
 const listener = app.listen(process.env.PORT, function() {

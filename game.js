@@ -1,4 +1,4 @@
-const allMoves = require("gameMoves");
+const allMoves = require("./gameMoves");
 
 class Game {
     constructor(numberOfMovesToGenerate) {
@@ -35,4 +35,4 @@ class Game {
     }
 }
 
-module.export = Game;
+module.exports = Game;
