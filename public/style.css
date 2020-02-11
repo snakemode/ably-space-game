@@ -140,7 +140,7 @@ h2 {
   height: 20%;
   text-align: right;
   z-index: 1;
-
+  cursor: pointer;
 }
 
 input[type="radio"] {
@@ -158,7 +158,44 @@ input[type="radio"] {
   background-color: var(--red);
   box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
   transform: translate(-50%, -20px);
+  transition: transform 0.4s ease-in-out;
   z-index: 1;
+}
+
+.fuel[data-selected="unobtainium"] #unobtainium {
+  transform: translate(0px, 3px);
+  box-shadow: 0px 0px 20px 6px #ff8d80;
+  background-color: var(--red);
+}
+.fuel[data-selected="dilithium"] #dilithium {
+  transform: translate(0px, 3px);
+  box-shadow: none;
+  background-color: var(--yellow);
+}
+
+.fuel[data-selected="hydrogen"] #hydrogen {
+  transform: translate(0px, 3px);
+  box-shadow: 0px 0px 20px 6px #66ffa7;
+  background-color: var(--green);
+}
+
+.fuel[data-selected="quantonium"] #quantonium {
+  transform: translate(0px, 3px);
+  box-shadow: none;
+  background-color: var(--purple);
+}
+
+.fuel[data-selected="schwartz"] #schwartz {
+  transform: translate(0px, 3px);
+  box-shadow: none;
+  background-color: var(--orange);
+}
+
+
+.fuel[data-selected="nuclear"] #nuclear {
+  transform: translate(0px, 3px);
+  box-shadow: none;
+  background-color: var(--blue);
 }
 
 .lever[data-selected="warp5"]:after {
@@ -168,7 +205,7 @@ input[type="radio"] {
   transform: translate(-50%, -200px)
 }
 .lever[data-selected="warp3"]:after {
-  transform: translate(-50%, -160px)
+  transform: translate(-50%, -150px)
 }
 .lever[data-selected="warp2"]:after {
   transform: translate(-50%, -100px)
