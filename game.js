@@ -24,11 +24,10 @@ class Game {
             return { game: "complete", movesLeft: this.moves.length, hint: ""  };
         }        
         
-        console.log("Move was a success!");
         this.markCurrentMoveAsCompleted();
-
         activeMoveId = this.activeMoveId();
         currentMove = this.getMove(activeMoveId);
+
         this.sendNextHint(currentMove.hint);
 
         return { game: "in-progress", movesLeft: this.moves.length, hint: currentMove.hintText };        

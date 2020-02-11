@@ -7,9 +7,12 @@ async function startGame() {
   currentGameId = responseBody.id;
 }
 
-async function sendState(state) {
-    console.log(state.dataset.uistate);
-    const uistate = state.dataset.uistate;
+async function sendState(htmlElement, extras) {
+    console.log(htmlElement);
+    console.log(extras);
+    console.log(htmlElement.dataset.uistate);
+    
+    const uistate = htmlElement.dataset.uistate;
     const parsedState = JSON.parse(uistate);
     sendToServer(parsedState);
 }

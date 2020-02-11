@@ -1,6 +1,6 @@
 const gameMoves = [
     { 
-        hint: "Press the button to the right of the square logo", 
+        hint: "Click the red square! Quickly!", 
         succeedsWhen: (state, extraParams) => {
             return state.foo === "bar";
         }
