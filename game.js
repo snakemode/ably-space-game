@@ -1,7 +1,7 @@
 const allMoves = require("./gameMoves");
 
 class Game {
-    constructor(numberOfMovesToGenerate, onGameStateChanged = this.sendNextHint) {
+    constructor(numberOfMovesToGenerate, onGameStateChanged = this.__errorThrowingStateChangeHandler) {
         this.id = this.__uuidv4();
         this.moves = [ 0, 1, 2 ]; // Randomly pick a selection of move ids at the start of each game
         this.onGameStateChanged = onGameStateChanged;
@@ -9,10 +9,6 @@ class Game {
     }
 
     handleMove(element, state, extraParams) {
-        element = element || "";
-        state = state || {};
-        extraParams = extraParams || {};
-
         let activeMoveId = this.activeMoveId();
         let currentMove = this.getMove(activeMoveId);        
         const moveResult =  currentMove.succeedsWhen(element, state, extraParams);
@@ -35,10 +31,6 @@ class Game {
         return this.gameStatus();       
     }
 
-    sendNextHint(gameState) {
-        console.log("We should be sending a hint here.");
-    }
-
     gameStatus(lastMoveResultSuccess = true) {      
         return { 
             id: this.id, 
@@ -59,7 +51,16 @@ class Game {
             var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
-    }    
+    }
+  
+    __errorThrowingStateChangeHandler(gameState) {
+        throw new Error("No onGameStateChanged handler provided. Cannot notify player of next task!");
+    }
+  
+    __random(start, end) {
+      return Math.floor((Math.random() * end) + start);
+    }
+
 }
 
 module.exports = Game;

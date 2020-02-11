@@ -1,6 +1,6 @@
 let currentGameId;
 
-async function startGame() {
+async function startGame(playerPhoneNumber = "") {
   const response = await fetch("/games", { method: 'POST' });
   const responseBody = await response.json();
   console.log(responseBody);
@@ -56,4 +56,4 @@ function displayDebugHint(response) {
     document.getElementById("text-message-hint").innerText = response.hint;
 }
 
-startGame();
+startGame("07764444444");

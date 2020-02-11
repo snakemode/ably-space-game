@@ -1,7 +1,13 @@
 class AblyConnector {
-    onGameStateChanged(gameState) {
+    onGameStateChanged(status) {
         console.log("Ably Connector: onGameStateChanged");
-        console.log("Hint is: " + gameState.hint);
+      
+        if (status.gameState == "active") {
+          console.log("Game is active");
+          console.log("Hint is: " + status.hint);
+          
+          // Send SMS notification here
+        }
     }
 }
 
