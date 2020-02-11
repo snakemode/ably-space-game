@@ -18,7 +18,7 @@
 
     <h2>Game Panel</h2>
     <div class="control">
-      <section class="fuel">
+      <section class="fuel" data-selected="hydrogen">
           <h2>Fuel</h2>
         <div class="button red" id="unobtainium" onclick="sendState(this, { totallyInRed: true });"></div>
         <div class="button yellow" id="dilithium" onclick="sendState(this);"></div>
@@ -35,16 +35,16 @@
       </section>
       <section class="warp">
         <h2>Warp</h2>
-        <fieldset class="lever">
-          <input type="radio" id="warp5" name="warp" value="5" onclick="sendState(this);">
+        <fieldset class="lever" data-selected="warp1">
+          <input type="radio" id="warp5" name="warp" value="5" onclick="record(this); sendState(this);">
           <label class="speed" for="warp5">5</label>
-          <input type="radio" id="warp4" name="warp" value="4" onclick="sendState(this);">
+          <input type="radio" id="warp4" name="warp" value="4" onclick="record(this); sendState(this);">
           <label class="speed" for="warp4">4</label>
-          <input type="radio" id="warp3" name="warp" value="3" onclick="sendState(this);">
+          <input type="radio" id="warp3" name="warp" value="3" onclick="record(this); sendState(this);">
           <label class="speed" for="warp3">3</label>
-          <input type="radio" id="warp2" name="warp" value="2" onclick="sendState(this);">
+          <input type="radio" id="warp2" name="warp" value="2" onclick="record(this); sendState(this);">
           <label class="speed" for="warp2">2</label>
-          <input type="radio" id="warp1" name="warp" value="1" checked="checked" onclick="sendState(this);">
+          <input type="radio" id="warp1" name="warp" value="1" checked="checked" onclick="record(this); sendState(this);">
           <label class="speed" for="warp1">1</label>
         </fieldset>
       </section>

@@ -55,4 +55,9 @@ function displayDebugHint(response) {
     document.getElementById("text-message-hint").innerText = response.hint;
 }
 
+function record(element) {
+  console.log(element.parentElement);
+  element.parentElement.setAttribute('data-selected', element.id); 
+}
+
 startGame("07764444444"); // Collect this number from the UI.
