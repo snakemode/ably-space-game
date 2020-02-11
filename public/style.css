@@ -102,11 +102,10 @@ h2 {
   font-weight: bold;
   text-align: center;
   color: var(--grey-dark);
-
 }
 
 .warp {
-  padding: 20px 20px 40px;
+  padding: 20px 40px 40px;
   border: 3px solid var(--indigo);
   border-radius: 10px;
   background-color: var(--white-dark);
@@ -117,6 +116,7 @@ h2 {
   height: 260px;
   padding: 0;
   margin: 0;
+  border: 0;
 }
 
 .lever:after {
@@ -125,7 +125,7 @@ h2 {
   left: 50%;
   top: 0;
   display: block;
-  width: 20px;
+  width: 30px;
   height: 100%;
   background-color: var(--indigo);
   transform: translate(-50%, 0%)
@@ -136,8 +136,28 @@ h2 {
   justify-content: flex-end;
   align-items: center;
   list-style: none;
-  height:20%;
+  height: 20%;
   text-align: right;
+  z-index: 1;
+
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked+label:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  display: block;
+  width: 200%;
+  height: 30px;
+  border-radius: 5px;
+  background-color: var(--red);
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+  transform: translate(-50%, 1px);
+  z-index: 1;
 }
 
 .red {
