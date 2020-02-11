@@ -1,42 +1,32 @@
-// client-side js
-// run by the browser each time your view template is loaded
+function startGame() {
 
-console.log("hello world :o");
+}
 
-// our default array of dreams
-const dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
+function sendState(state) {
+    console.log(state.dataset.uistate);
+    const uistate = state.dataset.uistate;
+    const parsedState = JSON.parse(uistate);
+    const message = {
+        type: "processInput",
+        state: parsedState
+    };
+    sendToServer(parsedState);
+}
 
-// define variables that reference elements on our page
-const dreamsList = document.getElementById("dreams");
-const dreamsForm = document.forms[0];
-const dreamInput = dreamsForm.elements["dream"];
+function sendToServer(message) {
+    // This is currently a fake, and would communicate over an API in the real world.
+    const asText = JSON.stringify();
+    console.log("Outbound state:");
+    console.log(asText);
+    // Do HTTP stuff here
+    
+    // But for our fake...
+    const response = {
+        body: {},
+        send: function (payload) {
+            body = payload;
+        }
+    };
 
-// a helper function that creates a list item for a given dream
-const appendNewDream = function(dream) {
-  const newListItem = document.createElement("li");
-  newListItem.innerHTML = dream;
-  dreamsList.appendChild(newListItem);
-};
-
-// iterate through every dream and add it to our page
-dreams.forEach(function(dream) {
-  appendNewDream(dream);
-});
-
-// listen for the form to be submitted and add a new dream when it is
-dreamsForm.onsubmit = function(event) {
-  // stop our form submission from refreshing the page
-  event.preventDefault();
-
-  // get dream value and add it to the list
-  dreams.push(dreamInput.value);
-  appendNewDream(dreamInput.value);
-
-  // reset form
-  dreamInput.value = "";
-  dreamInput.focus();
-};
+    receiveMessageFromClient({ status: 200, body: asText }, response); // Kinda fake Express.js payload
+}
