@@ -4,7 +4,13 @@ class Game {
     constructor(numberOfMovesToGenerate, playerId, onGameStateChanged = this.__errorThrowingStateChangeHandler) {
         this.id = this.__uuidv4();
         this.playerId = playerId;
-        this.moves = [ 2, 1, 0 ]; // Randomly pick a selection of move ids at the start of each game
+        this.moves = []; 
+        
+        for (let i = 0; i < numberOfMovesToGenerate; i++) {
+            const randomMove = this.__random(0, allMoves.length);
+            this.moves.push(randomMove);
+        }
+        
         this.onGameStateChanged = onGameStateChanged;
         this.onGameStateChanged(this.status());
     }
