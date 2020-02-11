@@ -1,7 +1,15 @@
 class ClickThe {
-  constructor(elementId) { this._elementId = elementId; }  
-  succeedsWhen(element, state, extraParams) { return element.indexOf(`id=\"${this._elementId}\"`) !== -1; }  
-  hint() { return "Click the " + this._elementId + "!"; }
+  constructor(elementId) { 
+    this._elementId = elementId; 
+  } 
+  
+  succeedsWhen(element, state, extraParams) { 
+    return element.indexOf(`id=\"${this._elementId}\"`) !== -1; 
+  }
+  
+  hint() { 
+    return "Click the " + this._elementId + "!"; 
+  }
 }
 
 class SelectFromFieldset {
@@ -10,8 +18,13 @@ class SelectFromFieldset {
     this._target = random(lowVal, highVal);
   }
   
-  succeedsWhen(element, state, extraParams) { return element.indexOf(`id=\"${this._elementId}${this._target}\"`) !== -1; }
-  hint() { return `Set ${this._elementId} to ${this._target}!`; }
+  succeedsWhen(element, state, extraParams) { 
+    return element.indexOf(`id=\"${this._elementId}${this._target}\"`) !== -1; 
+  }
+  
+  hint() { 
+    return `Set ${this._elementId} to ${this._target}!`; 
+  }
 }
 
 const random = (start, end) => Math.floor((Math.random() * end) + start);
