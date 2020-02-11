@@ -1,10 +1,11 @@
 const allMoves = require("./gameMoves");
 
 class Game {
-    constructor(numberOfMovesToGenerate) {
+    constructor(numberOfMovesToGenerate, onGameStateChanged = this.sendNextHint) {
         this.id = this.__uuidv4();
-        this.moves = [ 0, 1, 2 ];
-        // Randomly pick a selection of move ids at the start of each game
+        this.moves = [ 0, 1, 2 ]; // Randomly pick a selection of move ids at the start of each game
+        this.onGameStateChanged = onGameStateChanged;
+        this.onGameStateChanged(this.gameStatus());
     }
 
     handleMove(element, state, extraParams) {
@@ -28,13 +29,14 @@ class Game {
 
         activeMoveId = this.activeMoveId();
         currentMove = this.getMove(activeMoveId);
-        this.sendNextHint(currentMove.hint);
+
+        this.onGameStateChanged(this.gameStatus());
 
         return this.gameStatus();       
     }
 
-    sendNextHint(hintText) {
-        // push over channel to send text message
+    sendNextHint(gameState) {
+        console.log("We should be sending a hint here.");
     }
 
     gameStatus() {      
