@@ -164,7 +164,7 @@ input[type="radio"] {
 
 .dial {
   margin: 40px;
-  padding: 40px;
+  padding: 40px 40px 100px;
   border-radius: 20px;
   background-color: white;
 }
@@ -206,13 +206,16 @@ input[type="radio"] {
 }
 
 .dial-hand {
-  p
+  position: absolute;
+  top: 0;
+  left: 50%;
   width: 0;
   height: 0;
   border-left: 70px solid transparent;
   border-right: 70px solid transparent;
-  border-top: 100px solid red;
-  border-radius: 50%;
+  border-bottom: 100px solid red;
+  border-radius: 100%;
+  transform: scale(0.1, 1) translate(-50%, 0);
 }
 
 
