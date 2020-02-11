@@ -2,10 +2,9 @@ const allMoves = require("./gameMoves");
 
 class Game {
     constructor(numberOfMovesToGenerate) {
-        this.id = this.___uuidv4();
-        this.moves = [
-            0
-        ]; // Randomly pick a selection of move ids at the start of each game
+        this.id = this.__uuidv4();
+        this.moves = [ 0, 1, 2 ];
+        // Randomly pick a selection of move ids at the start of each game
     }
 
     handleMove(element, state, extraParams) {
@@ -18,23 +17,33 @@ class Game {
         const moveResult =  currentMove.succeedsWhen(element, state, extraParams);
 
         if (moveResult !== true) {
-            return { status: "active", movesLeft: this.moves.length, hint: currentMove.hint }; 
+            return this.gameStatus();
         }
         
         this.markCurrentMoveAsCompleted();
+
         if (this.gameIsFinished()) {
-            return { status: "complete", movesLeft: 0, hint: ""  };
+            return this.gameStatus();
         }
 
         activeMoveId = this.activeMoveId();
         currentMove = this.getMove(activeMoveId);
         this.sendNextHint(currentMove.hint);
 
-        return { status: "active", movesLeft: this.moves.length, hint: currentMove.hint };        
+        return this.gameStatus();       
     }
 
     sendNextHint(hintText) {
         // push over channel to send text message
+    }
+
+    gameStatus() {      
+        return { 
+            id: this.id, 
+            status: this.moves.length > 0 ? "active" : "complete", 
+            movesLeft: this.moves.length, 
+            hint: this.moves.length > 0 ? this.getMove(this.activeMoveId()).hint : "" 
+        };
     }
 
     gameIsFinished() { return this.moves.length === 0; }
@@ -42,12 +51,12 @@ class Game {
     activeMoveId() { return this.moves[this.moves.length-1]; }
     getMove(moveId) { return allMoves[moveId]; }
 
-    ___uuidv4() {
+    __uuidv4() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
             var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
-    }
+    }    
 }
 
 module.exports = Game;

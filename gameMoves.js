@@ -17,6 +17,13 @@ const gameMoves = [
             return state.foo === "bar";
         }
     },
+    { 
+        hint: "Click the green square! Quickly!", 
+        succeedsWhen: (element, state, extraParams) => {
+            console.log("In the handler for the click the green square quickly hint!");
+            return state.foo === "bar";
+        }
+    },
 ];
 
 module.exports = gameMoves;

@@ -3,7 +3,7 @@ let currentGameId;
 async function startGame() {
   const response = await fetch("/games", { method: 'POST' });
   const responseBody = await response.json();
-  console.log(responseBody.id);
+  console.log(responseBody);
   currentGameId = responseBody.id;
 }
 

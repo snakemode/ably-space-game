@@ -15,7 +15,8 @@ app.get("/", function(request, response) {
 app.post("/games", (request, response) => {
   const newGame = new Game(1);
   games[newGame.id] = newGame;
-  response.send({ id: newGame.id });
+  const asText = JSON.stringify(newGame.gameStatus());
+  response.send(asText);
 });
 
 app.post("/games/:gameId", (request, response) => {
