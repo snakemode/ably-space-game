@@ -18,7 +18,7 @@
 
     <h2>Game Panel</h2>
     <div class="control">
-      <section class="fuel" data-selected="hydrogen">
+      <section class="buttons" data-selected="hydrogen">
           <h2>Fuel</h2>
         <div class="button red" id="unobtainium" onclick="record(this); sendState(this, { totallyInRed: true });"></div>
         <div class="button yellow" id="dilithium" onclick="record(this); sendState(this);"></div>
@@ -33,7 +33,7 @@
         <span class="label">schwartz</span>
         <span class="label">nuclear</span>
       </section>
-      <section class="warp">
+      <section class="levers">
         <h2>Warp</h2>
         <fieldset class="lever" data-selected="warp1">
           <input type="radio" id="warp5" name="warp" value="5" onclick="record(this); sendState(this);">

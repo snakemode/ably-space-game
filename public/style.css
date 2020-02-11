@@ -51,14 +51,17 @@ h2 {
 }
 
 .control {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  display: grid;
+  grid-template-areas: 
+      "buttons lever dial something"
+      "buttons lever toggle something";
+  grid-template-columns: 200px 200px 200px 200px;
   padding: 40px;
   background-color: var(--white);
 }
 
-.fuel {
+.buttons {
+  grid-area: buttons;
   display: flex;
   flex-wrap: wrap;
   width: 200px;
@@ -104,7 +107,8 @@ h2 {
   color: var(--grey-dark);
 }
 
-.warp {
+.levers {
+  grid-area: lever;
   margin: 0 20px;
   padding: 20px 40px 40px;
   border: 3px solid var(--indigo);
@@ -163,6 +167,7 @@ input[type="radio"] {
 }
 
 .dial {
+  grid-area: dial;
   position: relative;
   margin: 0 40px;
   padding: 20px 40px;
@@ -271,11 +276,18 @@ input[type="radio"] {
     }
 }
 
+.switches {
+  grid-area: toggle;
+  display: flex;
+  flex-direction: column;
+}
+
 .switch {
   position: relative;
   display: inline-block;
   width: 100px;
   height: 50px;
+  margin-bottom: 10px;
 }
 
 .switch-check {
