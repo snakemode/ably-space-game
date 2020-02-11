@@ -1,4 +1,6 @@
 const Game = require("./game");
+const AblyConnector = require("./ablyConnector");
+
 const express = require("express");
 const bodyParser = require('body-parser');
 const app = express();
@@ -15,17 +17,20 @@ app.get("/", function(request, response) {
 app.post("/games", (request, response) => {
   const newGame = new Game(1);
   games[newGame.id] = newGame;
+
   const asText = JSON.stringify(newGame.gameStatus());
   response.send(asText);
 });
 
 app.post("/games/:gameId", (request, response) => {
   const activeGame = games[request.params["gameId"]];
-  const element = request.body.element || "";
-  const state = request.body.state || {};
-  const extraParams = request.body.extraParams || {};
-  
-  const gameResponse = activeGame.handleMove(element, state, extraParams);
+
+  const gameResponse = activeGame.handleMove(
+    request.body.element || "",
+    request.body.state || {}, 
+    request.body.extraParams || {}
+  );
+
   const asText = JSON.stringify(gameResponse);
   console.log(asText);
   response.send(asText);

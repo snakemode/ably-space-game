@@ -5,6 +5,7 @@ async function startGame() {
   const responseBody = await response.json();
   console.log(responseBody);
   currentGameId = responseBody.id;
+  displayDebugHint(responseBody);
 }
 
 async function sendState(htmlElement, extraParams) {
@@ -20,7 +21,9 @@ async function sendState(htmlElement, extraParams) {
     sendToServer(message);
 }
 
-async function handleServerResponse(response) {
+async function handleServerResponse(response) {  
+  displayDebugHint(response);
+
   if (response.status === "complete") {
     alert("Game complete! Well done! You followed the instructions!");
     return;
@@ -42,6 +45,10 @@ async function sendToServer(message) {
     console.log(responseBody);
 
     await handleServerResponse(responseBody);
+}
+
+function displayDebugHint(response) {
+    document.getElementById("text-message-hint").innerText = response.hint;
 }
 
 startGame();

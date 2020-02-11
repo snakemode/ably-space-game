@@ -13,13 +13,13 @@
 <body>
     <div>
         <h2>Hint Text Message</h2>
-        <span></span>
+        <span id="text-message-hint"></span>
     </div>
 
     <h2>Game Panel</h2>
     <div style="width: 100%; height: 60vh; background: black">
 
-        <div data-uistate='{ "isRed": true }' style="background-color: red; width: 10px; height: 10px;" onclick="sendState(this, { extras: true });"></div>
+        <div data-uistate='{ "isRed": true }' style="background-color: red; width: 10px; height: 10px;" onclick="sendState(this, { totallyInRed: true });"></div>
 
         <div data-uistate='{ "isYellow": true }' style="background-color: yellow; width: 10px; height: 10px;" onclick="sendState(this);"></div>
         
