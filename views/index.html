@@ -18,12 +18,12 @@
 
     <h2>Game Panel</h2>
     <div class="control">
+        <h2>Fuel</h2>
+        <div class="button unobtainium" data-uistate="{'isRed': true}" onclick="sendState(this, { totallyInRed: true });"></div>
 
-        <div data-uistate='{ "isRed": true }' style="background-color: red; width: 10px; height: 10px;" onclick="sendState(this, { totallyInRed: true });"></div>
-
-        <div data-uistate='{ "isYellow": true }' style="background-color: yellow; width: 10px; height: 10px;" onclick="sendState(this);"></div>
+        <div class="button dilithium" data-uistate="{'isYellow': true}" style="background-color: yellow; width: 10px; height: 10px;" onclick="sendState(this);"></div>
         
-        <div style="background-color: green; width: 10px; height: 10px;" onclick="sendState(this);"></div>
+        <div class="button hydrogen" onclick="sendState(this);"></div>
 
     </div>
 

@@ -3,25 +3,25 @@
 
 :root {
   --turquoise: #1abc9c;
-  --turquoise-dark: #2ecc71;
+  --green: #2ecc71;
   --blue: #3498db;
-  --amethyst: #9b59b6;
-  --wet-asphalt: #34495e;
-  --green-sea: #16a085;
-  --nephritis: #27ae60;
+  --purple: #9b59b6;
+  --indigo: #34495e;
+  --turquoise-dark: #16a085;
+  --green-dark: #27ae60;
   --blue-dark: #2980b9;
-  --wisteria: #8e44ad;
-  --midnight-blue: #2c3e50;
-  --sun-flower: #f1c40f;
-  --carrot: #e67e22;
-  --alizarin: #e74c3c;
-  --clouds: #ecf0f1;
-  --concrete: #95a5a6;
-  --orange: #f39c12;
-  --pumpkin: #d35400;
-  --pomegranate: #c0392b;
-  --silver: #bdc3c7;
-  --asbestos: #7f8c8d;
+  --purple-dark: #8e44ad;
+  --indigo-dark: #2c3e50;
+  --yellow: #f1c40f;
+  --orange: #e67e22;
+  --red: #e74c3c;
+  --white: #ecf0f1;
+  --grey: #95a5a6;
+  --yellow-dark: #f39c12;
+  --orange-dark: #d35400;
+  --red-dark: #c0392b;
+  --white-dark: #bdc3c7;
+  --grey-dark: #7f8c8d;
 }
 
 * {
@@ -35,9 +35,9 @@ body {
 
 h1 {
   font-style: italic;
-  color: #373fff;
+  color: #373fffwhite;
 }
 
 .control {
-  background-color: var(--silver);
+  background-color: var(--white);
 }

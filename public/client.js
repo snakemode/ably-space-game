@@ -24,12 +24,17 @@ async function sendState(htmlElement, extraParams) {
 async function handleServerResponse(response) {  
   displayDebugHint(response);
 
-  if (response.status === "complete") {
+  if (!response.lastMoveSuccessful) {
+    // shake the thing?
+    console.log("Something to shake the UI because the move was wrong goes here.");
+  }
+
+  if (response.gameState === "complete") {
     alert("Game complete! Well done! You followed the instructions!");
     return;
   }
 
-  if (response.status === "active") {
+  if (response.gameState === "active") {
     // game still active
     return;
   }

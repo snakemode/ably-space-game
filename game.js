@@ -18,7 +18,7 @@ class Game {
         const moveResult =  currentMove.succeedsWhen(element, state, extraParams);
 
         if (moveResult !== true) {
-            return this.gameStatus();
+            return this.gameStatus(moveResult);
         }
         
         this.markCurrentMoveAsCompleted();
@@ -39,12 +39,13 @@ class Game {
         console.log("We should be sending a hint here.");
     }
 
-    gameStatus() {      
+    gameStatus(lastMoveResultSuccess = true) {      
         return { 
             id: this.id, 
-            status: this.moves.length > 0 ? "active" : "complete", 
+            gameState: this.moves.length > 0 ? "active" : "complete", 
             movesLeft: this.moves.length, 
-            hint: this.moves.length > 0 ? this.getMove(this.activeMoveId()).hint : "" 
+            hint: this.moves.length > 0 ? this.getMove(this.activeMoveId()).hint() : "",
+            lastMoveSuccessful: lastMoveResultSuccess
         };
     }
 
