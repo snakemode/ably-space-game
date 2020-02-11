@@ -1,20 +1,22 @@
 let currentGameId;
 
 async function startGame(playerPhoneNumber = "") {
-  const response = await fetch("/games", { method: 'POST' });
+  const startGameRequest = { phoneNumber: playerPhoneNumber };
+  const response = await fetch("/games", { method: 'POST', body: JSON.stringify(startGameRequest) });
   const responseBody = await response.json();
-  console.log(responseBody);
   currentGameId = responseBody.id;
+  
+  console.log(response);
   displayDebugHint(responseBody);
 }
 
 async function sendState(htmlElement, extraParams) {
     const dataset = htmlElement.dataset || { "uistate": "{}" };
-    const uistate = dataset.uistate || "{}";
-
+    const uistate = dataset.uistate || "";
+  console.log(uistate);
     const message = {
       element: htmlElement.outerHTML,
-      state: JSON.parse(uistate),
+      state: uistate,
       extraParams: extraParams || {}
     }
 
@@ -22,6 +24,7 @@ async function sendState(htmlElement, extraParams) {
 }
 
 async function handleServerResponse(response) {  
+  console.log(response);
   displayDebugHint(response);
 
   if (!response.lastMoveSuccessful) {

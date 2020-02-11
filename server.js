@@ -19,7 +19,7 @@ app.post("/games", (request, response) => {
   const newGame = new Game(3, ably.onGameStateChanged);
   games[newGame.id] = newGame;
 
-  const asText = JSON.stringify(newGame.gameStatus());
+  const asText = JSON.stringify(newGame.status());
   response.send(asText);
 });
 
@@ -28,13 +28,11 @@ app.post("/games/:gameId", (request, response) => {
 
   const gameResponse = activeGame.handleMove(
     request.body.element || "",
-    request.body.state || {}, 
+    request.body.state || "", 
     request.body.extraParams || {}
   );
 
-  const asText = JSON.stringify(gameResponse);
-  console.log(asText);
-  response.send(asText);
+  response.send(JSON.stringify(gameResponse));
 });
 
 const listener = app.listen(process.env.PORT, function() {

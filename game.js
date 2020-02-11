@@ -3,9 +3,9 @@ const allMoves = require("./gameMoves");
 class Game {
     constructor(numberOfMovesToGenerate, onGameStateChanged = this.__errorThrowingStateChangeHandler) {
         this.id = this.__uuidv4();
-        this.moves = [ 0, 1, 2 ]; // Randomly pick a selection of move ids at the start of each game
+        this.moves = [ 2, 1, 0 ]; // Randomly pick a selection of move ids at the start of each game
         this.onGameStateChanged = onGameStateChanged;
-        this.onGameStateChanged(this.gameStatus());
+        this.onGameStateChanged(this.status());
     }
 
     handleMove(element, state, extraParams) {
@@ -14,24 +14,24 @@ class Game {
         const moveResult =  currentMove.succeedsWhen(element, state, extraParams);
 
         if (moveResult !== true) {
-            return this.gameStatus(moveResult);
+            return this.status(moveResult);
         }
         
         this.markCurrentMoveAsCompleted();
 
         if (this.gameIsFinished()) {
-            return this.gameStatus();
+            return this.status();
         }
 
         activeMoveId = this.activeMoveId();
         currentMove = this.getMove(activeMoveId);
 
-        this.onGameStateChanged(this.gameStatus());
+        this.onGameStateChanged(this.status());
 
-        return this.gameStatus();       
+        return this.status();       
     }
 
-    gameStatus(lastMoveResultSuccess = true) {      
+    status(lastMoveResultSuccess = true) {      
         return { 
             id: this.id, 
             gameState: this.moves.length > 0 ? "active" : "complete", 

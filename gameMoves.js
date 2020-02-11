@@ -1,9 +1,8 @@
 const gameMoves = [
     { 
-        hint: () => "Click the red square! Quickly!", 
+        hint: () => "Click the unobtaininum!",
         succeedsWhen: (element, state, extraParams) => {
-            console.log("In the handler for the click the red square quickly hint!");
-            return extraParams.totallyInRed === true;
+            return element.indexOf("id=\"unobtainium\"") !== -1;
         }
     },    
     { 
