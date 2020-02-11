@@ -162,17 +162,68 @@ input[type="radio"] {
   z-index: 1;
 }
 
-.dial-meter {
-  background: #9e978e;
-  display: inline-block;
-  margin: 0 1em 1em 0;
-  height: 100px;
-  width: 200px;
-  border: 3px solid var(--indigo);
-  border-top-left-radius: 200px;
-  border-top-right-radius: 200px;
+.dial {
+  margin: 40px;
+  padding: 40px;
+  border-radius: 20px;
+  background-color: white;
 }
 
+.dial-container {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.dial-meter {
+  position: relative;
+  top: 20px;
+  left: 50%;
+  display: inline-block;
+  height: 200px;
+  width: 300px;
+  margin: 0 1em 1em 0;
+  border-top-left-radius: 300px;
+  border-top-right-radius: 300px;
+  border: 2px solid var(--indigo);
+  transform: translate(-50%, 0);
+}
+
+.dial-meter:after {
+  content: "";
+  position: relative;
+  top: 2px;
+  left: 50%;
+  display: inline-block;
+  height: 190px;
+  width: 290px;
+  margin: 0 1em 1em 0;
+  border-top-left-radius: 290px;
+  border-top-right-radius: 290px;
+  border: 2px solid var(--indigo);
+  transform: translate(-50%, 0);
+}
+
+
+    .di{
+      width: 0;
+      height: 0;
+      border: 50px solid transparent;
+      border-bottom: 20px solid red;
+      position: relative;
+      top: -50px;
+    }
+    #diamond-shield:after {
+      content: '';
+      position: absolute;
+      left: -50px;
+      top: 20px;
+      width: 0;
+      height: 0;
+      border: 50px solid transparent;
+      border-top: 70px solid red;
+    }
 
 .fuel[data-selected="unobtainium"] #unobtainium {
   transform: translate(0px, 3px);
