@@ -163,10 +163,12 @@ input[type="radio"] {
 }
 
 .dial {
+  position: relative;
   margin: 40px;
-  padding: 40px 40px 100px;
+  padding: 40px 40px 50px;
   border-radius: 20px;
   background-color: white;
+  z-index: 1;
 }
 
 .dial-container {
@@ -207,17 +209,16 @@ input[type="radio"] {
 
 .dial-hand {
   position: absolute;
-  top: 0;
+  bottom: 40px;
   left: 50%;
   width: 0;
   height: 0;
-  border-left: 70px solid transparent;
-  border-right: 70px solid transparent;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
   border-bottom: 100px solid red;
   border-radius: 100%;
-  transform: scale(0.1, 1) translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
-
 
 .fuel[data-selected="unobtainium"] #unobtainium {
   transform: translate(0px, 3px);

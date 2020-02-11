@@ -1,3 +1,5 @@
+const fetch = require("node-fetch");
+
 class AblyConnector {
     onGameStateChanged(status) {
         console.log("Ably Connector: onGameStateChanged");

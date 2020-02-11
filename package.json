@@ -1,23 +1,21 @@
 {
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
-  "//3": "updating this file will download and update your packages",
-  "name": "hello-express",
+  "name": "keep-texting-and-nobody-explodes",
   "version": "0.0.1",
-  "description": "A simple Node app built on Express, instantly up and running.",
+  "description": "A stress inducing game of button pressing and notifications",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "body-parser": "latest"
+    "body-parser": "latest",
+    "node-fetch": "latest"
   },
   "engines": {
     "node": "10.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/hello-express"
+    "url": "https://glitch.com/edit/#!/florentine-crayfish-xqtpugytnl"
   },
   "license": "MIT",
   "keywords": [
