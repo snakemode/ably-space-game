@@ -168,6 +168,7 @@ input[type="radio"] {
   padding: 20px 40px;
   border-radius: 20px;
   background-color: white;
+  box-shadow: inset 0px 0px 2px 1px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
@@ -290,10 +291,10 @@ input[type="radio"] {
   right: 0;
   bottom: 0;
   border-radius: 30px;
-  background-color: var(--indigo);
+  background-color: var(--grey-dark);
   overflow: hidden;
   transition: .4s;
-  box-shadow: inset 6px 6px 0px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 4px 6px 0px 0px rgba(0, 0, 0, 0.75);
 }
 
 .slider:before {
@@ -306,7 +307,11 @@ input[type="radio"] {
   border-radius: 50%;
   background-color: var(--red);
   transition: .4s;
-  box-shadow: 4px 3px 0px 0px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.75);
+}
+
+.switch-check:checked + .slider {
+  background-color: var(--indigo);
 }
 
 .switch-check:checked + .slider:before {
@@ -316,7 +321,6 @@ input[type="radio"] {
 .switch-check:checked + .slider:before {
   transform: translateX(50px);
 }
-
 
 
 .fuel[data-selected="unobtainium"] #unobtainium {
