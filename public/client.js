@@ -18,7 +18,7 @@ async function sendState(htmlElement, extraParams) {
       extraParams: extraParams || {}
     }
 
-    sendToServer(message);
+    await sendToServer(message);
 }
 
 async function handleServerResponse(response) {  
