@@ -212,11 +212,12 @@ input[type="radio"] {
   bottom: -15px;
   left: 50%;
   width: 3px;
-  height: 120px;
+  height: 130px;
   background-color: var(--red);
   transform: translate(-50%, 0);
-  animation: move 3s infinite;
-
+  animation: move 5s infinite;
+  transform: rotate(0deg);
+  transform-origin: bottom;
 }
 
 .dial-hand:after {
@@ -229,19 +230,41 @@ input[type="radio"] {
   border-radius: 50%;
   background-color: var(--white);
   transform: translate(-50%, 10px);
-  transform:rotate(0deg);
-  transform-origin:bottom;
 }
 
 @keyframes move {
     0% {
-        transform:rotate(-90deg);
+        transform:rotate(-55deg);
+    }
+    10% {
+        transform:rotate(-30deg);
+    }
+    20% {
+        transform:rotate(-55deg);
+    }
+    30% {
+        transform:rotate(20deg);
+    }
+    40% {
+        transform:rotate(-55deg);
     }
     50% {
-        transform:rotate(90deg);
+        transform:rotate(-55deg);
+    }
+    60% {
+        transform:rotate(20deg);
+    }
+    70% {
+        transform:rotate(-55deg);
+    }
+    80% {
+        transform:rotate(20deg);
+    }
+    90% {
+        transform:rotate(30deg);
     }
     100% {
-        transform:rotate(-90deg);
+        transform:rotate(-55deg);
     }
 }
 
