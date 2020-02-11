@@ -7,24 +7,26 @@ async function startGame() {
   currentGameId = responseBody.id;
 }
 
-async function sendState(htmlElement, extraParams) {   
-    const uistate = htmlElement.dataset.uistate || "{}";
+async function sendState(htmlElement, extraParams) {
+    const dataset = htmlElement.dataset || { "uistate": "{}" };
+    const uistate = dataset.uistate || "{}";
 
-    const serverMessage = {
+    const message = {
       element: htmlElement.outerHTML,
       state: JSON.parse(uistate),
-      extraParams: extraParams
-    };
+      extraParams: extraParams || {}
+    }
 
-    sendToServer(serverMessage);
+    sendToServer(message);
 }
 
-async function handleServerResponse(body) {
-  if (response.body.status === "complete") {
-    return
+async function handleServerResponse(response) {
+  if (response.status === "complete") {
+    alert("Game complete! Well done! You followed the instructions!");
+    return;
   }
 
-  if (responseBody.status === "active") {
+  if (response.status === "active") {
     // game still active
     return;
   }
