@@ -55,7 +55,7 @@ h2 {
   grid-template-areas: 
       "buttons lever dial something"
       "buttons lever toggle something";
-  grid-template-columns: 200px 200px 200px 200px;
+  grid-template-columns: 240px 240px 350px 200px;
   padding: 40px;
   background-color: var(--white);
 }
@@ -156,7 +156,7 @@ input[type="radio"] {
   position: absolute;
   left: 50%;
   display: block;
-  width: 200%;
+  width: 130%;
   height: 30px;
   border-radius: 5px;
   background-color: var(--red);
@@ -169,6 +169,7 @@ input[type="radio"] {
 .dial {
   grid-area: dial;
   position: relative;
+  height: 150px;
   margin: 0 40px;
   padding: 20px 40px;
   border-radius: 20px;
@@ -242,28 +243,28 @@ input[type="radio"] {
 
 @keyframes move {
     0% {
-        transform:rotate(-55deg);
+        transform:rotate(-45deg);
     }
     10% {
         transform:rotate(-30deg);
     }
     20% {
-        transform:rotate(-55deg);
+        transform:rotate(-45deg);
     }
     30% {
         transform:rotate(20deg);
     }
     40% {
-        transform:rotate(-55deg);
+        transform:rotate(-45deg);
     }
     50% {
-        transform:rotate(-55deg);
+        transform:rotate(-45deg);
     }
     60% {
         transform:rotate(20deg);
     }
     70% {
-        transform:rotate(-55deg);
+        transform:rotate(-45deg);
     }
     80% {
         transform:rotate(20deg);
@@ -272,7 +273,7 @@ input[type="radio"] {
         transform:rotate(30deg);
     }
     100% {
-        transform:rotate(-55deg);
+        transform:rotate(-45deg);
     }
 }
 
@@ -280,6 +281,9 @@ input[type="radio"] {
   grid-area: toggle;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 40px 0;
 }
 
 .switch {
@@ -287,7 +291,6 @@ input[type="radio"] {
   display: inline-block;
   width: 100px;
   height: 50px;
-  margin-bottom: 10px;
 }
 
 .switch-check {
