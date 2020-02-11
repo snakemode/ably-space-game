@@ -50,6 +50,9 @@ h2 {
 }
 
 .control {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px;
   background-color: var(--white);
 }
 
@@ -98,6 +101,35 @@ h2 {
   text-align: center;
   color: var(--grey-dark);
 
+}
+
+.warp {
+  padding: 20px;
+  border: 3px solid var(--indigo);
+  border-radius: 10px;
+  background-color: var(--white-dark);
+}
+
+.lever {
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.lever:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  display: block;
+  width: 20px;
+  height: 1;
+  background-color: var(--indigo);
+  transform: translate(-50%, 0%)
+}
+
+.speed {
+  list-style: none;
 }
 
 .red {
