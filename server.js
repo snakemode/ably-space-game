@@ -17,10 +17,12 @@ app.post("/games", (request, response) => {
 
 app.post("/games/:gameId", (request, response) => {
   const activeGame = games[request.params["gameId"]];
+  const requestAsJson = JSON.parse()
+  const element = "";
   const state = {};
   const extraParams = {};
   
-  const gameResponse = activeGame.handleMove(state, extraParams);
+  const gameResponse = activeGame.handleMove(element, state, extraParams);
   const asText = JSON.stringify(gameResponse);
   console.log(asText);
   response.send(asText);

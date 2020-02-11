@@ -7,14 +7,16 @@ async function startGame() {
   currentGameId = responseBody.id;
 }
 
-async function sendState(htmlElement, extras) {
-    console.log(htmlElement);
-    console.log(extras);
-    console.log(htmlElement.dataset.uistate);
+async function sendState(htmlElement, extraParams) {   
+    const uistate = htmlElement.dataset.uistate || "{}";
     
-    const uistate = htmlElement.dataset.uistate;
-    const parsedState = JSON.parse(uistate);
-    sendToServer(parsedState);
+    const serverMessage = {
+      element: htmlElement.outerHTML,
+      state: JSON.parse(uistate),
+      extraParams: extraParams
+    };
+
+    sendToServer(serverMessage);
 }
 
 async function sendToServer(message) {

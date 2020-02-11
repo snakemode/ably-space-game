@@ -8,19 +8,20 @@ class Game {
         ]; // Randomly pick a selection of move ids at the start of each game
     }
 
-    handleMove(state, extraParams) {
+    handleMove(element, state, extraParams) {
+        element = element || "";
+        state = state || {};
+        extraParams = extraParams || {};
 
         let activeMoveId = this.activeMoveId();
         let currentMove = this.getMove(activeMoveId);        
-        const moveResult =  currentMove.succeedsWhen(state, extraParams);
+        const moveResult =  currentMove.succeedsWhen(element, state, extraParams);
 
         if (moveResult !== true) {
-            console.log("Move failed.");
-            return { game: "in-progress", movesLeft: this.moves.length, hint: currentMove.hintText }; 
+            return { game: "in-progress", movesLeft: this.moves.length, hint: currentMove.hint }; 
         }
 
         if (this.gameIsFinished()) {
-            console.log("Game completed!");
             return { game: "complete", movesLeft: this.moves.length, hint: ""  };
         }        
         
@@ -30,7 +31,7 @@ class Game {
 
         this.sendNextHint(currentMove.hint);
 
-        return { game: "in-progress", movesLeft: this.moves.length, hint: currentMove.hintText };        
+        return { game: "in-progress", movesLeft: this.moves.length, hint: currentMove.hint };        
     }
 
     sendNextHint(hintText) {
