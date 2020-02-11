@@ -9,7 +9,7 @@ async function startGame() {
 
 async function sendState(htmlElement, extraParams) {   
     const uistate = htmlElement.dataset.uistate || "{}";
-    
+
     const serverMessage = {
       element: htmlElement.outerHTML,
       state: JSON.parse(uistate),
@@ -19,15 +19,27 @@ async function sendState(htmlElement, extraParams) {
     sendToServer(serverMessage);
 }
 
+async function handleServerResponse(body) {
+  if (response.body.status === "complete") {
+    return
+  }
+
+  if (responseBody.status === "active") {
+    // game still active
+    return;
+  }
+}
+
 async function sendToServer(message) {
     const asText = JSON.stringify(message);
     console.log("Outbound state:");
     console.log(asText);
     
-    const response = await fetch(`/games/${currentGameId}`, { method: "POST", body: asText });
-    const responseBody = await response.json();
-
+    const response = await fetch(`/games/${currentGameId}`, { method: "POST", body: asText, headers: { 'Content-Type': 'application/json' } });
+    const responseBody = await response.json();    
     console.log(responseBody);
+
+    await handleServerResponse(responseBody);
 }
 
 startGame();

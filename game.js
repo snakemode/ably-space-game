@@ -18,20 +18,19 @@ class Game {
         const moveResult =  currentMove.succeedsWhen(element, state, extraParams);
 
         if (moveResult !== true) {
-            return { game: "in-progress", movesLeft: this.moves.length, hint: currentMove.hint }; 
+            return { status: "active", movesLeft: this.moves.length, hint: currentMove.hint }; 
         }
-
-        if (this.gameIsFinished()) {
-            return { game: "complete", movesLeft: this.moves.length, hint: ""  };
-        }        
         
         this.markCurrentMoveAsCompleted();
+        if (this.gameIsFinished()) {
+            return { status: "complete", movesLeft: 0, hint: ""  };
+        }
+
         activeMoveId = this.activeMoveId();
         currentMove = this.getMove(activeMoveId);
-
         this.sendNextHint(currentMove.hint);
 
-        return { game: "in-progress", movesLeft: this.moves.length, hint: currentMove.hint };        
+        return { status: "active", movesLeft: this.moves.length, hint: currentMove.hint };        
     }
 
     sendNextHint(hintText) {
@@ -39,7 +38,7 @@ class Game {
     }
 
     gameIsFinished() { return this.moves.length === 0; }
-    markCurrentMoveAsCompleted() { this.moves(pop); }
+    markCurrentMoveAsCompleted() { this.moves.pop(); }
     activeMoveId() { return this.moves[this.moves.length-1]; }
     getMove(moveId) { return allMoves[moveId]; }
 

@@ -1,8 +1,11 @@
 const Game = require("./game");
 const express = require("express");
+const bodyParser = require('body-parser');
 const app = express();
 
 const games = {};
+
+app.use(bodyParser.json({limit: '50mb'}));
 
 app.use(express.static("public"));
 app.get("/", function(request, response) {
@@ -17,10 +20,9 @@ app.post("/games", (request, response) => {
 
 app.post("/games/:gameId", (request, response) => {
   const activeGame = games[request.params["gameId"]];
-  const requestAsJson = JSON.parse()
-  const element = "";
-  const state = {};
-  const extraParams = {};
+  const element = request.body.element || "";
+  const state = request.body.state || {};
+  const extraParams = request.body.extraParams || {};
   
   const gameResponse = activeGame.handleMove(element, state, extraParams);
   const asText = JSON.stringify(gameResponse);
