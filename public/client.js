@@ -56,7 +56,6 @@ function displayDebugHint(response) {
 }
 
 function record(element) {
-  console.log(element.parentElement);
   element.parentElement.setAttribute('data-selected', element.id); 
 }
 

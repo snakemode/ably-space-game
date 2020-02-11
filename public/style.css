@@ -120,7 +120,7 @@ h2 {
   border: 0;
 }
 
-.lever:after {
+.lever:before {
   content: "";
   position: absolute;
   left: 50%;
@@ -147,7 +147,7 @@ input[type="radio"] {
   display: none;
 }
 
-input[type="radio"]:checked+label:before {
+.lever:after {
   content: "";
   position: absolute;
   left: 50%;
@@ -157,8 +157,24 @@ input[type="radio"]:checked+label:before {
   border-radius: 5px;
   background-color: var(--red);
   box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
-  transform: translate(-50%, 1px);
+  transform: translate(-50%, -20px);
   z-index: 1;
+}
+
+.lever[data-selected="warp5"]:after {
+  transform: translate(-50%, -260px)
+}
+.lever[data-selected="warp4"]:after {
+  transform: translate(-50%, -200px)
+}
+.lever[data-selected="warp3"]:after {
+  transform: translate(-50%, -160px)
+}
+.lever[data-selected="warp2"]:after {
+  transform: translate(-50%, -100px)
+}
+.lever[data-selected="warp1"]:after {
+  transform: translate(-50%, -20px)
 }
 
 .red {
