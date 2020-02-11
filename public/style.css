@@ -31,7 +31,6 @@
 body {
   font-family: helvetica, arial, sans-serif;
   margin: 2em;
-  color: 
 }
 
 h1 {
@@ -42,6 +41,8 @@ h1 {
 h2 {
   width: 100%;
   flex-shrink: 0;
+  color: var(--indigo-dark);
+  text-align: center;
 }
 
 .control {
@@ -51,15 +52,15 @@ h2 {
 .fuel {
   display: flex;
   flex-wrap: wrap;
-  width: 200px;
+  width: 180px;
 }
 
 .button {
   position: relative;
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  margin: 10px;
+  width: 60px;
+  height: 60px;
+  margin: 10px 10px 30px;
   border: 4px solid var(--indigo);
   border-radius: 50%;
   cursor: pointer;
@@ -69,10 +70,10 @@ h2 {
 .button:after {
   content: "";
   position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 10px;
-  height: 10px;
+  top: 10px;
+  right: 10px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   background-color: rgba(255,255,255,0.7);
 }
@@ -83,24 +84,54 @@ h2 {
   box-shadow: none;
 }
 
+.label {
+  position: absolute;
+  bottom: -20px;
+  font-size: 0.8em;
+  color: var(--indigo);
+  text-align: center;
+}
+
 .red {
-  background-color: var(--red);
+  background-color: var(--red-dark);
 }
 .green {
-  background-color: var(--green);
+  background-color: var(--green-dark);
 }
 .yellow {
-  background-color: var(--yellow);
+  background-color: var(--yellow-dark);
 }
 .turquoise {
-  background-color: var(--turquoise);
+  background-color: var(--turquoise-dark);
 }
 .orange {
-  background-color: var(--orange);
+  background-color: var(--orange-dark);
 }
 .purple {
-  background-color: var(--purple);
+  background-color: var(--purple-dark);
 }
 .blue {
+  background-color: var(--blue-dark);
+}
+
+.red:hover {
+  background-color: var(--red);
+}
+.green:hover {
+  background-color: var(--green);
+}
+.yellow:hover {
+  background-color: var(--yellow);
+}
+.turquoise:hover {
+  background-color: var(--turquoise);
+}
+.orange:hover {
+  background-color: var(--orange);
+}
+.purple:hover {
+  background-color: var(--purple);
+}
+.blue:hover {
   background-color: var(--blue);
 }
