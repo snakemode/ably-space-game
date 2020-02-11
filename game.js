@@ -1,8 +1,9 @@
 const allMoves = require("./gameMoves");
 
 class Game {
-    constructor(numberOfMovesToGenerate, onGameStateChanged = this.__errorThrowingStateChangeHandler) {
+    constructor(numberOfMovesToGenerate, playerId, onGameStateChanged = this.__errorThrowingStateChangeHandler) {
         this.id = this.__uuidv4();
+        this.playerId = playerId;
         this.moves = [ 2, 1, 0 ]; // Randomly pick a selection of move ids at the start of each game
         this.onGameStateChanged = onGameStateChanged;
         this.onGameStateChanged(this.status());
@@ -35,10 +36,11 @@ class Game {
         return { 
             id: this.id, 
             gameState: this.moves.length > 0 ? "active" : "complete", 
-            movesLeft: this.moves.length, 
+            remainingTasks: this.moves.length, 
             hint: this.moves.length > 0 ? this.getMove(this.activeMoveId()).hint() : "",
-            lastMoveSuccessful: lastMoveResultSuccess
-        };
+            lastMoveSuccessful: lastMoveResultSuccess,
+            playerId: this.playerId
+        }
     }
 
     gameIsFinished() { return this.moves.length === 0; }
@@ -53,13 +55,8 @@ class Game {
         });
     }
   
-    __errorThrowingStateChangeHandler(gameState) {
-        throw new Error("No onGameStateChanged handler provided. Cannot notify player of next task!");
-    }
-  
-    __random(start, end) {
-      return Math.floor((Math.random() * end) + start);
-    }
+    __errorThrowingStateChangeHandler(gameState) { throw new Error("No onGameStateChanged handler provided. Cannot notify player of next task!"); }
+    __random(start, end) { return Math.floor((Math.random() * end) + start); }
 
 }
 

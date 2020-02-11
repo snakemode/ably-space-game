@@ -2,29 +2,26 @@ let currentGameId;
 
 async function startGame(playerPhoneNumber = "") {
   const startGameRequest = { phoneNumber: playerPhoneNumber };
-  const response = await fetch("/games", { method: 'POST', body: JSON.stringify(startGameRequest) });
+  const response = await fetch("/games", { method: 'POST', body: JSON.stringify(startGameRequest), headers: { 'Content-Type': 'application/json' } });
   const responseBody = await response.json();
   currentGameId = responseBody.id;
   
-  console.log(response);
+  console.log(responseBody);
   displayDebugHint(responseBody);
 }
 
 async function sendState(htmlElement, extraParams) {
-    const dataset = htmlElement.dataset || { "uistate": "{}" };
+    const dataset = htmlElement.dataset || { "uistate": "" };
     const uistate = dataset.uistate || "";
-  console.log(uistate);
-    const message = {
+    
+    await sendToServer({
       element: htmlElement.outerHTML,
       state: uistate,
       extraParams: extraParams || {}
-    }
-
-    await sendToServer(message);
+    });
 }
 
-async function handleServerResponse(response) {  
-  console.log(response);
+async function handleServerResponse(response) {
   displayDebugHint(response);
 
   if (!response.lastMoveSuccessful) {
@@ -45,8 +42,7 @@ async function handleServerResponse(response) {
 
 async function sendToServer(message) {
     const asText = JSON.stringify(message);
-    console.log("Outbound state:");
-    console.log(asText);
+    console.log("Sending:" + asText);
     
     const response = await fetch(`/games/${currentGameId}`, { method: "POST", body: asText, headers: { 'Content-Type': 'application/json' } });
     const responseBody = await response.json();    
@@ -59,4 +55,4 @@ function displayDebugHint(response) {
     document.getElementById("text-message-hint").innerText = response.hint;
 }
 
-startGame("07764444444");
+startGame("07764444444"); // Collect this number from the UI.
