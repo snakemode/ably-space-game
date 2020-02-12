@@ -65,8 +65,7 @@ All of the game logic is run on our `node.js` server.
 When the player starts the game in their browser, a HTTP POST is made to an API hosted in an `express.js` app with a route that looks like this:
 
 ```js
-app.post("/games", (request, response) => {
-  
+app.post("/games", (request, response) => {  
   const newGame = new Game(request.body.phoneNumber, ably.onGameStateChanged);
   games[newGame.id] = newGame;
 
@@ -134,16 +133,17 @@ There's plenty more nuance to how the game logic works - feel free to play aroun
 
 Connecting our game to Ably
 -------------
-
+### Prerequisits
 As with most of our demos, you're going to need:
 
 * An Ably API key
 * The Ably JavaScript SDK
 
+### The callback hook
 Remember when we created our new game, we passed something called `ably.onGameStateChanged` to our constructor?
 
 ```js
-  const newGame = new Game(request.body.phoneNumber, ably.onGameStateChanged);
+const game = new Game(request.body.phoneNumber, ably.onGameStateChanged);
 ```
 
 This is our hook for triggering events based on changes to the games state.
@@ -181,3 +181,11 @@ You'll notice a few things
 You'll need to make sure you have `node-fetch` in your `package.json` file for this to work, because the `fetch API` is a browser API, and not available by default in the `node.js` runtime.
 If you prefer to use another HTTP library (`axios` etc), then do so.
 
+During application startup in `server.js`, we're creating an instance of this `AblyConnector` class, and passing it's `onGameStateChanged` function into each of our games as they're ceated.
+
+###  Sending Ably messages
+
+* reference the js api
+* get your api key
+* add the callback to ablyconnector.js
+* bam, integrated
