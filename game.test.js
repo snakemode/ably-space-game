@@ -1,27 +1,26 @@
 const Game = require("./game");
 
-describe("Game", () => {
-
+describe("When a game is constructed it", () => {
     it("throws when a callback handler is not provided", () => {
         expect(() => new Game()).toThrow();
     });
   
-    it("constructs when provided a playerId and a callback handler", () => {
+    it("requires a playerId and a callback handler", () => {
         const sut = new Game("1234", () => { });      
         expect(sut).not.toBeNull();
     });
   
-    it("accepts collection of move IDs in the constructor", () => {
+    it("accepts collection of (optional) move IDs", () => {
         const sut = new Game("1234", () => { }, [ 0 ]);      
         expect(sut.moves.length).toBe(1);
     });
   
-    it("executes state-changed callback when the class constructs, starting the game", () => {
+    it("executes state-changed callback, starting the game", () => {
         let called = false;
       
         const sut = new Game("1234", () => {
           called = true;
-        }, [ 0 ]);  
+        });  
       
         expect(called).toBe(true);
     });
@@ -31,13 +30,13 @@ describe("Game", () => {
         expect(sut.moves.length).toBe(10);
     });
   
-    it("generates an id on construction", () => {
+    it("generates an id", () => {
         const sut = new Game("1234", () => { });      
         expect(sut.id).not.toBeNull();
     });
   
     it("generates a game expiry time in the future", () => {
         const sut = new Game("1234", () => { });      
-        expect(sut.id).not.toBeNull();
+        expect(sut.expires > Date.now()).toBe(true);
     });
 });

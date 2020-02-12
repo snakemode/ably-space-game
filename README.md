@@ -1,15 +1,14 @@
-Welcome to Glitch
+Super Funtimes Stressful Control Panel Simulator
 =================
 
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
-
-**Glitch** is the friendly community where you'll build the app of your dreams. Glitch lets you instantly create, remix, edit, and host an app, bot or site, and you can invite collaborators or helpers to simultaneously edit code with you.
-
-Find out more [about Glitch](https://glitch.com/about).
+In this example, we're going to demonstrait how to use `Ably Channels` with the **IF This Then That** `IFTTT` API.
 
 
-Your Project
+What are we building?
 ------------
+
+We're going to build a game, inspired by `Spaceteam` and `Keep Talking and Nobody Explodes`.
+
 
 On the front-end,
 - edit `public/client.js`, `public/style.css` and `views/index.html`
