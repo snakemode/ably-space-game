@@ -31,6 +31,7 @@ async function handleServerResponse(response, clickedElement) {
     // shake the thing?
     console.log("Something to shake the UI because the move was wrong goes here.");    
     errorSound();
+    return;
   }
 
   if (response.gameState === "complete") {
@@ -39,7 +40,7 @@ async function handleServerResponse(response, clickedElement) {
   }
 
   if (response.gameState === "active") {
-    playSound("click");
+    playSound(clickedElement.dataset.sound == undefined ? "click" : clickedElement.dataset.sound);
     return;
   }
 }
@@ -67,6 +68,7 @@ function record(element) {
 const sounds = {
   "drone": "https://cdn.glitch.com/d4633f62-4aca-466e-9f9b-d1871ab95902%2F195137__glueisobar__cavernous-drone.ogg?v=1581466929860",
   "click": "https://cdn.glitch.com/d4633f62-4aca-466e-9f9b-d1871ab95902%2F219477__jarredgibb__button-04.ogg?v=1581466969567",
+  "click2":"https://cdn.glitch.com/d4633f62-4aca-466e-9f9b-d1871ab95902%2F178186__snapper4298__camera-click-nikon.ogg?v=1581471198068",
   "down":  "https://cdn.glitch.com/d4633f62-4aca-466e-9f9b-d1871ab95902%2F159399__noirenex__power-down.ogg?v=1581467189312",
   "crash": "https://cdn.glitch.com/d4633f62-4aca-466e-9f9b-d1871ab95902%2F13830__adcbicycle__21.ogg?v=1581470565578"
 };
