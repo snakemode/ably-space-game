@@ -30,7 +30,7 @@ class SelectFromFieldset {
 class SetSwitch {
   constructor(elementId) { 
     this._elementId = elementId;
-    this._target = random(0, 1) === 0 ? false : true;
+    this._target = random(0, 2) === 0 ? false : true;
   }
   
   succeedsWhen(element, state, extraParams) { 
@@ -52,7 +52,9 @@ const gameMoves = [
     new ClickThe("schwartz"),  
     new ClickThe("nuclear"),
     new SelectFromFieldset("warp", 1, 5),
-    new SetSwitch("shields")
+    new SetSwitch("shields"),
+    new SetSwitch("gravity"),
+    new SetSwitch("wifi"),
 ];
 
 module.exports = gameMoves;
