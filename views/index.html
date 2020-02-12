@@ -58,17 +58,17 @@
       <section class="switches">
         <h3>shields</h3>
         <label class="switch">
-          <input class="switch-check" type="checkbox">
+          <input class="switch-check" id="shields" type="checkbox" onclick="sendState(this, { enabled: this.checked });">
           <span class="slider round"></span>
         </label>
         <h3>gravity</h3>
         <label class="switch">
-          <input class="switch-check" type="checkbox">
+          <input class="switch-check" id="gravity" type="checkbox" onclick="sendState(this, { enabled: this.checked });">
           <span class="slider round"></span>
         </label>
         <h3>wifi</h3>
         <label class="switch">
-          <input class="switch-check" type="checkbox">
+          <input class="switch-check" id="wifi" type="checkbox" onclick="sendState(this, { enabled: this.checked });">
           <span class="slider round"></span>
         </label>
       </section>

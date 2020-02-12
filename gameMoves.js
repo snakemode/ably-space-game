@@ -27,6 +27,21 @@ class SelectFromFieldset {
   }
 }
 
+class SetSwitch {
+  constructor(elementId) { 
+    this._elementId = elementId;
+    this._target = random(0, 1) === 0 ? false : true;
+  }
+  
+  succeedsWhen(element, state, extraParams) { 
+    return element.indexOf(`id=\"${this._elementId}\"`) !== -1 && extraParams.enabled == this._target; 
+  }
+  
+  hint() { 
+    return `Flip ${this._elementId} switch to ${this._target}!`; 
+  }
+}
+
 const random = (start, end) => Math.floor((Math.random() * end) + start);
 
 const gameMoves = [
@@ -36,7 +51,8 @@ const gameMoves = [
     new ClickThe("quantonium"),  
     new ClickThe("schwartz"),  
     new ClickThe("nuclear"),
-    new SelectFromFieldset("warp", 1, 5)
+    new SelectFromFieldset("warp", 1, 5),
+    new SetSwitch("shields")
 ];
 
 module.exports = gameMoves;
