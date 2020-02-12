@@ -380,7 +380,8 @@ input[type="radio"] {
   border-radius: 50%;
   background-color: white;
   box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
-
+  background:radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 8%, rgba(128,128,128,1) 85%, rgba(0,0,0,1) 90%, rgba(0,0,0,1) 100%); /* w3c */
+  cursor: pointer;
 }
 
 .sticker {
@@ -392,7 +393,6 @@ input[type="radio"] {
   text-transform: uppercase;
   color: var(--indigo);
   background-color: white;
-
 }
 
 .bulb {
@@ -400,6 +400,7 @@ input[type="radio"] {
   height: 80px;
   border-radius: 50%;
   background-color: white;
+  background:radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 8%, rgba(128,128,128,1) 85%, rgba(0,0,0,1) 98%, rgba(0,0,0,1) 100%); /* w3c */
 }
 
 .buttons[data-selected="unobtainium"] #unobtainium {
