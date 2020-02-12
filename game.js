@@ -1,10 +1,12 @@
 const allMoves = require("./gameMoves");
+const numberOfMinutesPerGame = 1;
 
 class Game {
     constructor(playerId, onGameStateChanged = this.__errorThrowingStateChangeHandler, moves) {
         this.id = this.__uuidv4();
         this.playerId = playerId;
         this.moves = moves || this.__generateMoves(10);
+        this.expires = new Date(Date.now() + ((1000 * 60) * numberOfMinutesPerGame));
         
         this.onGameStateChanged = onGameStateChanged;
         this.onGameStateChanged(this.status());
@@ -40,7 +42,8 @@ class Game {
             remainingTasks: this.moves.length, 
             hint: this.moves.length > 0 ? this.getMove(this.activeMoveId()).hint() : "",
             lastMoveSuccessful: lastMoveResultSuccess,
-            playerId: this.playerId
+            playerId: this.playerId,
+            gameEnds: this.expires
         }
     }
 
