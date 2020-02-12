@@ -358,6 +358,26 @@ input[type="radio"] {
   transform: translateX(50px);
 }
 
+.lights {
+  display: flex;
+  flex-direction: column;
+  margin: 0 s20px;
+  padding: 40px;
+  border-radius: 20px;
+  background-color: var(--indigo);
+}
+
+.light {
+  display: flex;
+}
+
+.switch {
+  border: 40pxl
+  background-color: white;
+}
+
+
+
 
 .buttons[data-selected="unobtainium"] #unobtainium {
   transform: translate(0px, 3px);
