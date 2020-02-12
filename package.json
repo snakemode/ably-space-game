@@ -4,12 +4,17 @@
   "description": "A stress inducing game of button pressing and notifications",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "jest"
   },
   "dependencies": {
     "express": "^4.17.1",
     "body-parser": "latest",
-    "node-fetch": "latest"
+    "node-fetch": "latest",    
+    "jest": "latest"
+  },
+  "devDependencies": {
+    "jest": "latest"
   },
   "engines": {
     "node": "10.x"
