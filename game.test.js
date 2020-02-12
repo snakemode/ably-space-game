@@ -11,19 +11,9 @@ describe("Game", () => {
         expect(sut).not.toBeNull();
     });
   
-    it("accepts collection of moves in the ctor", () => {
-        const sut = new Game("1234", () => { }, [
-          {
-              succeedsWhen(element, state, extraParams) { 
-                return element.indexOf(`id=\"${this._elementId}\"`) !== -1; 
-              }
-
-              hint() { 
-                return "Click the " + this._elementId + "!"; 
-              }
-          }
-        ]);      
-        expect(sut).not.toBeNull();
+    it("accepts collection of move IDs in the ctor", () => {
+        const sut = new Game("1234", () => { }, [ 0 ]);      
+        expect(sut.moves.length).toBe(1);
     });
 
 });
