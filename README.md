@@ -109,4 +109,75 @@ The result of the move is the same `status` object the client received when it s
 
 When a new game is created, 10 `moves` are selected from the collection of possible moves listed in `gameMoves.js`.
 Each one of these moves has some hint text (the instruction we show to the user), and a function called `succeedsWhen`.
-When the user clicks on one of our UI elements, the element from the browser, along with any extra parameters provided to the `sendState` method are handed to the `succeedsWhen` function of the game move at
+
+When the user clicks on one of our UI elements, the element from the browser, along with any extra parameters
+provided to the `sendState` method are handed to the `succeedsWhen` function of the game move at the top of this games collection of moves.
+
+If the `succeedsWhen` function returns `true`, that move is completed and removed from the internal array. If the function returns false, 
+nothing happens to the game state. Regardless of the move succeeding or failing, exactly the same object is returned to the client to handle containing the following properties
+
+```js
+{
+  id: "e0d184b0-07f1-4bf8-b522-6887ab4025fa",
+  gameState: "active",
+  remainingTasks: 10,
+  hint: "Click the unobtainium!",
+  lastMoveSuccessful: true,
+  playerId: "07764444444",
+  gameEnds: "2020-02-12T14:52:24.352Z"
+}
+```
+
+The client will respond to the value set in `lastMoveSuccessful` along with the `gameState` of either `active` or `completed`.
+
+There's plenty more nuance to how the game logic works - feel free to play around with the sample!
+
+Connecting our game to Ably
+-------------
+
+As with most of our demos, you're going to need:
+
+* An Ably API key
+* The Ably JavaScript SDK
+
+Remember when we created our new game, we passed something called `ably.onGameStateChanged` to our constructor?
+
+```js
+  const newGame = new Game(request.body.phoneNumber, ably.onGameStateChanged);
+```
+
+This is our hook for triggering events based on changes to the games state.
+Inside of `game.js` both at the start of the game, and whenever a player successfully completes a move, this `callback function` is triggered.
+And the game state that we send to the client? It's also handed to the callback function.
+
+We're able to write just about any code we like in this callback hook, so let's take a look at publishing notifications to an Ably channel
+
+First, take a look inside the file `ablyConnector.js`.
+
+```javascript
+const fetch = require("node-fetch");
+
+class AblyConnector {
+    onGameStateChanged(status) {
+      
+        if (status.gameState == "active") {
+          console.log("Game is active");
+          console.log("Hint is: " + status.hint);
+          console.log("Message to: " + status.playerId);
+          
+          // ....
+        }
+    }
+}
+
+module.exports = AblyConnector;
+```
+
+You'll notice a few things
+* We're defining an AblyConnector class, though we could just as easily export a pure function
+* The class has a function on it called `onGameStateChanged(status)`
+* We're importing the *npm* module `node-fetch` at the top
+
+You'll need to make sure you have `node-fetch` in your `package.json` file for this to work, because the `fetch API` is a browser API, and not available by default in the `node.js` runtime.
+If you prefer to use another HTTP library (`axios` etc), then do so.
+
