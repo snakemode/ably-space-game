@@ -1,5 +1,12 @@
 let currentGameId;
 
+const sounds = {
+  "drone": "https://cdn.glitch.com/d4633f62-4aca-466e-9f9b-d1871ab95902%2F195137__glueisobar__cavernous-drone.ogg?v=1581466929860",
+  "click": "https://cdn.glitch.com/d4633f62-4aca-466e-9f9b-d1871ab95902%2F219477__jarredgibb__button-04.ogg?v=1581466969567",
+  "down":  "https://cdn.glitch.com/d4633f62-4aca-466e-9f9b-d1871ab95902%2F159399__noirenex__power-down.ogg?v=1581467189312"
+};
+
+
 async function startGame(playerPhoneNumber = "") {
   const startGameRequest = { phoneNumber: playerPhoneNumber };
   const response = await fetch("/games", { method: 'POST', body: JSON.stringify(startGameRequest), headers: { 'Content-Type': 'application/json' } });
@@ -7,9 +14,8 @@ async function startGame(playerPhoneNumber = "") {
   currentGameId = responseBody.id;
   
   console.log(responseBody);
-  displayDebugHint(responseBody);  
-  
-  document.getElementById("drone").play();
+  displayDebugHint(responseBody);
+  playSound("drone");
 }
 
 async function sendState(htmlElement, extraParams) {
@@ -37,7 +43,7 @@ async function handleServerResponse(response) {
   }
 
   if (response.gameState === "active") {
-    // game still active
+    playSound("click");
     return;
   }
 }
@@ -59,6 +65,14 @@ function displayDebugHint(response) {
 
 function record(element) {
   element.parentElement.setAttribute('data-selected', element.id); 
+}
+
+function playSound(soundId) {  
+  var audio = document.createElement("audio");
+  audio.src = sounds[soundId];
+  audio.play();
+  //document.appendChild(audio);
+  //document.getElementById(soundId).play();
 }
 
 //startGame("07764444444"); // Collect this number from the UI.
