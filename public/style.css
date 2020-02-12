@@ -60,7 +60,7 @@ h3 {
   grid-template-areas: 
       "buttons lever dial something"
       "buttons lever toggle something";
-  grid-template-columns: 240px 240px 350px 200px;
+  grid-template-columns: 240px 240px 350px 400px;
   padding: 40px;
   background-color: var(--white);
 }
@@ -361,23 +361,46 @@ input[type="radio"] {
 .lights {
   display: flex;
   flex-direction: column;
-  margin: 0 s20px;
-  padding: 40px;
+  margin: 0 20px;
+  padding: 20px;
   border-radius: 20px;
   background-color: var(--indigo);
 }
 
 .light {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.switch {
-  border: 40pxl
+.knob {
+  width: 85px;
+  height: 85px;
+  border: 15px solid var(--indigo-dark);
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+
+}
+
+.sticker {
+  margin: 0 30px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--indigo);
+  background-color: white;
+
+}
+
+.bulb {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
   background-color: white;
 }
-
-
-
 
 .buttons[data-selected="unobtainium"] #unobtainium {
   transform: translate(0px, 3px);
