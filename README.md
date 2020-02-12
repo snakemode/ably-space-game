@@ -8,19 +8,24 @@ What are we building?
 ------------
 
 We're going to build a game, inspired by `Spaceteam` and `Keep Talking and Nobody Explodes`.
+These puzzle games rely on your quick wits to follow a set of instructions that are given to you by other players - or in our case, an Ably API integration.
+
+When the game starts, you're faced with an obtuse control panel, and over the course of a minute, you'll be provided with ten instructions to complete to beat the level.
+
+These kinds of co-op puzzle games are often fast paced, and plenty of fun at parties.
 
 
-On the front-end,
-- edit `public/client.js`, `public/style.css` and `views/index.html`
-- drag in `assets`, like images or music, to add them to your project
+How is this going to interact with Ably?
+-------------
 
-On the back-end,
-- your app starts at `server.js`
-- add frameworks and packages in `package.json`
-- safely store app secrets in `.env` (nobody can see this but you and people you invite)
+- Gonna send a message to the Ably hub
+- It's gonna trigger at thing on IFTTT
+- The player gets to respond to the triggered thing
 
 
-Made by [Glitch](https://glitch.com/)
--------------------
+Building the game
+-------------
 
-\ ゜o゜)ノ
+The game is split into two halves - the part that runs in the users browser, and the part that runs in on our `node.js` server.
+
+The UI is a set of HTML5 buttons and widgets found in `views/index.html`

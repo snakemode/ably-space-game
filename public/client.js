@@ -14,6 +14,8 @@ async function startGame(playerPhoneNumber = "") {
 }
 
 async function sendState(clickedElement, extraParams) {
+    this.record(clickedElement);
+  
     const dataset = clickedElement.dataset || { "uistate": "" };
     const uistate = dataset.uistate || "";
     
