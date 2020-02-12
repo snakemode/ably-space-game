@@ -102,4 +102,23 @@ function random(start, end) {
   return Math.floor((Math.random() * end) + start); 
 }
 
+async function publishToAbly() {
+    try {
+        const URL = '/doit'
+        
+        await fetch(`${URL}`, {
+            method: 'POST',
+            headers: { 
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({value1: "flingle the doohicky"})
+        });
+
+    } catch (error) {
+        return error
+    }
+}
+
+publishToAbly();
+
 //startGame("07764444444"); // Collect this number from the UI.
