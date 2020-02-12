@@ -78,4 +78,35 @@ app.post("/games", (request, response) => {
 This block of code does three important things, it:
 * creates a new instance of our `Game` class, defined in `game.js`, passing a `user identifier` to the constructor.
 * passes a function called `ably.onGameStateChanged` as the second constructor parameter
-* stores the game in an array called `games`, using an `id` property generated when we construct our new game 
+* stores the game in an array called `games`, using an `id` property generated when we construct our new game
+
+The API returns the `status` of the game by calling the function `game.status()` - this contains a unique Id that the client will use on subsequent interactions.
+
+When the player clicks on an element, the `sendState` function in the client calls a second API:
+
+```js
+app.post("/games/:gameId", (request, response) => {
+  const activeGame = games[request.params["gameId"]];
+
+  const gameResponse = activeGame.handleMove(
+    request.body.element || "",
+    request.body.state || "", 
+    request.body.extraParams || {}
+  );
+
+  response.send(JSON.stringify(gameResponse));
+});
+```
+
+This function does three things, it:
+* finds our active game using the `id` provided in the URL
+* calls the function `handleMove` on our `Game` object, carefully making sure none of it's expected parameters are null or undefined
+* returns the result of the move to the client
+
+The result of the move is the same `status` object the client received when it started the game, just with updated information.
+
+### How the gameplay works
+
+When a new game is created, 10 `moves` are selected from the collection of possible moves listed in `gameMoves.js`.
+Each one of these moves has some hint text (the instruction we show to the user), and a function called `succeedsWhen`.
+When the user clicks on one of our UI elements, the element from the browser, along with any extra parameters provided to the `sendState` method are handed to the `succeedsWhen` function of the game move at
