@@ -7,7 +7,9 @@ async function startGame(playerPhoneNumber = "") {
   currentGameId = responseBody.id;
   
   console.log(responseBody);
-  displayDebugHint(responseBody);
+  displayDebugHint(responseBody);  
+  
+  document.getElementById("drone").play();
 }
 
 async function sendState(htmlElement, extraParams) {
@@ -59,4 +61,4 @@ function record(element) {
   element.parentElement.setAttribute('data-selected', element.id); 
 }
 
-startGame("07764444444"); // Collect this number from the UI.
+//startGame("07764444444"); // Collect this number from the UI.
