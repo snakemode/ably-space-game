@@ -67,12 +67,11 @@ function record(element) {
   element.parentElement.setAttribute('data-selected', element.id); 
 }
 
-function playSound(soundId) {  
-  var audio = document.createElement("audio");
+function playSound(soundId, loop = false) {  
+  const audio = document.createElement("audio");
+  audio.loop = loop;
   audio.src = sounds[soundId];
   audio.play();
-  //document.appendChild(audio);
-  //document.getElementById(soundId).play();
 }
 
 //startGame("07764444444"); // Collect this number from the UI.
