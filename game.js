@@ -1,15 +1,10 @@
 const allMoves = require("./gameMoves");
 
 class Game {
-    constructor(numberOfMovesToGenerate, playerId, onGameStateChanged = this.__errorThrowingStateChangeHandler) {
+    constructor(playerId, onGameStateChanged = this.__errorThrowingStateChangeHandler, moves) {
         this.id = this.__uuidv4();
         this.playerId = playerId;
-        this.moves = []; 
-        
-        for (let i = 0; i < numberOfMovesToGenerate; i++) {
-            const randomMove = this.__random(0, allMoves.length);
-            this.moves.push(randomMove);
-        }
+        this.moves = moves || this.__generateMoves(10);
         
         this.onGameStateChanged = onGameStateChanged;
         this.onGameStateChanged(this.status());
@@ -53,6 +48,15 @@ class Game {
     markCurrentMoveAsCompleted() { this.moves.pop(); }
     activeMoveId() { return this.moves[this.moves.length-1]; }
     getMove(moveId) { return allMoves[moveId]; }
+  
+    __generateMoves(numberOfMovesToGenerate) {
+        const moves = [];
+        for (let i = 0; i < numberOfMovesToGenerate; i++) {
+            const randomMove = this.__random(0, allMoves.length);
+            moves.push(randomMove);
+        }
+        return moves;
+    }
 
     __uuidv4() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {

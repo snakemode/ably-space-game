@@ -17,7 +17,7 @@ app.get("/", function(request, response) {
 
 app.post("/games", (request, response) => {
   
-  const newGame = new Game(8, request.body.phoneNumber, ably.onGameStateChanged);
+  const newGame = new Game(request.body.phoneNumber, ably.onGameStateChanged);
   games[newGame.id] = newGame;
 
   const asText = JSON.stringify(newGame.status());
