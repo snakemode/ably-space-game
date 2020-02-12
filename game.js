@@ -1,8 +1,7 @@
 const allMoves = require("./gameMoves");
-const numberOfMinutesPerGame = 1;
 
 class Game {
-    constructor(playerId, onGameStateChanged = this.__errorThrowingStateChangeHandler, moves) {
+    constructor(playerId, onGameStateChanged = this.__errorThrowingStateChangeHandler, moves, numberOfMinutesPerGame = 1) {
         this.id = this.__uuidv4();
         this.playerId = playerId;
         this.moves = moves || this.__generateMoves(10);
@@ -23,7 +22,7 @@ class Game {
         
         this.markCurrentMoveAsCompleted();
 
-        if (this.gameIsFinished()) {
+        if (this.allMovesCompleted()) {
             return this.status();
         }
 
@@ -47,7 +46,8 @@ class Game {
         }
     }
 
-    gameIsFinished() { return this.moves.length === 0; }
+    gameTimeExpired() { return Date.now() >= this.expires; }
+    allMovesCompleted() { return this.moves.length === 0; }
     markCurrentMoveAsCompleted() { this.moves.pop(); }
     activeMoveId() { return this.moves[this.moves.length-1]; }
     getMove(moveId) { return allMoves[moveId]; }
