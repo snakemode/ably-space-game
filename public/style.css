@@ -10,6 +10,7 @@
   --turquoise-dark: #16a085;
   --green-dark: #27ae60;
   --blue-dark: #2980b9;
+  --blue-vdark: #164564;
   --purple-dark: #8e44ad;
   --purple-vdark: #512763;
   --indigo-dark: #2c3e50;
@@ -531,22 +532,22 @@ input[type="radio"] {
   background-color: var(--red-vdark);
 }
 .green {
-  background-color: var(--green-dark);
+  background-color: var(--green-vdark);
 }
 .yellow {
-  background-color: var(--yellow-dark);
+  background-color: var(--yellow-vdark);
 }
 .turquoise {
-  background-color: var(--turquoise-dark);
+  background-color: var(--turquoise-vdark);
 }
 .orange {
-  background-color: var(--orange-dark);
+  background-color: var(--orange-vdark);
 }
 .purple {
-  background-color: var(--purple-dark);
+  background-color: var(--purple-vdark);
 }
 .blue {
-  background-color: var(--blue-dark);
+  background-color: var(--blue-vdark);
 }
 
 .red:hover {

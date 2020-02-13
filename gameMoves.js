@@ -45,16 +45,16 @@ class SetSwitch {
 const random = (start, end) => Math.floor((Math.random() * end) + start);
 
 const gameMoves = [
-    new ClickThe("unobtainium"),    
-    new ClickThe("dilithium"),  
-    new ClickThe("hydrogen"),  
-    new ClickThe("quantonium"),  
-    new ClickThe("schwartz"),  
-    new ClickThe("nuclear"),
-    new SelectFromFieldset("warp", 1, 5),
-    new SetSwitch("shields"),
-    new SetSwitch("gravity"),
-    new SetSwitch("wifi"),
+    () => new ClickThe("unobtainium"),    
+    () => new ClickThe("dilithium"),  
+    () => new ClickThe("hydrogen"),  
+    () => new ClickThe("quantonium"),  
+    () => new ClickThe("schwartz"),  
+    () => new ClickThe("nuclear"),
+    () => new SelectFromFieldset("warp", 1, 5),
+    () => new SetSwitch("shields"),
+    () => new SetSwitch("gravity"),
+    () => new SetSwitch("wifi"),
 ];
 
 module.exports = gameMoves;

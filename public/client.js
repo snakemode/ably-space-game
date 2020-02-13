@@ -40,6 +40,11 @@ async function handleServerResponse(response, clickedElement) {
     alert("Game complete! Well done! You followed the instructions!");
     return;
   }
+  
+  if (response.gameState === "failed") {
+    alert("Oh no! You ran out of time!");
+    return;
+  }
 
   if (response.gameState === "active") {
     playSound(clickedElement.dataset.sound == undefined ? "click" : clickedElement.dataset.sound);
@@ -121,6 +126,6 @@ async function publishToAbly() {
     }
 }
 
-publishToAbly();
+// publishToAbly();
 
 //startGame("07764444444"); // Collect this number from the UI.
