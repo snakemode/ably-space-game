@@ -1,45 +1,48 @@
-const allMoves = require("./gameMoves");
+const createMoves = require("./gameMoveCreator");
+const nullCallback = () => {};
 
 class Game {
-    constructor(playerId, onGameStateChanged = this.__errorThrowingStateChangeHandler, moves, numberOfMinutesPerGame = 1) {
+    constructor(playerId, onGameStateChanged, moves, numberOfMinutesPerGame = 1) {
         this.id = this.__uuidv4();
         this.playerId = playerId;
-        this.moves = moves || this.__generateMoves(10);
+        this.moves = moves || createMoves(10);
         this.expires = new Date(Date.now() + ((1000 * 60) * numberOfMinutesPerGame));
         
-        this.onGameStateChanged = onGameStateChanged;
+        this.onGameStateChanged = onGameStateChanged || nullCallback;
         this.onGameStateChanged(this.status());
     }
 
     handleMove(element, state, extraParams) {
-        let activeMoveId = this.activeMoveId();
-        let currentMove = this.getMove(activeMoveId);        
-        const moveResult =  currentMove.succeedsWhen(element, state, extraParams);
-
-        if (moveResult !== true) {
-            return this.status(moveResult);
+        let currentMove = this.activeMove();
+        if (!currentMove || this.gameTimeExpired()) {            
+            this.onGameStateChanged(false);
+            return this.status(false);
         }
         
-        this.markCurrentMoveAsCompleted();
-
-        if (this.allMovesCompleted()) {
-            return this.status();
+        const moveResult = currentMove.succeedsWhen(element, state, extraParams);
+        
+        if (moveResult === true) {
+            this.markCurrentMoveAsCompleted();
         }
-
-        activeMoveId = this.activeMoveId();
-        currentMove = this.getMove(activeMoveId);
-
-        this.onGameStateChanged(this.status());
-
-        return this.status();       
+        
+        const status = this.status(moveResult);
+        this.onGameStateChanged(status);
+        return status; 
     }
 
-    status(lastMoveResultSuccess = true) {      
+    status(lastMoveResultSuccess = true) {  
+        let gameState = "active";
+        if (this.moves.length <= 0) {
+            gameState = "complete";
+        } else if (this.gameTimeExpired()) {
+            gameState = "failed";
+        }
+        
         return { 
             id: this.id, 
-            gameState: this.moves.length > 0 ? "active" : "complete", 
+            gameState: gameState, 
             remainingTasks: this.moves.length, 
-            hint: this.moves.length > 0 ? this.getMove(this.activeMoveId()).hint() : "",
+            hint: this.moves.length > 0 ? this.activeMove().hint() : "",
             lastMoveSuccessful: lastMoveResultSuccess,
             playerId: this.playerId,
             gameEnds: this.expires
@@ -47,19 +50,8 @@ class Game {
     }
 
     gameTimeExpired() { return Date.now() >= this.expires; }
-    allMovesCompleted() { return this.moves.length === 0; }
     markCurrentMoveAsCompleted() { this.moves.pop(); }
-    activeMoveId() { return this.moves[this.moves.length-1]; }
-    getMove(moveId) { return allMoves[moveId]; }
-  
-    __generateMoves(numberOfMovesToGenerate) {
-        const moves = [];
-        for (let i = 0; i < numberOfMovesToGenerate; i++) {
-            const randomMove = this.__random(0, allMoves.length);
-            moves.push(randomMove);
-        }
-        return moves;
-    }
+    activeMove() { return this.moves[this.moves.length-1]; }
 
     __uuidv4() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -67,10 +59,6 @@ class Game {
             return v.toString(16);
         });
     }
-  
-    __errorThrowingStateChangeHandler(gameState) { throw new Error("No onGameStateChanged handler provided. Cannot notify player of next task!"); }
-    __random(start, end) { return Math.floor((Math.random() * end) + start); }
-
 }
 
 module.exports = Game;

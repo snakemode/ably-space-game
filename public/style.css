@@ -11,6 +11,7 @@
   --green-dark: #27ae60;
   --blue-dark: #2980b9;
   --purple-dark: #8e44ad;
+  --purple-vdark: #512763;
   --indigo-dark: #2c3e50;
   --yellow: #f1c40f;
   --orange: #e67e22;
@@ -18,8 +19,11 @@
   --white: #ecf0f1;
   --grey: #95a5a6;
   --yellow-dark: #f39c12;
+  --yellow-vdark: #966008;
   --orange-dark: #d35400;
+  --orange-vdark: #6b2b00;
   --red-dark: #c0392b;
+  --red-vdark: #7e150c;
   --white-dark: #bdc3c7;
   --grey-dark: #7f8c8d;
 }
@@ -524,7 +528,7 @@ input[type="radio"] {
 }
 
 .red {
-  background-color: var(--red-dark);
+  background-color: var(--red-vdark);
 }
 .green {
   background-color: var(--green-dark);
