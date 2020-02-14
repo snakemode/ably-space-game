@@ -118,6 +118,22 @@ h3 {
   color: var(--grey-dark);
 }
 
+.sliding {
+  grid-area: lever;
+}
+
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
 .levers {
   grid-area: lever;
   height: 390px;
@@ -325,7 +341,7 @@ input[type="radio"] {
   height: 0;
 }
 
-.slider {
+.snick {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -339,7 +355,7 @@ input[type="radio"] {
   box-shadow: inset 4px 6px 0px 0px rgba(0, 0, 0, 0.75);
 }
 
-.slider:before {
+.snick:before {
   position: absolute;
   content: "";
   height: 42px;
@@ -352,15 +368,15 @@ input[type="radio"] {
   box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.75);
 }
 
-.switch-check:checked + .slider {
+.switch-check:checked + .snick {
   background-color: var(--indigo);
 }
 
-.switch-check:checked + .slider:before {
+.switch-check:checked + .snick:before {
   background-color: var(--green);
 }
 
-.switch-check:checked + .slider:before {
+.switch-check:checked + .snick:before {
   transform: translateX(50px);
 }
 
