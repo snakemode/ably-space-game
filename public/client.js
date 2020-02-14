@@ -3,9 +3,9 @@ const enableSounds = true;
 let currentGameId;
 
 function registerClickHandlers() {
-  const clickables = [];
+  const clickables = [...document.querySelectorAll(`[data-clickable]`)];
   
-  for(let element of [...document.querySelectorAll(`[data-clickable]`)]) {
+  for(let element of clickables) {
     element.addEventListener("click", (sender) => record(sender.target));
     element.addEventListener("click", (sender) => sendState(sender.target));
     clickables.push[element];
@@ -14,20 +14,21 @@ function registerClickHandlers() {
   for(let element of [...document.querySelectorAll(`[data-start-game]`)]) {
     element.addEventListener("click", () => startGame());
   }
-  
   return clickables;
 }
 
 const clickableElements = registerClickHandlers();
-
-for (let ele of clickableElements) {
-  console.log("as");
-  console.log(ele.type);
-}
+const elementsToRegisterOnGameStart = clickableElements.map(e => ({
+  id: e.id,
+  type: e.type || "clickable"
+}));
 
 async function startGame() {
-  const startGameRequest = { };
-  const response = await fetch("/games", { method: 'POST', body: JSON.stringify(startGameRequest), headers: { 'Content-Type': 'application/json' } });
+  const startGameRequest = { clickables: elementsToRegisterOnGameStart };
+  const requestBody = JSON.stringify(startGameRequest);
+  console.log("Game start request: " + requestBody);
+  
+  const response = await fetch("/games", { method: 'POST', body: requestBody, headers: { 'Content-Type': 'application/json' } });
   const responseBody = await response.json();
   currentGameId = responseBody.id;
   

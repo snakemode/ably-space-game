@@ -1,4 +1,5 @@
 const Game = require("./game");
+const createMoves = require("./gameMoveCreator");
 const publishToAbly = require("./ablyConnector");
 
 const express = require("express");
@@ -15,6 +16,8 @@ app.get("/", function(request, response) {
 });
 
 app.post("/games", (request, response) => {
+  console.log(request.body.clickables);
+  createMoves(10, )
   
   const newGame = new Game(publishToAbly);
   games[newGame.id] = newGame;
