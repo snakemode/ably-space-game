@@ -2,12 +2,16 @@ const enableSounds = true;
 
 let currentGameId;
 
-const clickables = [...document.querySelectorAll(`[data-clickable]`)];
-for(let element of clickables) {
-  element.addEventListener("click", (sender) => sendState(sender.target));
+function registerClickHandlers() {
+  const clickables = [...document.querySelectorAll(`[data-clickable]`)];
+  for(let element of clickables) {
+    element.addEventListener("click", (sender) => sendState(sender.target));
+  }
 }
 
-async function startGame(playerPhoneNumber = "") {
+registerClickHandlers();
+
+async function startGame() {
   const startGameRequest = { };
   const response = await fetch("/games", { method: 'POST', body: JSON.stringify(startGameRequest), headers: { 'Content-Type': 'application/json' } });
   const responseBody = await response.json();
@@ -26,7 +30,6 @@ async function sendState(clickedElement, extraParams) {
   
     if (clickedElement.type === "checkbox") {
       uistate["checkbox-checked"] = clickedElement.checked;
-      console.log(clickedElement.checked);
     }
     
     await sendToServer(clickedElement, {

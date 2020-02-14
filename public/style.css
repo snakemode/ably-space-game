@@ -121,19 +121,26 @@ h3 {
 .sliding {
   grid-area: lever;
   position: relative;
+  height: 390px;
+  margin: 0 20px;
+  padding: 20px 40px 40px;
+  border: 3px solid var(--indigo);
+  border-radius: 10px;
+  background-color: var(--white-dark);
 }
 
 .slider {
   position: absolute;
   top: 0;
-  left: -40px;
+  left: -50%;
   width: 400px;
   height: 40px;
   outline: none;
-  background: #d3d3d3;
+  background: var(--indigo);
   transform: rotate(-90deg) translate(-50%, -50%);
   transform-origin: center;
   -webkit-appearance: none;
+  box-shadow: inset -2px 0px 0px 5px var(--indigo-dark);
 }
 
 .slider::-webkit-slider-thumb {
@@ -146,71 +153,7 @@ h3 {
   border-radius: 10px;
   border-top: 5px solid var(--red-dark); 
   border-bottom: 5px solid var(--red-dark); 
-  box-shadow: -3px 0px 0 0 var(--red-vdark);
-}
-
-.levers {
-  grid-area: lever;
-  height: 390px;
-  margin: 0 20px;
-  padding: 20px 40px 40px;
-  border: 3px solid var(--indigo);
-  border-radius: 10px;
-  background-color: var(--white-dark);
-}
-
-.lever {
-  position: relative;
-  height: 260px;
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
-
-.lever:before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  display: block;
-  width: 30px;
-  height: 100%;
-  background-color: var(--indigo);
-  transform: translate(-50%, 0%);
-  box-shadow: inset 4px 6px 0px 0px rgba(0, 0, 0, 0.75);
-  z-index: 1;
-}
-
-.speed {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  position: relative;
-  list-style: none;
-  height: 20%;
-  text-align: right;
-  z-index: 2;
-  cursor: pointer;
-}
-
-input[type="radio"] {
-  display: none;
-}
-
-.lever:after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  display: block;
-  width: 130%;
-  height: 30px;
-  border-radius: 5px;
-  background-color: var(--red);
-  background: linear-gradient(0deg, var(--red) 30%, #ffa198 66%, var(--red) 70%);
-  box-shadow: 0px 3px 0px 0px rgba(0,0,0,0.75);
-  transform: translate(-50%, -20px);
-  transition: transform 0.4s ease-in-out;
-  z-index: 2;
+  box-shadow: -5px 0px 0 0 var(--red-vdark);
 }
 
 .dial {

@@ -156,21 +156,32 @@ First, take a look inside the file `ablyConnector.js`.
 
 ```javascript
 const fetch = require("node-fetch");
+const apiUrl = "https://path/to/ably/rest/api";
+const enabled = true;
 
-class AblyConnector {
-    onGameStateChanged(status) {
-      
-        if (status.gameState == "active") {
-          console.log("Game is active");
-          console.log("Hint is: " + status.hint);
-          console.log("Message to: " + status.playerId);
-          
-          // ....
-        }
+async function onGameStateChanged(status, flavorText = "") {
+    if(!enabled) {
+      return;
     }
-}
+    
+    if (status.gameState == "active") {
 
-module.exports = AblyConnector;
+      const jsonBody = { value1: status.hint, value2: flavorText };
+
+      try {
+          await fetch(apiUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(jsonBody)
+          }); 
+
+        } catch (error) {
+          console.log(error);
+        }
+      }          
+}  
+
+module.exports = onGameStateChanged;
 ```
 
 You'll notice a few things

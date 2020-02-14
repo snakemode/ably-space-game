@@ -35,7 +35,7 @@ class SetSwitch {
   }
   
   succeedsWhen(element, state, extraParams) { 
-    return element.indexOf(`id=\"${this._elementId}\"`) !== -1 && extraParams.enabled == this._target; 
+    return element.indexOf(`id=\"${this._elementId}\"`) !== -1 && state["checkbox-checked"] == this._target; 
   }
   
   hint() { 

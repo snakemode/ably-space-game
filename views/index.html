@@ -13,7 +13,7 @@
 <body>
   
     <div>
-        <button style="display: block;" onclick="startGame('0');">Start Game</button>
+        <button style="display: block;" onclick="startGame();">Start Game</button>
     </div>
   
     <div>
@@ -24,7 +24,7 @@
     <h2>Game Panel</h2>
     <div class="control">
       <section class="buttons" data-selected="hydrogen">
-          <h2>Fuel</h2>
+        <h2>Fuel</h2>
         <div class="button red" id="unobtainium" data-clickable></div>
         <div class="button yellow" id="dilithium" data-clickable></div>
         <span class="label">unobtainium</span>
@@ -35,6 +35,7 @@
         <span class="label">nuclear</span>
       </section>
       <section class="sliding">
+        <h2>Warp</h2>
           <input type="range" min="1" max="5" value="1" class="slider" id="slider">
       </section>
       <!-- <section class="levers">
@@ -62,17 +63,17 @@
       <section class="switches">
         <h3>shields</h3>
         <label class="switch">
-          <input class="switch-check" id="shields" type="checkbox" data-sound="click2" onclick="sendState(this, { enabled: this.checked });">
+          <input class="switch-check" id="shields" type="checkbox" data-sound="click2" data-clickable>
           <span class="snick"></span>
         </label>
         <h3>gravity</h3>
         <label class="switch">
-          <input class="switch-check" id="gravity" type="checkbox" data-sound="click2" onclick="sendState(this, { enabled: this.checked });">
+          <input class="switch-check" id="gravity" type="checkbox" data-sound="click2" data-clickable>
           <span class="snick"></span>
         </label>
         <h3>wifi</h3>
         <label class="switch">
-          <input class="switch-check" id="wifi" type="checkbox" data-sound="click2" onclick="sendState(this, { enabled: this.checked });">
+          <input class="switch-check" id="wifi" type="checkbox" data-sound="click2" data-clickable>
           <span class="snick"></span>
         </label>
       </section>
@@ -94,10 +95,6 @@
         </div>
       </section>
     </div>
-  
-  <div data-clickable>
-    Click test div
-  </div>
 
 </body>
 </html>
