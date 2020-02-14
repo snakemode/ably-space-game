@@ -67,10 +67,10 @@ h3 {
 .control {
   display: grid;
   grid-template-areas: 
-      "buttons lever dial alerts"
-      "buttons lever toggle alerts"
-      "something lever toggle alerts"
-      "something lever array array";
+      "buttons   lever  dial    alerts"
+      "buttons   lever  toggle  alerts"
+      "something lever  toggle  alerts"
+      "something lever  array   array";
   grid-template-columns: 240px 240px 350px 400px;
   padding: 40px;
   background-color: var(--white);
@@ -460,7 +460,7 @@ h3 {
 }
 
 .glow {
-  display: block;
+  display: none;
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -474,27 +474,30 @@ h3 {
   }
 }
 
-.lights[data-selected="redalert"] #redalert .glow {
+#redalert[data-selected="redalertknob"] .glow {
+  display: block;
   box-shadow: 0px 0px 50px 37px red;
 }
 
-.lights[data-selected="amberalert"] #amberalert .glow {
+#amberalert[data-selected="amberalertknob"] .glow {
+  display: block;
   box-shadow: 0px 0px 50px 37px yellow;
 }
 
-.lights[data-selected="podalert"] #podalert .glow {
+#podalert[data-selected="podalertknob"] .glow {
+  display: block;
   box-shadow: 0px 0px 50px 37px lime;
 }
 
-.lights[data-selected="redalert"] #redalert .bulb:after {
+#redalert[data-selected="redalertknob"] .bulb:after {
   background-color: red;
 }
 
-.lights[data-selected="amberalert"] #amberalert .bulb:after {
+#amberalert[data-selected="amberalertknob"] .bulb:after {
   background-color: yellow;
 }
 
-.lights[data-selected="podalert"] #podalert .bulb:after {
+#podalert[data-selected="podalertknob"]  .bulb:after {
   background-color: lime;
 }
 
@@ -601,5 +604,5 @@ h3 {
 .array-item {
   width: 50px;
   height: 50px;
-  
+  padding: 10px;
 }

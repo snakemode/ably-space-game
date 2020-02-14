@@ -11,15 +11,10 @@
     
 </head>
 <body>
-  
-    <div>
-        <button data-start-game>Start Game</button>
-    </div>
-  
-    <div>
-        <h2>Hint Text Message</h2>
-        <span id="text-message-hint"></span>
-    </div>
+    <button data-start-game>Start Game</button>
+
+    <h2>Hint Text Message</h2>
+    <span id="text-message-hint"></span>
   
     <h2>Game Panel</h2>
     <div class="control">
@@ -45,21 +40,7 @@
           </ul>
           <input type="range" min="1" max="5" value="1" class="slider" id="warp-slider" data-clickable>
       </section>
-      <!-- <section class="levers">
-        <h2>Warp</h2>
-        <fieldset class="lever" data-selected="warp1">
-          <input type="radio" id="warp5" name="warp" value="5" data-clickable>
-          <label class="speed" for="warp5">5</label>
-          <input type="radio" id="warp4" name="warp" value="4" data-clickable>
-          <label class="speed" for="warp4">4</label>
-          <input type="radio" id="warp3" name="warp" value="3" data-clickable>
-          <label class="speed" for="warp3">3</label>
-          <input type="radio" id="warp2" name="warp" value="2" data-clickable>
-          <label class="speed" for="warp2">2</label>
-          <input type="radio" id="warp1" name="warp" value="1" checked="checked" data-clickable>
-          <label class="speed" for="warp1">1</label>
-        </fieldset>
-      </section> -->
+
       <section class="dial">
         <h4 class="dial-name">uh-ohmmeter</h4>
         <div class="dial-hand"></div>
@@ -84,7 +65,7 @@
           <span class="snick"></span>
         </label>
       </section>
-      <section class="lights" data-selected="redalert">
+      <section class="lights">
         <div class="light" id="redalert">
           <div class="knob" id="redalertknob" data-clickable></div>
           <div class="sticker">Alert</div>
@@ -93,12 +74,12 @@
         <div class="light" id="amberalert">
           <div class="knob" id="amberalertknob" data-clickable></div>
           <div class="sticker">Alert</div>
-          <div class="bulb"></div>
+          <div class="bulb"><span class="glow"></span></div>
         </div>
         <div class="light" id="pod">
           <div class="knob" id="podknob" data-clickable></div>
           <div class="sticker">jettison pod</div>
-          <div class="bulb"></div>
+          <div class="bulb"><span class="glow"></span></div>
         </div>
       </section>
     </div>
