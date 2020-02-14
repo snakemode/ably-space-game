@@ -20,7 +20,10 @@ function registerClickHandlers() {
 const clickableElements = registerClickHandlers();
 const elementsToRegisterOnGameStart = clickableElements.map(e => ({
   id: e.id,
-  type: e.type || "clickable"
+  type: e.type || "clickable",
+  min: e.min || -1,
+  max: e.max || -1,
+  hint: e.dataset.hint || null
 }));
 
 async function startGame() {

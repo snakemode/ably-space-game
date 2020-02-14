@@ -56,8 +56,12 @@ h2 {
 }
 
 h3 {
-  margin-bottom: 0.5em;
-  color: var(--indigo-dark);
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 1em;
+  color: var(--indigo);  
 }
 
 .control {
@@ -298,8 +302,8 @@ h3 {
 .switches {
   grid-area: toggle;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-around;
   align-items: center;
   padding: 20px 40px 0;
 }
