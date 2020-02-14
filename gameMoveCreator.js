@@ -1,12 +1,12 @@
 const allMoves = require("./gameMoves");
 
-function createMoves(numberOfMovesToGenerate) {
+function createMoves(numberOfMovesToGenerate, fromMoveSelection = allMoves) {
     let moves = [];
     const switchStates = {};
 
     for (let i = 0; i < numberOfMovesToGenerate; i++) {
-        const randomMoveId = Math.floor((Math.random() * allMoves.length) + 0);
-        const actualMove = allMoves[randomMoveId]();
+        const randomMoveId = Math.floor((Math.random() * fromMoveSelection.length) + 0);
+        const actualMove = fromMoveSelection[randomMoveId]();
       
         ensureSwitchesAreConsistent(actualMove, switchStates);        
       
@@ -22,7 +22,6 @@ function createMoves(numberOfMovesToGenerate) {
     moves = moves.reverse();
     return moves;
 }
-
 
 function ensureSwitchesAreConsistent(actualMove, switchStates) {
   if (!actualMove.isSwitch) return;
