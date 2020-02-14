@@ -581,21 +581,7 @@ h3 {
   background-color: var(--yellow);
 }
 .turquoise:hover {
-  background-col
-
-.array {}}
-  
-grid-area: array;
-  display: flex;
-  
-
-.array-item {}
-  
-width: 50pcx;
-  sefsefusuehslefih.array-item {
-  width: 50px;
-}
-  height: 50pcxor: var(--turquoise);
+  background-color: var(--turquoise);
 }
 .orange:hover {
   background-color: var(--orange);
@@ -614,4 +600,6 @@ width: 50pcx;
 
 .array-item {
   width: 50px;
+  height: 50px;
+  
 }
