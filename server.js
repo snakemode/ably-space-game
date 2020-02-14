@@ -19,12 +19,10 @@ app.post("/games", (request, response) => {
   console.log(request.body.clickables);
   
   const possibleMoves = createMoveOptions(request.body.clickables);  
-  //console.log(possibleMoves);
-  
   const moves = createMoves(10, possibleMoves);
   console.log(moves);
   
-  const newGame = new Game(publishToAbly);
+  const newGame = new Game(publishToAbly, moves);
   games[newGame.id] = newGame;
 
   const asText = JSON.stringify(newGame.status());
@@ -55,23 +53,42 @@ function createMoveOptions(clickables) {
   for (let metadata of clickables) {
     if (metadata.type === "clickable") {
       
-      moveOptions.push({
-        succeedsWhen: (element, state, extraParams) => element.indexOf(`id=\"${this._elementId}\"`) !== -1,
-        hint: () => "Click the " + metadata.id + "!"
+      moveOptions.push(() => {
+        return {
+          succeedsWhen: (element, state, extraParams) => element.indexOf(`id=\"${metadata.id}\"`) !== -1,
+          hint: () => "Click the " + metadata.id + "!"
+        };
       });
       
       
     } else if (metadata.type === "checkbox") {
             
-      moveOptions.push(() => {{
-        target: true,
-        isSwitch: true,
-        succeedsWhen: (element, state, extraParams) => element.indexOf(`id=\"${this._elementId}\"`) !== -1 && state["value"] == this.target,
-        hint: () => `Flip ${this.elementId} switch to ${this.target}!`
-      }});
+      moveOptions.push(() => {
+        return {
+          target: true,
+          isSwitch: true,
+          succeedsWhen: (element, state, extraParams) => element.indexOf(`id=\"${metadata.id}\"`) !== -1 && state["value"] == this.target,
+          hint: () => `Flip the ${metadata.id} switch to ${this.target}!`
+        }
+      });
       
     } else if (metadata.type === "slider") {
-      
+      /* 
+class SelectFromFieldset {
+  constructor(elementId, lowVal, highVal) {
+    this._elementId = elementId;
+    this._target = random(lowVal, highVal);
+  }
+  
+  succeedsWhen(element, state, extraParams) { 
+    return element.indexOf(`id=\"${this._elementId}\"`) !== -1 && state["value"] == this._target;  
+  }
+  
+  hint() { 
+    return `Set ${this._elementId} to ${this._target}!`; 
+  }
+}
+*/
     }
   }
   

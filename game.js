@@ -4,7 +4,7 @@ const nullCallback = () => {};
 class Game {
     constructor(onGameStateChanged, moves, numberOfMinutesPerGame = 1) {
         this.id = this.__uuidv4();
-        this.moves = moves || createMoves(10);
+        this.moves = moves;
         this.expires = new Date(Date.now() + ((1000 * 60) * numberOfMinutesPerGame));
         
         this.onGameStateChanged = onGameStateChanged || nullCallback;

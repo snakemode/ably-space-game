@@ -1,6 +1,4 @@
-const allMoves = require("./gameMoves");
-
-function createMoves(numberOfMovesToGenerate, fromMoveSelection = allMoves) {
+function createMoves(numberOfMovesToGenerate, fromMoveSelection) {
     let moves = [];
     const switchStates = {};
 
