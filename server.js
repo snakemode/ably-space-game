@@ -17,7 +17,12 @@ app.get("/", function(request, response) {
 
 app.post("/games", (request, response) => {
   console.log(request.body.clickables);
-  createMoves(10, )
+  
+  const possibleMoves = createMoveOptions(request.body.clickables);  
+  //console.log(possibleMoves);
+  
+  const moves = createMoves(10, possibleMoves);
+  console.log(moves);
   
   const newGame = new Game(publishToAbly);
   games[newGame.id] = newGame;
@@ -43,3 +48,32 @@ const listener = app.listen(process.env.PORT, function() {
   console.log("Your app is listening on port " + listener.address().port);
 });
 
+
+function createMoveOptions(clickables) {
+  const moveOptions = [];
+  
+  for (let metadata of clickables) {
+    if (metadata.type === "clickable") {
+      
+      moveOptions.push({
+        succeedsWhen: (element, state, extraParams) => element.indexOf(`id=\"${this._elementId}\"`) !== -1,
+        hint: () => "Click the " + metadata.id + "!"
+      });
+      
+      
+    } else if (metadata.type === "checkbox") {
+            
+      moveOptions.push(() => {{
+        target: true,
+        isSwitch: true,
+        succeedsWhen: (element, state, extraParams) => element.indexOf(`id=\"${this._elementId}\"`) !== -1 && state["value"] == this.target,
+        hint: () => `Flip ${this.elementId} switch to ${this.target}!`
+      }});
+      
+    } else if (metadata.type === "slider") {
+      
+    }
+  }
+  
+  return moveOptions;
+}
