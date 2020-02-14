@@ -2,8 +2,10 @@ const enableSounds = true;
 
 let currentGameId;
 
-const refs = [...document.querySelectorAll(`[data-name*="funnel-chart-percent"]`)];
-document.getElementById("testdiv").addEventListener("click", (sender) => alert(sender.target.outerHTML));
+const clickables = [...document.querySelectorAll(`[data-clickable]`)];
+for(let element of clickables) {
+  element.addEventListener("click", (sender) => sendState(sender.target));
+}
 
 async function startGame(playerPhoneNumber = "") {
   const startGameRequest = { };
@@ -19,8 +21,13 @@ async function startGame(playerPhoneNumber = "") {
 async function sendState(clickedElement, extraParams) {
     this.record(clickedElement);
   
-    const dataset = clickedElement.dataset || { "uistate": "" };
-    const uistate = dataset.uistate || "";
+    const dataset = clickedElement.dataset || { "uistate": {} };
+    const uistate = dataset.uistate || {};
+  
+    if (clickedElement.type === "checkbox") {
+      uistate["checkbox-checked"] = clickedElement.checked;
+      console.log(clickedElement.checked);
+    }
     
     await sendToServer(clickedElement, {
       element: clickedElement.outerHTML,

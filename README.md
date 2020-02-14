@@ -34,13 +34,13 @@ The client side portion of the game, the UI, is a set of HTML5 buttons and widge
 Each of the clickable elements in our control panel is made up of markup that looks a little bit like this:
 
 ```html
-<div class="button green" id="hydrogen" onclick="sendState(this);"></div>
+<div class="button green" id="hydrogen" data-clickable></div>
 ```
 
 Each clickable element is made up of a few things:
 * CSS `class` properties to style the element
 * A unique `id` that we'll use on the server side to evaluate the click
-* An `onclick` handler to a function called `sendState`
+* A `data-clickable` attribute, which attaches our client side click handler function - `sendState`
 
 `sendState` is a `function` that we've defined in `public/client.js` that grabs the current state of a DOMElement, and sends it across to our server side code.
 It does three things:

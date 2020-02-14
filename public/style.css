@@ -141,11 +141,12 @@ h3 {
   appearance: none;
   width: 40px;
   height: 250px; 
-  background: var(--red-dark); 
+  background: linear-gradient(90deg, var(--red-dark) 50%,white 51%, white 75%,var(--red-dark) 76%); 
   cursor: pointer; 
   border-radius: 10px;
   border-top: 5px solid var(--red-dark); 
   border-bottom: 5px solid var(--red-dark); 
+  box-shadow: -3px 0px 0 0 var(--red-vdark);
 }
 
 .levers {

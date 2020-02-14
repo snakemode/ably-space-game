@@ -1,25 +1,28 @@
 const fetch = require("node-fetch");
 
-const iftttUrl = "https://maker.ifttt.com/trigger/ably-space-game/with/key/dZGwxamQRfH-kGsb9mnKpr3vg7kvUYHfNgjzhZRRzaW";
+const apiUrl = "https://maker.ifttt.com/trigger/ably-space-game/with/key/dZGwxamQRfH-kGsb9mnKpr3vg7kvUYHfNgjzhZRRzaW";
+const enabled = false;
 
 async function onGameStateChanged(status, flavorText = "") {
-      console.log("Ably Connector: onGameStateChanged");
+    if(!enabled) {
+      return;
+    }
     
-      if (status.gameState == "active") {
+    if (status.gameState == "active") {
 
-        const jsonBody = { value1: status.hint, value2: flavorText };
+      const jsonBody = { value1: status.hint, value2: flavorText };
 
-        try {
-            await fetch(iftttUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(jsonBody)
-            }); 
-            
-          } catch (error) {
-            console.log(error);
-          }
-        }          
+      try {
+          await fetch(apiUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(jsonBody)
+          }); 
+
+        } catch (error) {
+          console.log(error);
+        }
+      }          
 }  
 
 module.exports = onGameStateChanged;
