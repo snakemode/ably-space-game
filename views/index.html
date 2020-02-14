@@ -30,15 +30,16 @@
         <span class="label">unobtainium</span>
         <span class="label">dilithium</span>
         <div class="button green" id="hydrogen" onclick="sendState(this);"></div>
-        <div class="button purple" id="quantonium" onclick="sendState(this);"></div>
-        <span class="label">hydrogen</span>
-        <span class="label">quantonium</span>
-        <div class="button orange" id="schwartz" onclick="sendState(this);"></div>
         <div class="button blue" id="nuclear" onclick="sendState(this);"></div>
-        <span class="label">schwartz</span>
+        <span class="label">hydrogen</span>
         <span class="label">nuclear</span>
       </section>
-      <section class="levers">
+      <section class="slider">
+        <div class="slidecontainer">
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+        </div>
+      </section>
+      <!-- <section class="levers">
         <h2>Warp</h2>
         <fieldset class="lever" data-selected="warp1">
           <input type="radio" id="warp5" name="warp" value="5" onclick="sendState(this);">
@@ -52,7 +53,7 @@
           <input type="radio" id="warp1" name="warp" value="1" checked="checked" onclick="sendState(this);">
           <label class="speed" for="warp1">1</label>
         </fieldset>
-      </section>
+      </section> -->
       <section class="dial">
         <h4 class="dial-name">uh-ohmmeter</h4>
         <div class="dial-hand"></div>
