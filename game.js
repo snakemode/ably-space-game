@@ -2,9 +2,8 @@ const createMoves = require("./gameMoveCreator");
 const nullCallback = () => {};
 
 class Game {
-    constructor(playerId, onGameStateChanged, moves, numberOfMinutesPerGame = 1) {
+    constructor(onGameStateChanged, moves, numberOfMinutesPerGame = 1) {
         this.id = this.__uuidv4();
-        this.playerId = playerId;
         this.moves = moves || createMoves(10);
         this.expires = new Date(Date.now() + ((1000 * 60) * numberOfMinutesPerGame));
         
@@ -44,7 +43,6 @@ class Game {
             remainingTasks: this.moves.length, 
             hint: this.moves.length > 0 ? this.activeMove().hint() : "",
             lastMoveSuccessful: lastMoveResultSuccess,
-            playerId: this.playerId,
             gameEnds: this.expires
         }
     }

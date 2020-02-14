@@ -1,14 +1,9 @@
 const Game = require("./game");
 
 describe("When a game is constructed it", () => {
-  
-    it("requires a playerId and a callback handler", () => {
-        const sut = new Game("1234");      
-        expect(sut).not.toBeNull();
-    });
-  
+    
     it("accepts collection of (optional) moves", () => {
-        const sut = new Game("1234", () => { }, [
+        const sut = new Game(() => { }, [
             { hint: () => "A hint" }
          ]);      
         expect(sut.moves.length).toBe(1);
@@ -17,7 +12,7 @@ describe("When a game is constructed it", () => {
     it("executes state-changed callback, starting the game", () => {
         let called = false;
       
-        const sut = new Game("1234", () => {
+        const sut = new Game(() => {
           called = true;
         });  
       
@@ -25,17 +20,17 @@ describe("When a game is constructed it", () => {
     });
 
     it("generates ten random moves if none are provided", () => {
-        const sut = new Game("1234");      
+        const sut = new Game();      
         expect(sut.moves.length).toBe(10);
     });
   
     it("generates an id", () => {
-        const sut = new Game("1234");      
+        const sut = new Game();      
         expect(sut.id).not.toBeNull();
     });
   
     it("generates a game expiry time in the future", () => {
-        const sut = new Game("1234");      
+        const sut = new Game();      
         expect(sut.expires > Date.now()).toBe(true);
     });
 });
@@ -76,7 +71,7 @@ describe("When handling a move", () => {
 
     it("invokes callback on expired game move attempt", () => {
         let called = false;
-        const sut = new Game("1234", () => called = true, [
+        const sut = new Game(() => called = true, [
             { hint: () => "A hint" }
         ], -100 /* number of minutes to run game for */);
         called = false; // Ctor calls the first time
@@ -111,7 +106,7 @@ describe("When handling a move", () => {
     });
 
     it("returns a failed status when game time has expired", () => {
-        const sut = new Game("1234", null, [
+        const sut = new Game(null, [
             { hint: () => "A hint" }
         ], 0 /* number of minutes to run game for */);
 
@@ -127,7 +122,7 @@ const gameWithMoveThatPasses = (cb)  => gameWithMoveThatReturns(true, cb);
 const gameWithMoveThatFails = (cb) => gameWithMoveThatReturns(false, cb);
 const gameWithMoveThatReturns = (bool, cb) => {
     const blankCallback = () => {};
-    return new Game("1234", cb || blankCallback, [
+    return new Game(cb || blankCallback, [
         { succeedsWhen: () => bool, hint: () => "A hint" }
     ]);
 } 
@@ -136,5 +131,5 @@ const gameWithNMoves = (numberOfMoves) => {
     for(let i = 0; i < numberOfMoves; i++) {
         moves.push({ succeedsWhen: () => true, hint: () => "A hint" })
     }
-    return new Game("1234", () => {}, moves);
+    return new Game(() => {}, moves);
 } 

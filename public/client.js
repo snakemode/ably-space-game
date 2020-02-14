@@ -3,7 +3,7 @@ const enableSounds = true;
 let currentGameId;
 
 async function startGame(playerPhoneNumber = "") {
-  const startGameRequest = { phoneNumber: playerPhoneNumber };
+  const startGameRequest = { };
   const response = await fetch("/games", { method: 'POST', body: JSON.stringify(startGameRequest), headers: { 'Content-Type': 'application/json' } });
   const responseBody = await response.json();
   currentGameId = responseBody.id;
