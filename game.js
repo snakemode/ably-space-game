@@ -8,7 +8,7 @@ class Game {
         this.expires = new Date(Date.now() + ((1000 * 60) * numberOfMinutesPerGame));
         
         this.onGameStateChanged = onGameStateChanged || nullCallback;
-        this.onGameStateChanged(this.status());
+        this.onGameStateChanged(this.status(), this.getFlavorText());
     }
 
     handleMove(element, state, extraParams) {
@@ -25,7 +25,7 @@ class Game {
         }
         
         const status = this.status(moveResult);
-        this.onGameStateChanged(status);
+        this.onGameStateChanged(status, this.getFlavorText());
         return status; 
     }
 
@@ -45,6 +45,18 @@ class Game {
             lastMoveSuccessful: lastMoveResultSuccess,
             gameEnds: this.expires
         }
+    }
+
+    getFlavorText() {
+        const flavor = [
+            "They're right on our heels capn'",
+            "",
+            "Oh no, they're gaining on us!",
+            "",
+            "Not the shields!",
+          ]
+          const randomText = Math.floor((Math.random() * flavor.length) + 0);          
+          return flavor[randomText];
     }
 
     gameTimeExpired() { return Date.now() >= this.expires; }
