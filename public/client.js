@@ -2,6 +2,9 @@ const enableSounds = true;
 
 let currentGameId;
 
+const refs = [...document.querySelectorAll(`[data-name*="funnel-chart-percent"]`)];
+document.getElementById("testdiv").addEventListener("click", (sender) => alert(sender.target.outerHTML));
+
 async function startGame(playerPhoneNumber = "") {
   const startGameRequest = { };
   const response = await fetch("/games", { method: 'POST', body: JSON.stringify(startGameRequest), headers: { 'Content-Type': 'application/json' } });
