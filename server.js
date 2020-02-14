@@ -30,6 +30,10 @@ app.post("/games", (request, response) => {
 
 app.post("/games/:gameId", (request, response) => {
   const activeGame = games[request.params["gameId"]];
+  if (!activeGame) {    
+    response.send(JSON.stringify({ error: "No active game!" }));
+    return;
+  }
 
   const gameResponse = activeGame.handleMove(
     request.body.element || "",

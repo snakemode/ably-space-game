@@ -70,7 +70,7 @@ h3 {
       "buttons lever dial alerts"
       "buttons lever toggle alerts"
       "something lever toggle alerts"
-      "something lever toggle alerts";
+      "something lever array array";
   grid-template-columns: 240px 240px 350px 400px;
   padding: 40px;
   background-color: var(--white);
@@ -127,7 +127,7 @@ h3 {
 .sliding {
   grid-area: lever;
   position: relative;
-  height: 390px;
+  height: 440px;
   margin: 0 20px;
   padding: 20px 40px 40px;
   border: 3px solid var(--indigo);
@@ -138,8 +138,8 @@ h3 {
 .slider {
   position: absolute;
   top: 50px;
-  left: -35px;
-  width: 300px;
+  left: -45px;
+  width: 320px;
   height: 40px;
   outline: none;
   background: var(--indigo);
@@ -486,7 +486,6 @@ h3 {
   box-shadow: 0px 0px 50px 37px lime;
 }
 
-
 .lights[data-selected="redalert"] #redalert .bulb:after {
   background-color: red;
 }
@@ -498,7 +497,6 @@ h3 {
 .lights[data-selected="podalert"] #podalert .bulb:after {
   background-color: lime;
 }
-
 
 .buttons[data-selected="unobtainium"] #unobtainium {
   transform: translate(0px, 3px);
@@ -583,7 +581,21 @@ h3 {
   background-color: var(--yellow);
 }
 .turquoise:hover {
-  background-color: var(--turquoise);
+  background-col
+
+.array {}}
+  
+grid-area: array;
+  display: flex;
+  
+
+.array-item {}
+  
+width: 50pcx;
+  sefsefusuehslefih.array-item {
+  width: 50px;
+}
+  height: 50pcxor: var(--turquoise);
 }
 .orange:hover {
   background-color: var(--orange);
@@ -593,4 +605,13 @@ h3 {
 }
 .blue:hover {
   background-color: var(--blue);
+}
+
+.array {
+  grid-area: array;
+  display: flex;
+}
+
+.array-item {
+  width: 50px;
 }
