@@ -36,12 +36,15 @@ class Game {
         } else if (this.gameTimeExpired()) {
             gameState = "failed";
         }
+      
+        const flav = this.getFlavorText();
         
         return { 
             id: this.id, 
             gameState: gameState, 
             remainingTasks: this.moves.length, 
             hint: this.moves.length > 0 ? this.activeMove().hint() : "",
+            flavor: flav,
             lastMoveSuccessful: lastMoveResultSuccess,
             gameEnds: this.expires
         }

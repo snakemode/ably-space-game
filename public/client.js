@@ -3,9 +3,13 @@ const enableSounds = true;
 let currentGameId;
 
 function registerClickHandlers() {
-  const clickables = [...document.querySelectorAll(`[data-clickable]`)];
-  for(let element of clickables) {
+  for(let element of [...document.querySelectorAll(`[data-clickable]`)]) {
+    element.addEventListener("click", (sender) => record(sender.target));
     element.addEventListener("click", (sender) => sendState(sender.target));
+  }
+
+  for(let element of [...document.querySelectorAll(`[data-start-game]`)]) {
+    element.addEventListener("click", () => startGame());
   }
 }
 
@@ -22,9 +26,7 @@ async function startGame() {
   // playSound("drone");
 }
 
-async function sendState(clickedElement, extraParams) {
-    this.record(clickedElement);
-  
+async function sendState(clickedElement, extraParams) { 
     const dataset = clickedElement.dataset || { "uistate": {} };
     const uistate = dataset.uistate || {};
   
@@ -77,7 +79,7 @@ async function sendToServer(clickedElement, message) {
 }
 
 function displayDebugHint(response) {
-    document.getElementById("text-message-hint").innerText = response.hint;
+    document.getElementById("text-message-hint").innerText = (response.hint + " " + response.flavor).trim();
 }
 
 function record(element) {

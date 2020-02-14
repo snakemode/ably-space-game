@@ -13,7 +13,7 @@
 <body>
   
     <div>
-        <button style="display: block;" onclick="startGame();">Start Game</button>
+        <button data-start-game>Start Game</button>
     </div>
   
     <div>
@@ -36,6 +36,13 @@
       </section>
       <section class="sliding">
         <h2>Warp</h2>
+          <ul class="warp">
+            <li class="warpno">5</li>
+            <li class="warpno">4</li>
+            <li class="warpno">3</li>
+            <li class="warpno">2</li>
+            <li class="warpno">1</li>
+          </ul>
           <input type="range" min="1" max="5" value="1" class="slider" id="slider">
       </section>
       <!-- <section class="levers">

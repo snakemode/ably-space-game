@@ -121,6 +121,7 @@ nothing happens to the game state. Regardless of the move succeeding or failing,
   gameState: "active",
   remainingTasks: 10,
   hint: "Click the unobtainium!",
+  flavor: "Oh no, they're gaining on us!",
   lastMoveSuccessful: true,
   playerId: "07764444444",
   gameEnds: "2020-02-12T14:52:24.352Z"
