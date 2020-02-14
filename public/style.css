@@ -86,7 +86,7 @@ h3 {
   border: 3px solid var(--indigo);
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 3px 0px 0px rgba(0,0,0,0.75);
 }
 
 .button:after {
@@ -97,8 +97,7 @@ h3 {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background-color: rgba(255,255,255,1);
-  box-shadow: 0px 0px 10px 5px rgba(255,255,255,1);
+  box-shadow: 15px 15px 0 0 white;
 
 }
 
@@ -146,7 +145,7 @@ h3 {
   height: 100%;
   background-color: var(--indigo);
   transform: translate(-50%, 0%);
-  box-shadow: inset 4px 6px 2px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 4px 6px 0px 0px rgba(0, 0, 0, 0.75);
   z-index: 1;
 }
 
@@ -176,7 +175,7 @@ input[type="radio"] {
   border-radius: 5px;
   background-color: var(--red);
   background: linear-gradient(0deg, var(--red) 30%, #ffa198 66%, var(--red) 70%);
-  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 3px 0px 0px rgba(0,0,0,0.75);
   transform: translate(-50%, -20px);
   transition: transform 0.4s ease-in-out;
   z-index: 2;
@@ -191,7 +190,7 @@ input[type="radio"] {
   border-radius: 20px;
   overflow: hidden;
   background-color: white;
-  box-shadow: inset 3px 2px 3px 1px rgba(0,0,0,0.1);
+  box-shadow: inset 3px 2px 0px 1px rgba(0,0,0,0.1);
   z-index: 1;
 }
 
@@ -264,7 +263,7 @@ input[type="radio"] {
   border-radius: 50%;
   background-color: var(--white);
   transform: translate(-50%, 10px);
-  box-shadow: 3px 2px 3px 1px rgba(0,0,0,0.1); 
+  box-shadow: 3px 2px 0px 1px rgba(0,0,0,0.1); 
 }
 
 @keyframes move {
@@ -336,7 +335,7 @@ input[type="radio"] {
   background-color: var(--grey-dark);
   overflow: hidden;
   transition: .4s;
-  box-shadow: inset 4px 6px 3px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 4px 6px 0px 0px rgba(0, 0, 0, 0.75);
 }
 
 .slider:before {
@@ -349,7 +348,7 @@ input[type="radio"] {
   border-radius: 50%;
   background-color: var(--red);
   transition: .4s;
-  box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.75);
 }
 
 .switch-check:checked + .slider {
@@ -390,7 +389,7 @@ input[type="radio"] {
   border: 15px solid var(--indigo-dark);
   border-radius: 50%;
   background-color: white;
-  box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.75);
   background:radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 8%, rgba(128,128,128,1) 85%, rgba(0,0,0,1) 90%, rgba(0,0,0,1) 100%); /* w3c */
   cursor: pointer;
 }
@@ -415,7 +414,7 @@ input[type="radio"] {
   height: 80px;
   border-radius: 50%;
   background:radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 8%, rgba(128,128,128,1) 85%, rgba(0,0,0,1) 98%, rgba(0,0,0,1) 100%);
-  box-shadow: inset 3px -3px 3px 0px rgba(0,0,0,0.3);
+  box-shadow: inset 3px -3px 0px 0px rgba(0,0,0,0.3);
 }
 
 .bulb:after {
@@ -429,7 +428,7 @@ input[type="radio"] {
   border-radius: 50%;
   background-color: var(--red);
   mix-blend-mode: multiply;
-  box-shadow: inset -10px 10px 5px 0px rgba(0,0,0,0.3);
+  box-shadow: inset -10px 10px 0px 0px rgba(0,0,0,0.3);
 }
 
 .bulb:before {
@@ -442,7 +441,7 @@ input[type="radio"] {
   height: 15px;
   border-radius: 50%;
   background-color: white;
-  box-shadow: 0px 0px 10px 5px rgba(255,255,255,1);
+  box-shadow: 0px 0px 0px 5px rgba(255,255,255,1);
   z-index: 1;
 }
 
@@ -507,7 +506,7 @@ input[type="radio"] {
 
 .buttons[data-selected="nuclear"] #nuclear {
   transform: translate(0px, 3px);
-  box-shadow: 0px 0px 20px 6px #69c3ff;
+  box-shadow: 0px 0px 0px 6px #69c3ff;
   background-color: var(--blue);
 }
 
