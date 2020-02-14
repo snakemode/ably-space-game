@@ -3,17 +3,27 @@ const enableSounds = true;
 let currentGameId;
 
 function registerClickHandlers() {
+  const clickables = [];
+  
   for(let element of [...document.querySelectorAll(`[data-clickable]`)]) {
     element.addEventListener("click", (sender) => record(sender.target));
     element.addEventListener("click", (sender) => sendState(sender.target));
+    clickables.push[element];
   }
 
   for(let element of [...document.querySelectorAll(`[data-start-game]`)]) {
     element.addEventListener("click", () => startGame());
   }
+  
+  return clickables;
 }
 
-registerClickHandlers();
+const clickableElements = registerClickHandlers();
+
+for (let ele of clickableElements) {
+  console.log("as");
+  console.log(ele.type);
+}
 
 async function startGame() {
   const startGameRequest = { };
@@ -31,11 +41,11 @@ async function sendState(clickedElement, extraParams) {
     const uistate = dataset.uistate || {};
   
     if (clickedElement.type === "checkbox") {
-      uistate["checkbox-checked"] = clickedElement.checked;
+      uistate["value"] = clickedElement.checked;
     }
   
     if (clickedElement.type === "range") {
-      uistate["slider-value"] = clickedElement.value;
+      uistate["value"] = clickedElement.value;
     }
     
     await sendToServer(clickedElement, {

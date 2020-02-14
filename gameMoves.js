@@ -20,7 +20,7 @@ class SelectFromFieldset {
   }
   
   succeedsWhen(element, state, extraParams) { 
-    return element.indexOf(`id=\"${this._elementId}\"`) !== -1 && state["slider-value"] == this._target;  
+    return element.indexOf(`id=\"${this._elementId}\"`) !== -1 && state["value"] == this._target;  
   }
   
   hint() { 
@@ -36,7 +36,7 @@ class SetSwitch {
   }
   
   succeedsWhen(element, state, extraParams) { 
-    return element.indexOf(`id=\"${this.elementId}\"`) !== -1 && state["checkbox-checked"] == this.target; 
+    return element.indexOf(`id=\"${this.elementId}\"`) !== -1 && state["value"] == this.target; 
   }
   
   hint() { 

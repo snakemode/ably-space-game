@@ -7,7 +7,7 @@ function createMoves(numberOfMovesToGenerate, fromMoveSelection = allMoves) {
     for (let i = 0; i < numberOfMovesToGenerate; i++) {
         const randomMoveId = Math.floor((Math.random() * fromMoveSelection.length) + 0);
         const actualMove = fromMoveSelection[randomMoveId]();
-      
+
         ensureSwitchesAreConsistent(actualMove, switchStates);        
         moves.push(actualMove);
     }
