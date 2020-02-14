@@ -1,6 +1,7 @@
 class ClickThe {
-  constructor(elementId) { 
+  constructor(elementId, hintText) { 
     this._elementId = elementId; 
+    this.hintText = hintText || "Click the " + this._elementId + "!";
   } 
   
   succeedsWhen(element, state, extraParams) { 
@@ -8,7 +9,7 @@ class ClickThe {
   }
   
   hint() { 
-    return "Click the " + this._elementId + "!"; 
+    return this.hintText;
   }
 }
 
@@ -53,7 +54,7 @@ const gameMoves = [
     () => new ClickThe("nuclear"),
     () => new ClickThe("redalertknob"),
     () => new ClickThe("amberalertknob"),
-    () => new ClickThe("podknob"),
+    () => new ClickThe("podknob", "Click the pod knob you !"),
     () => new SelectFromFieldset("warp", 1, 5),
     () => new SetSwitch("shields"),
     () => new SetSwitch("gravity"),
