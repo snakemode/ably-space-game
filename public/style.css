@@ -156,6 +156,21 @@ h3 {
   box-shadow: -5px 0px 0 0 var(--red-vdark);
 }
 
+.warp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: calc(100% - 20px);
+  padding:0;
+  margin: 0;
+}
+.warpno {
+  list-style: none;
+  color: var(--indigo);
+  font-size: 1.1em;
+  text-align: right;
+}
+
 .dial {
   grid-area: dial;
   position: relative;

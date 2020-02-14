@@ -33,6 +33,10 @@ async function sendState(clickedElement, extraParams) {
     if (clickedElement.type === "checkbox") {
       uistate["checkbox-checked"] = clickedElement.checked;
     }
+  
+    if (clickedElement.type === "range") {
+      uistate["slider-value"] = clickedElement.value;
+    }
     
     await sendToServer(clickedElement, {
       element: clickedElement.outerHTML,

@@ -20,7 +20,7 @@ class SelectFromFieldset {
   }
   
   succeedsWhen(element, state, extraParams) { 
-    return element.indexOf(`id=\"${this._elementId}${this._target}\"`) !== -1; 
+    return element.indexOf(`id=\"${this._elementId}\"`) !== -1 && state["slider-value"] == this._target;  
   }
   
   hint() { 
@@ -31,15 +31,16 @@ class SelectFromFieldset {
 class SetSwitch {
   constructor(elementId) { 
     this._elementId = elementId;
-    this._target = random(0, 2) === 0 ? false : true;
+    this.Target = random(0, 2) === 0 ? false : true;
+    this.isSwitch = true;
   }
   
   succeedsWhen(element, state, extraParams) { 
-    return element.indexOf(`id=\"${this._elementId}\"`) !== -1 && state["checkbox-checked"] == this._target; 
+    return element.indexOf(`id=\"${this._elementId}\"`) !== -1 && state["checkbox-checked"] == this.Target; 
   }
   
   hint() { 
-    return `Flip ${this._elementId} switch to ${this._target}!`; 
+    return `Flip ${this._elementId} switch to ${this.Target}!`; 
   }
 }
 
@@ -53,7 +54,7 @@ const gameMoves = [
     () => new ClickThe("redalertknob"),
     () => new ClickThe("amberalertknob"),
     () => new ClickThe("podknob", "Click the pod knob you !"),
-    () => new SelectFromFieldset("warp", 1, 5),
+    () => new SelectFromFieldset("warp-slider", 1, 5),
     () => new SetSwitch("shields"),
     () => new SetSwitch("gravity"),
     () => new SetSwitch("wifi"),
