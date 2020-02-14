@@ -30,17 +30,17 @@ class SelectFromFieldset {
 
 class SetSwitch {
   constructor(elementId) { 
-    this.ElementId = elementId;
-    this.Target = random(0, 2) === 0 ? false : true;
+    this.elementId = elementId;
+    this.target = random(0, 2) === 0 ? false : true;
     this.isSwitch = true;
   }
   
   succeedsWhen(element, state, extraParams) { 
-    return element.indexOf(`id=\"${this.ElementId}\"`) !== -1 && state["checkbox-checked"] == this.Target; 
+    return element.indexOf(`id=\"${this.elementId}\"`) !== -1 && state["checkbox-checked"] == this.target; 
   }
   
   hint() { 
-    return `Flip ${this.ElementId} switch to ${this.Target}!`; 
+    return `Flip ${this.elementId} switch to ${this.target}!`; 
   }
 }
 
