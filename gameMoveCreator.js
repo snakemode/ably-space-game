@@ -1,7 +1,7 @@
 const allMoves = require("./gameMoves");
 
 function createMoves(numberOfMovesToGenerate) {
-    const moves = [];
+    let moves = [];
     const switchStates = {};
 
     for (let i = 0; i < numberOfMovesToGenerate; i++) {
@@ -13,6 +13,13 @@ function createMoves(numberOfMovesToGenerate) {
         actualMove["id"] = randomMoveId;
         moves.push(actualMove);
     }
+    
+    // We're reversing our moves here so that the switchState tracking works.
+    // This makes sure we never ask our players to turn an "off" switch to "off" or the inverse!
+    // The array is being reversed because game pops the last element from the moves first like a stack
+    // so our switch states have to be checked in order prior to this.
+
+    moves = moves.reverse();
     return moves;
 }
 
@@ -21,7 +28,7 @@ function ensureSwitchesAreConsistent(actualMove, switchStates) {
   if (!actualMove.isSwitch) return;
   if (actualMove.isSwitch !== true) return;  
     
-  if (actualMove.Target == false && !switchStates.hasOwnProperty(actualMove.ElementId)) {    
+  if (!switchStates.hasOwnProperty(actualMove.ElementId)) {
     actualMove.Target = true;
     switchStates[actualMove.ElementId] = true;    
   } else {    
