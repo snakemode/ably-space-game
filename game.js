@@ -44,7 +44,7 @@ class Game {
             gameState: gameState, 
             remainingTasks: this.moves.length, 
             hint: this.moves.length > 0 ? this.activeMove().hint() : "",
-            flavor: flav,
+            flavor: this.moves.length > 0 ? flav : "",
             lastMoveSuccessful: lastMoveResultSuccess,
             gameEnds: this.expires
         }
