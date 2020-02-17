@@ -43,8 +43,8 @@ class Game {
             id: this.id, 
             gameState: gameState, 
             remainingTasks: this.moves.length, 
-            hint: this.moves.length > 0 ? this.activeMove().hint() : "",
-            flavor: this.moves.length > 0 ? flav : "",
+            hint: gameState === "active" ? this.activeMove().hint() : "",
+            flavor: gameState === "active" ? flav : "",
             lastMoveSuccessful: lastMoveResultSuccess,
             gameEnds: this.expires
         }

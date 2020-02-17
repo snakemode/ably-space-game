@@ -202,6 +202,21 @@ You'll notice a few things
 You'll need to make sure you have `node-fetch` in your `package.json` file for this to work, because the `fetch API` is a browser API, and not available by default in the `node.js` runtime.
 If you prefer to use another HTTP library (`axios` etc), then do so.
 
+We have access to exactly the same gameStatus properties as our game does in our `ablyConnector`, so we can use anything from this object graph in our ably code
+
+```js
+{
+  id: "e0d184b0-07f1-4bf8-b522-6887ab4025fa",
+  gameState: "active",
+  remainingTasks: 10,
+  hint: "Click the unobtainium!",
+  flavor: "Oh no, they're gaining on us!",
+  lastMoveSuccessful: true,
+  playerId: "07764444444",
+  gameEnds: "2020-02-12T14:52:24.352Z"
+}
+```
+
 During application startup in `server.js`, we're importing our `ablyConnector` file as `publishToAbly`, and passing it into each of our games as they're ceated.
 
 ###  Sending Ably messages
