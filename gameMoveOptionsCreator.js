@@ -1,3 +1,25 @@
+function createMoveOptions(clickables) {
+  const moveOptions = [];
+  
+  for (let metadata of clickables) {
+    moveOptions.push(toMatcher(metadata));
+  }
+  
+  return moveOptions;
+}
+
+function toMatcher(metadata) {
+  if (metadata.type === "checkbox") {
+    return () => new CheckboxMatcher(metadata.id, true);   
+  } 
+  
+  if (metadata.type === "range") {
+    return () => new RangeMatcher(metadata.id, metadata.min, metadata.max);
+  }
+
+  return () => new ElementMatcher(metadata.id);
+}
+
 class ElementMatcher {
   constructor(id) {
     this.id = id;
@@ -28,7 +50,6 @@ class CheckboxMatcher {
   }
 }
 
-
 class RangeMatcher {
   constructor(id, lowVal, highVal) {
     this.id = id;
@@ -42,23 +63,6 @@ class RangeMatcher {
   hint() { 
     return `Set ${this.id} to ${this.target}!`; 
   }
-}
-
-
-function createMoveOptions(clickables) {
-  const moveOptions = [];
-  
-  for (let metadata of clickables) {    
-    if (metadata.type === "clickable") {      
-      moveOptions.push(() => new ElementMatcher(metadata.id)); 
-    } else if (metadata.type === "checkbox") {
-      moveOptions.push(() => new CheckboxMatcher(metadata.id, true));      
-    } else if (metadata.type === "range") {
-      moveOptions.push(() => new RangeMatcher(metadata.id, metadata.min, metadata.max)); 
-    }    
-  }
-  
-  return moveOptions;
 }
 
 module.exports = createMoveOptions;

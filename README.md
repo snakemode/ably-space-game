@@ -66,7 +66,10 @@ When the player starts the game in their browser, a HTTP POST is made to an API 
 
 ```js
 app.post("/games", (request, response) => {  
-  const newGame = new Game(request.body.phoneNumber, ably.onGameStateChanged);
+  const moveOptionsFromClientClickables = createMoveOptions(request.body.clickables);  
+  const moves = createMoves(10, moveOptionsFromClientClickables);  
+  
+  const newGame = new Game(publishToAbly, moves);
   games[newGame.id] = newGame;
 
   const asText = JSON.stringify(newGame.status());
@@ -74,9 +77,10 @@ app.post("/games", (request, response) => {
 });
 ```
 
-This block of code does three important things, it:
-* creates a new instance of our `Game` class, defined in `game.js`, passing a `user identifier` to the constructor.
-* passes a function called `ably.onGameStateChanged` as the second constructor parameter
+This block of code does four important things, it:
+* accepts the list of clickable elements from the client, creating 10 game moves out of them.
+* creates a new instance of our `Game` class, defined in `game.js`
+* passes a function called `publishToAbly` as the first constructor parameter, and the moves as the second.
 * stores the game in an array called `games`, using an `id` property generated when we construct our new game
 
 The API returns the `status` of the game by calling the function `game.status()` - this contains a unique Id that the client will use on subsequent interactions.
@@ -86,6 +90,10 @@ When the player clicks on an element, the `sendState` function in the client cal
 ```js
 app.post("/games/:gameId", (request, response) => {
   const activeGame = games[request.params["gameId"]];
+  if (!activeGame) {    
+    response.send(JSON.stringify({ error: "No active game!" }));
+    return;
+  }
 
   const gameResponse = activeGame.handleMove(
     request.body.element || "",
@@ -97,7 +105,7 @@ app.post("/games/:gameId", (request, response) => {
 });
 ```
 
-This function does three things, it:
+Other than the guard check at start, this function does three things, it:
 * finds our active game using the `id` provided in the URL
 * calls the function `handleMove` on our `Game` object, carefully making sure none of it's expected parameters are null or undefined
 * returns the result of the move to the client
@@ -106,8 +114,9 @@ The result of the move is the same `status` object the client received when it s
 
 ### How the gameplay works
 
-When a new game is created, 10 `moves` are selected from the collection of possible moves listed in `gameMoves.js`.
-Each one of these moves has some hint text (the instruction we show to the user), and a function called `succeedsWhen`.
+When a new game is created, 10 `moves` are generated from the interactable "clickable" elements in our UI. These elements are marked up with a data tag - `data-clickable` and posted to the server when a game is started.
+
+Each of these elements has an `ElementMatcher` generated for it by the `gameMoveOptionsCreator` - it adds a little bit of randomness (what values sliders have to be set to, or if a toggle has to be on or off), some hint text (the instruction we show to the user), and a function called `succeedsWhen` which is called to check user input. These `ElementMatcher`s are nothing special - just javascript functions - but we have a different one for each `type` of `clickable`.
 
 When the user clicks on one of our UI elements, the element from the browser, along with any extra parameters
 provided to the `sendState` method are handed to the `succeedsWhen` function of the game move at the top of this games collection of moves.
@@ -141,10 +150,10 @@ As with most of our demos, you're going to need:
 * The Ably JavaScript SDK
 
 ### The callback hook
-Remember when we created our new game, we passed something called `ably.onGameStateChanged` to our constructor?
+Remember when we created our new game, we passed something called `publishToAbly` to our constructor?
 
 ```js
-const game = new Game(request.body.phoneNumber, ably.onGameStateChanged);
+const game = new Game(publishToAbly);
 ```
 
 This is our hook for triggering events based on changes to the games state.
@@ -186,18 +195,21 @@ module.exports = onGameStateChanged;
 ```
 
 You'll notice a few things
-* We're defining an AblyConnector class, though we could just as easily export a pure function
-* The class has a function on it called `onGameStateChanged(status)`
+* We're exporting a single function called `onGameStateChanged(status)`
 * We're importing the *npm* module `node-fetch` at the top
 
 You'll need to make sure you have `node-fetch` in your `package.json` file for this to work, because the `fetch API` is a browser API, and not available by default in the `node.js` runtime.
 If you prefer to use another HTTP library (`axios` etc), then do so.
 
-During application startup in `server.js`, we're creating an instance of this `AblyConnector` class, and passing it's `onGameStateChanged` function into each of our games as they're ceated.
+During application startup in `server.js`, we're importing our `ablyConnector` file as `publishToAbly`, and passing it into each of our games as they're ceated.
 
 ###  Sending Ably messages
 
-* reference the js api
-* get your api key
-* add the callback to ablyconnector.js
-* bam, integrated
+- Reference Ably JS API
+- Get API key
+- Add callback code to `ablyConnector.js`
+
+- We're currently sending messages to IFTTT using the `Ably REST API`.
+- This is because we need to disabled the `Ably Message Envelope` for the IFTTT integration to work correctly.
+- This is only supported on the API (or is it also on the settings for the channel?)
+- If it is, we can just use the Ably SDK and change channel setup instructions.

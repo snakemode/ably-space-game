@@ -8,7 +8,7 @@ class Game {
         this.expires = new Date(Date.now() + ((1000 * 60) * numberOfMinutesPerGame));
         
         this.onGameStateChanged = onGameStateChanged || nullCallback;
-        this.onGameStateChanged(this.status(), this.getFlavorText());
+        this.onGameStateChanged(this.status());
     }
 
     handleMove(element, state, extraParams) {
@@ -25,7 +25,7 @@ class Game {
         }
         
         const status = this.status(moveResult);
-        this.onGameStateChanged(status, this.getFlavorText());
+        this.onGameStateChanged(status);
         return status; 
     }
 

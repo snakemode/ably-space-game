@@ -18,11 +18,6 @@ describe("When a game is constructed it", () => {
       
         expect(called).toBe(true);
     });
-
-    it("generates ten random moves if none are provided", () => {
-        const sut = new Game();      
-        expect(sut.moves.length).toBe(10);
-    });
   
     it("generates an id", () => {
         const sut = new Game();      
@@ -97,6 +92,12 @@ describe("When handling a move", () => {
         const sut = gameWithNMoves(0);
         const result = sut.handleMove({}, {}, {});
         expect(result.gameState).toBe("complete");
+    });
+
+    it("returns some flavour text in status response", () => {
+        const sut = gameWithNMoves(10);
+        const result = sut.handleMove({}, {}, {});
+        expect(result.flavor).toBeDefined();
     });
     
     it("lastMoveSuccessful is false when no moves available", () => {

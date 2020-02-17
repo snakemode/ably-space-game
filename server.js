@@ -16,8 +16,7 @@ app.get("/", function(request, response) {
   response.sendFile(__dirname + "/views/index.html");
 });
 
-app.post("/games", (request, response) => {  
-  
+app.post("/games", (request, response) => { 
   const moveOptionsFromClientClickables = createMoveOptions(request.body.clickables);  
   const moves = createMoves(10, moveOptionsFromClientClickables);  
   
