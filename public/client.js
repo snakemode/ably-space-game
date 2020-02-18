@@ -46,7 +46,6 @@ function displayDebugHint(response) {
 
 function record(element) {
   if (element.hasAttribute("data-selected")) {
-    console.log('helloo');
     element.removeAttribute("data-selected")
   } else {
     element.setAttribute("data-selected", "")

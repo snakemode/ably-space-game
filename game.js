@@ -52,11 +52,11 @@ class Game {
 
     getFlavorText() {
         const flavor = [
-            "They're right on our heels capn'",
             "",
-            "Oh no, they're gaining on us!",
             "",
-            "Not the shields!",
+            "",
+            "",
+            "",
           ]
           const randomText = Math.floor((Math.random() * flavor.length) + 0);          
           return flavor[randomText];

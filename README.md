@@ -42,7 +42,7 @@ Each clickable element is made up of a few things:
 * A unique `id` that we'll use on the server side to evaluate the click
 * A `data-clickable` attribute, which attaches our client side click handler function - `sendState`
 
-`sendState` is a `function` that we've defined in `public/client.js` that grabs the current state of a DOMElement, and sends it across to our server side code.
+`sendState` is a `function` that we've defined in `public/GameClient.js` that grabs the current state of a DOMElement, and sends it across to our server side code.
 It does three things:
 
 1. It serializes the DOMElement to a `string`
@@ -52,9 +52,9 @@ It does three things:
 Once the server side part of the game has decided if the element that was clicked was the element it was expecting a callback is made to the function
 
 ```js
-async function handleServerResponse(response, clickedElement) { ... }
+async function onServerResponse(response, clickedElement) { ... }
 ```
-that's also in `public/client.js`, and based on the servers response, we can provide feedback to our players.
+that's in `public/client.js`, and based on the servers response, we can provide feedback to our players.
 
 If you browse through `views/index.html` you'll see how we've put together HTML elements, and then styled them with the CSS file in `views/style.css` to make them feel like buttons on a control panel.
 
@@ -85,7 +85,7 @@ This block of code does four important things, it:
 
 The API returns the `status` of the game by calling the function `game.status()` - this contains a unique Id that the client will use on subsequent interactions.
 
-When the player clicks on an element, the `sendState` function in the client calls a second API:
+When the player clicks on an element, the `sendState` function in the GameClient calls a second API:
 
 ```js
 app.post("/games/:gameId", (request, response) => {

@@ -47,4 +47,4 @@ class GameClient {
       
         await this.onServerResponse(responseBody, clickedElement);
     }
-  }
+}
