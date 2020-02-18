@@ -6,8 +6,7 @@ const gameClient = new GameClient(ui.getClickableMetadata(), onServerResponse);
 ui.addClickHandlers(gameClient, startGame, onUiClick);
 
 async function startGame(clickedElement) {
-  
-  document.getElementById("overlay").classList.add("hide");
+  ui.hideSplashScreen();
   gameClient.startGame(clickedElement);
 }
 
@@ -21,7 +20,8 @@ function onUiClick(clickedElement) {
   }
 }  
 
-async function onServerResponse(response, clickedElement) {
+async function onServerResponse(response, clickedElement) {  
+  document.getElementById("control").classList.remove("wrong");
   document.getElementById("text-message-hint").innerText = (response.hint + " " + response.flavor).trim();
 
   if (!response.lastMoveSuccessful) {

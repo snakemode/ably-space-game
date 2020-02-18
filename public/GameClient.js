@@ -41,7 +41,6 @@ class GameClient {
         const asText = JSON.stringify(message);
         console.log("Sending:");
         console.log(message);
-        document.getElementById("control").classList.remove("wrong");
 
         const response = await fetch(`/games/${this.currentGameId}`, { method: "POST", body: asText, headers: { 'Content-Type': 'application/json' } });
         const responseBody = await response.json();

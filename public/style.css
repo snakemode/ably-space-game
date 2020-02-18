@@ -121,6 +121,7 @@ p {
       "fire      lever  toggle  alerts"
       "fire      lever  array   array";
   grid-template-columns: 240px 240px 350px 400px;
+  width: fit-content;
   padding: 40px;
   background-color: var(--white);
 }
@@ -179,25 +180,45 @@ p {
   align-items: center;
   justify-content: center;
   margin: 20px;
+  margin-bottom: 0;
   height:  200px;
   border-radius: 20px;
+  font-size: 2.4em;
+  letter-spacing: -2px;
+  text-transform: uppercase;
   background: repeating-linear-gradient(
     -45deg,
     var(--yellow),
     var(--yellow) 20px,
-    var(--indigo-dark) 20px,
-    var(--indigo-dark) 40px
+    var(--indigo) 20px,
+    var(--indigo) 40px
   );
 }
 
 .torpedo-button {
+  width: 130px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  background-color: var(--red);
+  box-shadow: 0px 10px 0 0 rgba(0, 0, 0,0.7);
+  transform: translate(0, -10px);
+  cursor: pointer;
+}
 
+.torpedo-button:hover {
+  transition: all 0.2s ease-in;
+  transform: translate(0, 0);
+  box-shadow: 0px 2px 0 0 rgba(0, 0, 0,0.7);
 }
 
 .sliding {
   grid-area: lever;
   position: relative;
-  height: 440px;
+  height: 540px;
   margin: 0 20px;
   padding: 20px 40px 40px;
   border: 3px solid var(--indigo);
@@ -208,8 +229,8 @@ p {
 .slider {
   position: absolute;
   top: 50px;
-  left: -45px;
-  width: 320px;
+  left: -100px;
+  width: 430px;
   height: 40px;
   outline: none;
   background: var(--indigo);
