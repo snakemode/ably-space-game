@@ -101,7 +101,8 @@ function displayDebugHint(response) {
 }
 
 function record(element) {
-  element.parentElement.setAttribute('data-selected', element.id); 
+  element.setAttribute("data-selected", "")
+  element.parentElement.setAttribute("data-selected", element.id); 
 }
 
 
