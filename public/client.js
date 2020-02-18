@@ -64,7 +64,7 @@ async function handleServerResponse(response, clickedElement) {
 
   if (!response.lastMoveSuccessful) {
     // shake the thing?
-    console.log(document.getElementById("control"))
+    console.log(document.getElementById("control"));
     console.log("Something to shake the UI because the move was wrong goes here.");    
     errorSound();
     return;
