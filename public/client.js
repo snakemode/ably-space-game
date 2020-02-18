@@ -101,8 +101,13 @@ function displayDebugHint(response) {
 }
 
 function record(element) {
-  element.setAttribute("data-selected", "")
-  element.parentElement.setAttribute("data-selected", element.id); 
+  if (element.hasAttribute("data-selected")) {
+    console.log('helloo');
+    element.removeAttribute("data-selected")
+  } else {
+    element.setAttribute("data-selected", "")
+    element.parentElement.setAttribute("data-selected", element.id);
+  }
 }
 
 

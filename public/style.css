@@ -532,7 +532,7 @@ h3 {
 
 .buttons[data-selected="nuclear"] #nuclear {
   transform: translate(0px, 3px);
-  box-shadow: 0px 0px 0px 6px #69c3ff;
+  box-shadow: 0px 0px 20px 6px #69c3ff;
   background-color: var(--blue);
 }
 
@@ -625,10 +625,17 @@ h3 {
   box-shadow: none;
 }
 
+.array-item[data-selected] {
+  background-color: var(--green);
+  box-shadow: 0px 0px 20px 6px #66ffa7;
+}
+
 .array-item-label {
+  width: min-content;
   text-align: center;
   font-size: 0.8em;
-  color: var(--grey-dark);
+  font-weight: bold;
+  color: var(--indigo);
 }
 
 .wrong {
