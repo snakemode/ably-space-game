@@ -619,13 +619,11 @@ h3 {
   box-shadow: 0px 10px 0px 0px var(--grey);
 }
 
-.array-item:hover {
+.array-item:hover, .array-item[data-selected]{
   transition: all;
   transform: translate(0px, 10px);
   box-shadow: none;
 }
-
-
 
 .array-item-label {
   text-align: center;
