@@ -53,7 +53,7 @@ body {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background: url("https://cdn.glitch.com/d4633f62-4aca-466e-9f9b-d1871ab95902%2FStarfieldSimulation.gif?v=1582047804788") no-repeat center center rgba(0,0,0,0.9);
+  background: url("https://cdn.glitch.com/d4633f62-4aca-466e-9f9b-d1871ab95902%2FStarfieldSimulation.gif?v=1582047804788") no-repeat center center black;
   background-size: cover;
   z-index: 3;
 }
