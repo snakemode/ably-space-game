@@ -10,19 +10,20 @@ function createMoveOptions(clickables) {
 
 function toMatcher(metadata) {
   if (metadata.type === "checkbox") {
-    return () => new CheckboxMatcher(metadata.id, true);   
+    return () => new CheckboxMatcher(metadata.id, true, metadata.hint);   
   } 
   
   if (metadata.type === "range") {
-    return () => new RangeMatcher(metadata.id, metadata.min, metadata.max);
+    return () => new RangeMatcher(metadata.id, metadata.min, metadata.max, metadata.hint);
   }
 
-  return () => new ElementMatcher(metadata.id);
+  return () => new ElementMatcher(metadata.id, metadata.hint);
 }
 
 class ElementMatcher {
-  constructor(id) {
+  constructor(id, overloadedHint) {
     this.id = id;
+    this.overloadedHint = overloadedHint;
   }
   
   succeedsWhen(element, state, extraParams) {
@@ -30,28 +31,35 @@ class ElementMatcher {
   }
   
   hint() {
+    if (this.overloadedHint) {
+      return this.overloadedHint;
+    }
     return "Click the " + this.id + "!";
   }
 }
 
 class CheckboxMatcher {
-  constructor(id, targetState) {
+  constructor(id, targetState, overloadedHint) {
     this.id = id;
     this.target = targetState;
     this.isSwitch = true;
+    this.overloadedHint = overloadedHint;
   }
     
   succeedsWhen(element, state, extraParams) {
     return element.indexOf(`id=\"${this.id}\"`) !== -1 && state["value"] == this.target;
   }
   
-  hint() {
+  hint() {    
+    if (this.overloadedHint) {
+      return this.overloadedHint;
+    }
     return `Flip the ${this.id} switch to ${this.target}!`
   }
 }
 
 class RangeMatcher {
-  constructor(id, lowVal, highVal) {
+  constructor(id, lowVal, highVal, overloadedHint) 
     this.id = id;
     this.target = Math.floor((Math.random() * highVal) + lowVal);
   }

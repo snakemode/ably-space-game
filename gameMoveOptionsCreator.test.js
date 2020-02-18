@@ -16,6 +16,14 @@ describe("When called for a regular clickable", () => {
         
         expect(matcher.hint()).toBe("Click the some-id!");
     });
+    
+    it("client can overload hint", () => {
+        const clickables =  [{ id: "some-id", hint: "some hint here" }];
+    
+        const matcher = sut(clickables)[0]();
+        
+        expect(matcher.hint()).toBe("some hint here");
+    });
 
     it("returned matcher matches element with provided ID", () => {
         const clickables =  [{ id: "some-id"}];
@@ -42,6 +50,14 @@ describe("When called for a checkbox clickable", () => {
         const matcher = sut(clickables)[0]();
         
         expect(matcher.hint()).toBe("Flip the some-id switch to true!");
+    });
+  
+    it("client can overload hint", () => {
+        const clickables =  [{ id: "some-id", type: "checkbox", hint: "some hint here" }];
+    
+        const matcher = sut(clickables)[0]();
+        
+        expect(matcher.hint()).toBe("some hint here");
     });
 
     it("returned matcher matches element with provided ID and value", () => {
@@ -75,6 +91,14 @@ describe("When called for a range clickable", () => {
         const matcher = sut(clickables)[0]();
         
         expect(matcher.hint()).toBe("Set some-id to 1!");
+    });
+  
+    it("client can overload hint", () => {
+        const clickables =  [{ id: "some-id", type: "range", hint: "some hint here" }];
+    
+        const matcher = sut(clickables)[0]();
+        
+        expect(matcher.hint()).toBe("some hint here");
     });
 
     it("returned matcher matches element with provided ID and expected generated value", () => {
