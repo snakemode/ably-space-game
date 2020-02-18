@@ -30,8 +30,8 @@
         <div class="button yellow" id="dilithium" data-clickable data-hint="We need a boost, swap to dilithium"></div>
         <span class="label">unobtainium</span>
         <span class="label">dilithium</span>
-        <div class="button green" id="hydrogen" data-clickable data-hint="We're out of crystals, use the hydrogen fuel cells!"></div>
-        <div class="button blue" id="nuclear" data-clickable data-hint="Set to nuclear! Unleash the power of the atom!"></div>
+        <div class="button green" id="hydrogen" data-selected data-clickable data-hint="We're out of crystals, use the hydrogen fuel cells!"></div>
+        <div class="button blue" id="nuclear" data-clickable data-hint="Swap fuel to nuclear! Unleash the power of the atom!"></div>
         <span class="label">hydrogen</span>
         <span class="label">nuclear</span>
       </section>
@@ -67,23 +67,23 @@
         </label>
         <label class="switch">
           <h3>wifi</h3>
-          <input class="switch-check" id="wifi" type="checkbox" data-sound="click2" data-clickable data-hint="urgh, wifi has gone down, switch it off and on again">
+          <input class="switch-check" id="wifi" type="checkbox" data-sound="click2" checked data-clickable data-hint="urgh, wifi has gone down, switch it off and on again">
           <span class="snick"></span>
         </label>
       </section>
       <section class="lights">
         <div class="light" id="redalert">
-          <div class="knob" id="redalertknob" data-clickable></div>
+          <div class="knob" id="redalertknob" data-clickable data-hint="Red Alert!"></div>
           <div class="sticker">Alert</div>
           <div class="bulb"><span class="glow"></span></div>
         </div>
         <div class="light" id="amberalert">
-          <div class="knob" id="amberalertknob" data-clickable></div>
+          <div class="knob" id="amberalertknob" data-clickable data-hint="Go to amber alert"></div>
           <div class="sticker">Alert</div>
           <div class="bulb"><span class="glow"></span></div>
         </div>
         <div class="light" id="pod">
-          <div class="knob" id="podknob" data-clickable hint="We've got them trapped! Jettison the pod!"></div>
+          <div class="knob" id="podknob" data-clickable data-hint="We've got them trapped! Jettison the pod!"></div>
           <div class="sticker">jettison pod</div>
           <div class="bulb"><span class="glow"></span></div>
         </div>

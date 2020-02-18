@@ -39,12 +39,15 @@ class GameClient {
 
     async sendToServer(clickedElement, message) {
         const asText = JSON.stringify(message);
-        console.log("Sending:" + asText);
+        console.log("Sending:");
+        console.log(message);
         document.getElementById("control").classList.remove("wrong");
 
         const response = await fetch(`/games/${this.currentGameId}`, { method: "POST", body: asText, headers: { 'Content-Type': 'application/json' } });
         const responseBody = await response.json();
-      
+         
+        console.log("Received:");
+        console.log(responseBody);
         await this.onServerResponse(responseBody, clickedElement);
     }
 }

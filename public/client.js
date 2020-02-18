@@ -14,7 +14,6 @@ async function startGame(clickedElement) {
 }
 
 async function onServerResponse(response, clickedElement) {
-  console.log(response);
   displayDebugHint(response);
 
   if (!response.lastMoveSuccessful) {
