@@ -1,8 +1,7 @@
 /* globals GameClient, SoundPlayer, SpaceGameUi */
 const ui = new SpaceGameUi();
-const soundPlayer = new SoundPlayer();
+const soundPlayer = new SoundPlayer(false);
 const gameClient = new GameClient(ui.getClickableMetadata(), onServerResponse);
-
 ui.addClickHandlers(gameClient, startGame, onUiClick);
 
 async function startGame(clickedElement) {
@@ -22,21 +21,21 @@ function onUiClick(clickedElement) {
 
 async function onServerResponse(response, clickedElement) {  
   document.getElementById("control").classList.remove("wrong");
-  document.getElementById("text-message-hint").innerText = (response.hint + " " + response.flavor).trim();
+  ui.showHint(response.hint + " " + response.flavor);
 
+  if (response.gameState === "failed") {
+    ui.showHint("Oh no! You ran out of time!");
+    return;
+  }
+  
+  if (response.gameState === "complete") {
+    ui.showHint("Game complete! Well done! You followed the instructions!");
+    return;
+  }
+  
   if (!response.lastMoveSuccessful) {
     document.getElementById("control").classList.add("wrong");
     soundPlayer.errorSound();
-    return;
-  }
-
-  if (response.gameState === "complete") {
-    alert("Game complete! Well done! You followed the instructions!");
-    return;
-  }
-
-  if (response.gameState === "failed") {
-    alert("Oh no! You ran out of time!");
     return;
   }
 

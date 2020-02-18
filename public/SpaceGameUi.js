@@ -18,6 +18,10 @@ class SpaceGameUi {
     document.getElementById("overlay").classList.add("hide");
   }
   
+  showHint(hintText) {
+      document.getElementById("text-message-hint").innerText = hintText.trim();
+  }
+  
   addClickHandlers(gameClient, onStartGame, onUiClick) {
     const clickables = this.getClickables();
     for (let element of clickables) {
