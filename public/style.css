@@ -38,7 +38,7 @@ html {
 }
 
 body {
-  font-family: helvetica, arial, sans-serif;
+  font-family: 'Tomorrow', sans-serif;
   margin: 2em;
 }
 
@@ -79,14 +79,31 @@ h3 {
 }
 
 p {
-  max-width: 600px;
-  font-size: 2em;
+  max-width: 900px;
+  font-size: 1.6em;
   text-align: center;
   line-height: 1.4em;
   color: white;
 }
 
-.overlay-title
+.overlay-title {
+  font-size: 3em;
+  color: white;
+}
+
+.start {
+  padding: 20px 30px;
+  font-size: 3em;
+  border: 0;
+  border-radius: 20px;
+  color: white;
+  background-color: var(--green-dark);
+  cursor: pointer;
+}
+
+.start:hover {
+  background-color: var(--green)
+}
 
 .control {
   display: grid;

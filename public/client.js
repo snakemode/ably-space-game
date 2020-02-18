@@ -30,6 +30,8 @@ async function startGame() {
   const startGameRequest = { clickables: elementsToRegisterOnGameStart };
   const requestBody = JSON.stringify(startGameRequest);
   console.log("Game start request: " + requestBody);
+
+  document.getElementById("overlay").remove();
   
   const response = await fetch("/games", { method: 'POST', body: requestBody, headers: { 'Content-Type': 'application/json' } });
   const responseBody = await response.json();
