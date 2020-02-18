@@ -1,6 +1,6 @@
-const Game = require("./game");
-const createMoves = require("./gameMoveCreator");
-const createMoveOptions = require("./gameMoveOptionsCreator");
+const Game = require("./spaceGame/game");
+const createMoves = require("./spaceGame/gameMoveCreator");
+const createMoveOptions = require("./spaceGame/gameMoveOptionsCreator");
 const publishToAbly = require("./ablyConnector");
 
 const express = require("express");

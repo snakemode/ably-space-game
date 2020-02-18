@@ -79,7 +79,7 @@ app.post("/games", (request, response) => {
 
 This block of code does four important things, it:
 * accepts the list of clickable elements from the client, creating 10 game moves out of them.
-* creates a new instance of our `Game` class, defined in `game.js`
+* creates a new instance of our `Game` class, defined in `spaceGame/game.js`
 * passes a function called `publishToAbly` as the first constructor parameter, and the moves as the second.
 * stores the game in an array called `games`, using an `id` property generated when we construct our new game
 
