@@ -6,6 +6,7 @@ const gameClient = new GameClient(ui.getClickableMetadata(), onServerResponse);
 ui.addClickHandlers(gameClient, startGame, onUiClick);
 
 async function startGame(clickedElement) {
+  
   document.getElementById("overlay").classList.add("hide");
   gameClient.startGame(clickedElement);
 }

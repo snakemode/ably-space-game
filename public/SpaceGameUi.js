@@ -14,6 +14,10 @@ class SpaceGameUi {
     }));  
   }
   
+  hideSplashScreen() {
+    document.getElementById("overlay").classList.add("hide");
+  }
+  
   addClickHandlers(gameClient, onStartGame, onUiClick) {
     const clickables = this.getClickables();
     for (let element of clickables) {
