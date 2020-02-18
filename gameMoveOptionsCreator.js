@@ -17,13 +17,20 @@ function toMatcher(metadata) {
     return () => new RangeMatcher(metadata.id, metadata.min, metadata.max, metadata.hint);
   }
 
-  return () => new ElementMatcher(metadata.id, metadata.hint);
+  return () => new ElementMatcher(metadata);
 }
 
-class ElementMatcher {
-  constructor(id, overloadedHint) {
-    this.id = id;
-    this.overloadedHint = overloadedHint;
+class MatcherBase {
+  constructor(metadata) {
+    this.id = metadata.id;
+    this.overloadedHint = metadata.hint;
+  }
+}
+
+class ElementMatcher extends MatcherBase {
+  constructor(metadata) {
+    super(metadata);
+    this.hintText = "Click the " + this.id + "!";
   }
   
   succeedsWhen(element, state, extraParams) {
@@ -34,7 +41,7 @@ class ElementMatcher {
     if (this.overloadedHint) {
       return this.overloadedHint;
     }
-    return "Click the " + this.id + "!";
+    return this.hintText;
   }
 }
 
@@ -59,16 +66,20 @@ class CheckboxMatcher {
 }
 
 class RangeMatcher {
-  constructor(id, lowVal, highVal, overloadedHint) 
+  constructor(id, lowVal, highVal, overloadedHint) {
     this.id = id;
     this.target = Math.floor((Math.random() * highVal) + lowVal);
+    this.overloadedHint = overloadedHint;
   }
   
   succeedsWhen(element, state, extraParams) { 
     return element.indexOf(`id=\"${this.id}\"`) !== -1 && state["value"] == this.target; 
   }
   
-  hint() { 
+  hint() {     
+    if (this.overloadedHint) {
+      return this.overloadedHint;
+    }
     return `Set ${this.id} to ${this.target}!`; 
   }
 }

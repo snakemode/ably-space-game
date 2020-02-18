@@ -94,7 +94,7 @@ describe("When called for a range clickable", () => {
     });
   
     it("client can overload hint", () => {
-        const clickables =  [{ id: "some-id", type: "range", hint: "some hint here" }];
+        const clickables =  [{ id: "some-id", type: "range", min: 1, max: 1, hint: "some hint here" }];
     
         const matcher = sut(clickables)[0]();
         
