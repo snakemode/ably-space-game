@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="/style.css">
     <link href="https://fonts.googleapis.com/css?family=Tomorrow&display=swap" rel="stylesheet">
+  
+    <script src="/SpaceGameUi.js" defer></script>
     <script src="/GameClient.js" defer></script>
     <script src="/SoundPlayer.js" defer></script>
     <script src="/client.js" defer></script>
@@ -72,16 +74,24 @@
         </label>
       </section>
       <section class="lights">
-        <div class="light" id="redalert">
-          <div class="knob" id="redalertknob" data-clickable data-hint="Red Alert!"></div>
-          <div class="sticker">Alert</div>
-          <div class="bulb"><span class="glow"></span></div>
-        </div>
-        <div class="light" id="amberalert">
-          <div class="knob" id="amberalertknob" data-clickable data-hint="Go to amber alert"></div>
-          <div class="sticker">Alert</div>
-          <div class="bulb"><span class="glow"></span></div>
-        </div>
+        <input type="radio" id="redalertinput" class="alertlevel" value="redalert" name="alertlevel">
+        <label for="redalertinput">
+          <div class="light" id="redalert">
+            <div class="knob" id="redalertknob" data-clickable data-hint="Red Alert!"></div>
+            <div class="sticker">Alert</div>
+            <div class="bulb"><span class="glow"></span></div>
+          </div>
+        </label>
+        <input type="radio" id="amberalertinput" class="alertlevel" value="amberalert" name="alertlevel">
+        <label for="amberalertinput">
+          <div class="light" id="amberalert">
+            <div class="knob" id="amberalertknob" data-clickable data-hint="Go to amber alert"></div>
+            <div class="sticker">Alert</div>
+            <div class="bulb"><span class="glow"></span></div>
+          </div>
+        </label>
+      
+        
         <div class="light" id="pod">
           <div class="knob" id="podknob" data-clickable data-hint="We've got them trapped! Jettison the pod!"></div>
           <div class="sticker">jettison pod</div>

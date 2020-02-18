@@ -1,12 +1,19 @@
-/* globals GameClient, SoundPlayer */
+/* globals GameClient, SoundPlayer, SpaceGameUi */
+const ui = new SpaceGameUi();
+
 const clickables = [...document.querySelectorAll(`[data-clickable]`)];
 const startButtons = [...document.querySelectorAll(`[data-start-game]`)];
-const metadata = getClickableMetadata(clickables);
+const metadata = ui.getClickableMetadata(clickables);
 
-const gameClient = new GameClient(metadata, onServerResponse);
+const gameClient = new GameClient(ui.getClickableMetadata(clickables), onServerResponse);
 const soundPlayer = new SoundPlayer();
 
-wireUpClickHandlers(gameClient); // Makes the Start Game button work.
+for(let element of clickables) {
+    element.addEventListener("click", (sender) => ui.updateUiState(sender.target));
+    element.addEventListener("click", (sender) => gameClient.sendState(sender.target));
+}
+
+startButtons[0].addEventListener("click", (sender) => startGame(sender.target)); 
 
 async function startGame(clickedElement) {  
   document.getElementById("overlay").remove();
@@ -14,7 +21,7 @@ async function startGame(clickedElement) {
 }
 
 async function onServerResponse(response, clickedElement) {
-  displayDebugHint(response);
+  ui.displayDebugHint(response);
 
   if (!response.lastMoveSuccessful) {
     document.getElementById("control").classList.add("wrong");
@@ -36,39 +43,5 @@ async function onServerResponse(response, clickedElement) {
     let soundEffect = clickedElement.dataset.sound == undefined ? "click" : clickedElement.dataset.sound;
     soundPlayer.playSound(soundEffect);
     return;
-  }
-}
-
-function displayDebugHint(response) {
-    document.getElementById("text-message-hint").innerText = (response.hint + " " + response.flavor).trim();
-}
-
-function record(element) {
-  if (element.hasAttribute("data-selected")) {
-    element.removeAttribute("data-selected")
-  } else {
-    element.setAttribute("data-selected", "")
-    element.parentElement.setAttribute("data-selected", element.id);
-  }
-}
-
-function getClickableMetadata(clickables) {
-  return clickables.map(e => ({
-    id: e.id,
-    type: e.type || "clickable",
-    min: e.min || -1,
-    max: e.max || -1,
-    hint: e.dataset.hint || null
-  }));  
-}
-
-function wireUpClickHandlers(client) {
-  for(let element of clickables) {
-      element.addEventListener("click", (sender) => record(sender.target));
-      element.addEventListener("click", (sender) => client.sendState(sender.target));
-  }
-
-  for(let element of startButtons) { 
-    element.addEventListener("click", (sender) => startGame(sender.target)); 
   }
 }
