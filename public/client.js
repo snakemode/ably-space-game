@@ -63,9 +63,7 @@ async function handleServerResponse(response, clickedElement) {
   displayDebugHint(response);
 
   if (!response.lastMoveSuccessful) {
-    // shake the thing?
-    console.log(document.getElementById("control").classList.add("wrong"));
-    console.log("Something to shake the UI because the move was wrong goes here.");    
+    document.getElementById("control").classList.add("wrong");
     errorSound();
     return;
   }
@@ -89,7 +87,8 @@ async function handleServerResponse(response, clickedElement) {
 async function sendToServer(clickedElement, message) {
     const asText = JSON.stringify(message);
     console.log("Sending:" + asText);
-    
+    document.getElementById("control").classList.remove("wrong");
+
     const response = await fetch(`/games/${currentGameId}`, { method: "POST", body: asText, headers: { 'Content-Type': 'application/json' } });
     const responseBody = await response.json();    
     console.log(responseBody);
