@@ -56,6 +56,10 @@ body {
   z-index: 3;
 }
 
+.overlay-start {
+  display: contents;
+}
+
 h1 {
   font-style: italic;
   color: var(--indigo);

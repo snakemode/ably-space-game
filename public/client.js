@@ -1,22 +1,14 @@
 /* globals GameClient, SoundPlayer, SpaceGameUi */
 const ui = new SpaceGameUi();
+const clickableMetadata = ui.getClickableMetadata();
 
-const clickables = [...document.querySelectorAll(`[data-clickable]`)];
-const startButtons = [...document.querySelectorAll(`[data-start-game]`)];
-const metadata = ui.getClickableMetadata(clickables);
-
-const gameClient = new GameClient(ui.getClickableMetadata(clickables), onServerResponse);
+const gameClient = new GameClient(clickableMetadata, onServerResponse);
 const soundPlayer = new SoundPlayer();
 
-for(let element of clickables) {
-    element.addEventListener("click", (sender) => ui.updateUiState(sender.target));
-    element.addEventListener("click", (sender) => gameClient.sendState(sender.target));
-}
+ui.addClickHandlers(gameClient, startGame); // Makes the start game button work
 
-startButtons[0].addEventListener("click", (sender) => startGame(sender.target)); 
-
-async function startGame(clickedElement) {  
-  document.getElementById("overlay").remove();
+async function startGame(clickedElement) {
+  document.getElementById("overlay").classList.add("hide");
   gameClient.startGame(clickedElement);
 }
 
