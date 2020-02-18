@@ -1,30 +1,5 @@
 class SpaceGameUi {
   
-  onUiClick(clickedElement) {
-    
-    if (clickedElement.hasAttribute("data-selected")) {
-      clickedElement.removeAttribute("data-selected")
-    } else {
-      clickedElement.setAttribute("data-selected", "")
-      clickedElement.parentElement.setAttribute("data-selected", clickedElement.id);
-    }
-    
-  }  
-  
-  displayDebugHint(response) {
-      document.getElementById("text-message-hint").innerText = (response.hint + " " + response.flavor).trim();
-  }
-  
-  addClickHandlers(gameClient, onStartGame) {
-    const clickables = this.getClickables();
-    for (let element of clickables) {
-        element.addEventListener("click", (sender) => this.onUiClick(sender.target));
-        element.addEventListener("click", (sender) => gameClient.sendState(sender.target));
-    }
-
-    this.getStartButton().addEventListener("click", (sender) => onStartGame(sender.target)); 
-  }
-  
   getClickables() { return [...document.querySelectorAll(`[data-clickable]`)]; }
   getStartButton() { return [...document.querySelectorAll(`[data-start-game]`)][0]; }
   
@@ -38,4 +13,14 @@ class SpaceGameUi {
       hint: e.dataset.hint || null
     }));  
   }
+  
+  addClickHandlers(gameClient, onStartGame, onUiClick) {
+    const clickables = this.getClickables();
+    for (let element of clickables) {
+        element.addEventListener("click", (sender) => onUiClick(sender.target));
+        element.addEventListener("click", (sender) => gameClient.sendState(sender.target));
+    }
+
+    this.getStartButton().addEventListener("click", (sender) => onStartGame(sender.target)); 
+  }  
 }

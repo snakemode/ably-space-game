@@ -1,19 +1,27 @@
 /* globals GameClient, SoundPlayer, SpaceGameUi */
 const ui = new SpaceGameUi();
-const clickableMetadata = ui.getClickableMetadata();
-
-const gameClient = new GameClient(clickableMetadata, onServerResponse);
 const soundPlayer = new SoundPlayer();
+const gameClient = new GameClient(ui.getClickableMetadata(), onServerResponse);
 
-ui.addClickHandlers(gameClient, startGame); // Makes the start game button work
+ui.addClickHandlers(gameClient, startGame, onUiClick);
 
 async function startGame(clickedElement) {
   document.getElementById("overlay").classList.add("hide");
   gameClient.startGame(clickedElement);
 }
 
+function onUiClick(clickedElement) {
+
+  if (clickedElement.hasAttribute("data-selected")) {
+    clickedElement.removeAttribute("data-selected")
+  } else {
+    clickedElement.setAttribute("data-selected", "")
+    clickedElement.parentElement.setAttribute("data-selected", clickedElement.id);
+  }
+}  
+
 async function onServerResponse(response, clickedElement) {
-  ui.displayDebugHint(response);
+  document.getElementById("text-message-hint").innerText = (response.hint + " " + response.flavor).trim();
 
   if (!response.lastMoveSuccessful) {
     document.getElementById("control").classList.add("wrong");

@@ -56,6 +56,10 @@ body {
   z-index: 3;
 }
 
+.hide {
+  display: none;
+}
+
 .overlay-start {
   display: contents;
 }
