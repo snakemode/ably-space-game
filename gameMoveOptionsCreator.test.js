@@ -60,6 +60,15 @@ describe("When called for a checkbox clickable", () => {
         expect(matcher.hint()).toBe("some hint here");
     });
 
+    it("client can overload hint, and it's respected after the value is changed", () => {
+        const clickables =  [{ id: "some-id", type: "checkbox", hint: "${target}" }];
+    
+        const matcher = sut(clickables)[0]();
+        matcher.target = false;
+        
+        expect(matcher.hint()).toBe("false");
+    });
+
     it("returned matcher matches element with provided ID and value", () => {
         const clickables =  [{ id: "some-id", type: "checkbox" }];
     
