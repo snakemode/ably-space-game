@@ -1,6 +1,7 @@
 const fetch = require("node-fetch");
 const apiUrl = "https://maker.ifttt.com/trigger/ably-space-game/with/key/dZGwxamQRfH-kGsb9mnKpr3vg7kvUYHfNgjzhZRRzaW";
 const enabled = true;
+const key = "dxkvBQ.6oi9HQ:0pn8nc3Jg5zHGzYw"
 
 async function onGameStateChanged(status) {
   if (!enabled) return;
