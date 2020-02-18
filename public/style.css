@@ -43,6 +43,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: var(--grey-dark);
 }
 
 .overlay {
@@ -52,7 +53,8 @@ body {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0,0,0,0.9);
+  background: url("https://cdn.glitch.com/d4633f62-4aca-466e-9f9b-d1871ab95902%2FStarfieldSimulation.gif?v=1582047804788") no-repeat center center rgba(0,0,0,0.9);
+  background-size: cover;
   z-index: 3;
 }
 
@@ -65,8 +67,9 @@ body {
 }
 
 h1 {
-  font-style: italic;
-  color: var(--indigo);
+  margin: 2em;
+  font-size: 2em;
+  color: white;
 }
 
 h2 {
