@@ -2,13 +2,14 @@ function createMoveOptions(clickables) {
   const moveOptions = [];
   
   for (let metadata of clickables) {
-    moveOptions.push(toMatcher(metadata));
+    const matcherFunction = CreateMatcherFunction(metadata);
+    moveOptions.push(matcherFunction);
   }
   
   return moveOptions;
 }
 
-function toMatcher(metadata) {
+function CreateMatcherFunction(metadata) {
   if (metadata.type === "checkbox") {
     return () => new CheckboxMatcher(metadata);   
   } 
@@ -17,7 +18,7 @@ function toMatcher(metadata) {
     return () => new RangeMatcher(metadata);
   }
 
-  return () => new ElementMatcher(metadata);
+  return () => new RegularClickableMatcher(metadata);
 }
 
 class MatcherBase {
@@ -35,7 +36,7 @@ class MatcherBase {
   }
 }
 
-class ElementMatcher extends MatcherBase {
+class RegularClickableMatcher extends MatcherBase {
   constructor(metadata) {
     super(metadata);
     this.hintText = "Click the ${id}!";
@@ -44,7 +45,6 @@ class ElementMatcher extends MatcherBase {
   succeedsWhen(element, state, extraParams) {
     return element.indexOf(`id=\"${this.id}\"`) !== -1;
   }
-
 }
 
 class CheckboxMatcher extends MatcherBase {
@@ -61,7 +61,7 @@ class CheckboxMatcher extends MatcherBase {
 }
 
 class RangeMatcher extends MatcherBase {
-  constructor(metadata, lowVal, highVal) {    
+  constructor(metadata) {    
     super(metadata);
     this.target = Math.floor((Math.random() * metadata.max) + metadata.min);
     this.hintText = "Set ${id} to ${target}!";
