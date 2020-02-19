@@ -12,8 +12,9 @@ class SpaceGameUi {
       type: e.type || "clickable",
       min: e.min || -1,
       max: e.max || -1,
-      hint: e.dataset.hint || null
-    }));  
+      hint: e.dataset.hint || null,
+      value: e.type == "checkbox" ? e.checked : null
+    }));
   }
   
   hideOverlay() {

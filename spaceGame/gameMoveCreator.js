@@ -10,12 +10,6 @@ function createMoves(numberOfMovesToGenerate, fromMoveSelection) {
         moves.push(actualMove);
     }
     
-    // We're reversing our moves here so that the switchState tracking works.
-    // This makes sure we never ask our players to turn an "off" switch to "off" or the inverse!
-    // The array is being reversed because game pops the last element from the moves first like a stack
-    // so our switch states have to be checked in order prior to this.
-
-    moves = moves.reverse();
     return moves;
 }
 

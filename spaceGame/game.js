@@ -63,8 +63,8 @@ class Game {
     }
 
     gameTimeExpired() { return Date.now() >= this.expires; }
-    markCurrentMoveAsCompleted() { this.moves.pop(); }
-    activeMove() { return this.moves[this.moves.length-1]; }
+    markCurrentMoveAsCompleted() { this.moves.shift(); }
+    activeMove() { return this.moves[0]; }
 
     __uuidv4() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {

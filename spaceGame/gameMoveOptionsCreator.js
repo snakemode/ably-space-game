@@ -51,7 +51,7 @@ class RegularClickableMatcher extends MatcherBase {
 class CheckboxMatcher extends MatcherBase {
   constructor(metadata) {
     super(metadata);
-    this.target = false;
+    this.target = !metadata.value;
     this.isSwitch = true;
     this.targetText = this.target ? "on" : "off";
     this.hintText = "Switch the ${id} ${targetText}. That'll surprise them!";
