@@ -93,12 +93,6 @@ describe("When handling a move", () => {
         const result = sut.handleMove({}, {}, {});
         expect(result.gameState).toBe("complete");
     });
-
-    it("returns some flavour text in status response", () => {
-        const sut = gameWithNMoves(10);
-        const result = sut.handleMove({}, {}, {});
-        expect(result.flavor).toBeDefined();
-    });
     
     it("lastMoveSuccessful is false when no moves available", () => {
         const sut = gameWithNMoves(0);

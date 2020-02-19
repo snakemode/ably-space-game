@@ -35,31 +35,17 @@ class Game {
             gameState = "complete";
         } else if (this.gameTimeExpired()) {
             gameState = "failed";
-        }
-      
-        const flav = this.getFlavorText();
+        }      
         
         return { 
             id: this.id, 
             gameState: gameState, 
             remainingTasks: this.moves.length, 
             hint: gameState === "active" ? this.activeMove().hint() : "",
-            flavor: gameState === "active" ? flav : "",
+            flavor: "",
             lastMoveSuccessful: lastMoveResultSuccess,
             gameEnds: this.expires
         }
-    }
-
-    getFlavorText() {
-        const flavor = [
-            "",
-            "",
-            "",
-            "",
-            "",
-          ]
-          const randomText = Math.floor((Math.random() * flavor.length) + 0);          
-          return flavor[randomText];
     }
 
     gameTimeExpired() { return Date.now() >= this.expires; }
