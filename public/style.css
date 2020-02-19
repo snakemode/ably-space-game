@@ -65,9 +65,15 @@ body {
   display: none;
 }
 
-.overlay-start {
+.overlay-start, .overlay-win, .overlay-fail {
+  display: none;
+}
+
+.start .overlay-start, .win .overlay-win, .fail .overlay-fail {
   display: contents;
 }
+
+.win .overlay-win
 
 h1 {
   margin: 2em;
