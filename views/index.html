@@ -26,10 +26,14 @@
       <button class="start-button" data-start-game>Let's Go! &nbsp; &#128640;</button>
     </div>
     <div class="overlay-win">
-      <p>You win</p>
+      <h1 class="overlay-title">Congratulations Ensign!</h1>
+      <p>You kept the ship in shape and got us out of danger!</p>
+      <button class="start-button" data-start-game>Play Again &nbsp; &#128640;</button>
     </div>
     <div class="overlay-fail">
-      <p>You fail</p>
+      <h1 class="overlay-title">Mayday Mayday! She's breaking up captain!</h1>
+      <p>Uh oh, a few too many mistakes and the ship has been destroyed!</p>
+      <button class="start-button" data-start-game>Try Again &nbsp; &#128640;</button>
     </div>
   </div>
     <h1>Ably Space Game</h1>
@@ -67,6 +71,7 @@
           <div class="dial-meter"></div>
         </div>
       </section>
+
       <section class="switches">
         <label class="switch">
           <h3>shields</h3>
@@ -84,6 +89,7 @@
           <span class="snick"></span>
         </label>
       </section>
+
       <section class="lights">
         <input type="radio" id="redalertinput" class="alertlevel" value="redalert" name="alertlevel">
         <label for="redalertinput">
@@ -100,15 +106,14 @@
             <div class="sticker">Alert</div>
             <div class="bulb"><span class="glow"></span></div>
           </div>
-        </label>
-      
-        
+        </label>        
         <div class="light" id="pod">
-          <div class="knob" data-resets id="podknob" data-clickable data-hint="We've got them trapped! Jettison the pod!"></div>
+          <div class="knob" data-resets="3000" id="podknob" data-clickable data-hint="We've got them trapped! Jettison the pod!"></div>
           <div class="sticker">jettison pod</div>
           <div class="bulb"><span class="glow"></span></div>
         </div>
       </section>
+
       <section class="array">
         <div class="array-item" data-resets="1000" data-clickable id="phalange" data-hint="Do we even have a left phalange?!"><span class="array-item-label">left phalange</span></div>
         <div class="array-item" data-resets="1000" data-clickable id="multipass" data-hint="Print out multipass"><span class="array-item-label">multipass</span></div>
