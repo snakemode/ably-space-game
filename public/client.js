@@ -10,6 +10,7 @@ async function startGame(clickedElement) {
 }
 
 function onUiClick(clickedElement) {
+  document.getElementById("control").classList.remove("wrong");
 
   if (clickedElement.hasAttribute("data-selected")) {
     clickedElement.removeAttribute("data-selected")
@@ -20,22 +21,21 @@ function onUiClick(clickedElement) {
 }  
 
 async function onServerResponse(response, clickedElement) {
-  console.log('new move');
-  document.getElementById("control").classList.remove("wrong");
   ui.showHint(response.hint + " " + response.flavor);
 
   if (response.gameState === "failed") {
     ui.showHint("Oh no! You ran out of time!");
+    document.getElementById("overlay").classList.remove("hide").add("slow");
     return;
   }
   
   if (response.gameState === "complete") {
+    document.getElementById("overlay").classList.remove("hide").add("win");
     ui.showHint("Game complete! Well done! You followed the instructions!");
     return;
   }
   
   if (!response.lastMoveSuccessful) {
-    console.log("wrong");
     document.getElementById("control").classList.remove("wrong");
 
     document.getElementById("control").classList.add("wrong");
