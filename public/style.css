@@ -126,9 +126,9 @@ p {
       "buttons   lever  toggle  alerts"
       "fire      lever  toggle  alerts"
       "fire      lever  array   array";
-  grid-template-columns: 240px 240px 300px 400px;
+  grid-template-columns: 240px 240px 290px 360px;
   width: fit-content;
-  padding: 40px;
+  padding: 40px 20px;
   background-color: var(--white);
 }
 
@@ -224,7 +224,7 @@ p {
 .sliding {
   grid-area: lever;
   position: relative;
-  height: 540px;
+  height: 520px;
   margin: 0 20px;
   padding: 20px 40px 40px;
   border: 3px solid var(--indigo);
@@ -235,8 +235,8 @@ p {
 .slider {
   position: absolute;
   top: 50px;
-  left: -100px;
-  width: 430px;
+  left: -90px;
+  width: 410px;
   height: 40px;
   outline: none;
   background: var(--indigo);
@@ -402,7 +402,8 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .switch {
@@ -410,6 +411,7 @@ p {
   display: inline-block;
   width: 100px;
   height: 50px;
+  margin: 10px;
 }
 
 .switch-check {
@@ -702,7 +704,7 @@ p {
   grid-area: array;
   display: flex;
   justify-content: space-between;
-  margin: 40px;
+  margin: 30px 10px;
   margin-right: 20px; 
 }
 
