@@ -63,7 +63,7 @@ class CheckboxMatcher extends MatcherBase {
 class RangeMatcher extends MatcherBase {
   constructor(metadata) {    
     super(metadata);
-    this.target = Math.floor((Math.random() * metadata.max) + metadata.min);
+    this.target = Math.ceil((Math.random() * metadata.max) + metadata.min);
     this.hintText = "Set ${id} to ${target}!";
   }
   
