@@ -36,6 +36,8 @@ async function onServerResponse(response, clickedElement) {
   
   if (!response.lastMoveSuccessful) {
     console.log("wrong");
+    document.getElementById("control").classList.remove("wrong");
+
     document.getElementById("control").classList.add("wrong");
     soundPlayer.errorSound();
     return;
