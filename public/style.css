@@ -740,6 +740,7 @@ p {
   font-size: 0.8em;
   font-weight: bold;
   color: var(--indigo);
+  pointer-events: none;
 }
 
 .wrong {
