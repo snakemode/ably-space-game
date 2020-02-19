@@ -9,11 +9,16 @@ class GameClient {
     async startGame(clickedElement) {
       const startGameRequest = { clickables: this.elementsToRegisterOnGameStart };
       const requestBody = JSON.stringify(startGameRequest);
-      console.log("Game start request: " + requestBody);
+      
+      console.log("startGame request:");
+      console.log(startGameRequest);
 
       const response = await fetch("/games", { method: 'POST', body: requestBody, headers: { 'Content-Type': 'application/json' } });
       const responseBody = await response.json();
       this.currentGameId = responseBody.id;
+      
+      console.log("startGame response:");
+      console.log(responseBody);
 
       this.onServerResponse(responseBody, clickedElement);
     }
@@ -38,15 +43,16 @@ class GameClient {
     }
 
     async sendToServer(clickedElement, message) {
-        const asText = JSON.stringify(message);
-        console.log("Sending:");
+        console.log("sendToServer request:");
         console.log(message);
 
+        const asText = JSON.stringify(message);
         const response = await fetch(`/games/${this.currentGameId}`, { method: "POST", body: asText, headers: { 'Content-Type': 'application/json' } });
         const responseBody = await response.json();
          
-        console.log("Received:");
+        console.log("sendToServer response:");
         console.log(responseBody);
+      
         await this.onServerResponse(responseBody, clickedElement);
     }
 }

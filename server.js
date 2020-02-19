@@ -9,7 +9,7 @@ const app = express();
 
 const games = {};
 
-app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.json({limit: '2mb'}));
 
 app.use(express.static("public"));
 app.get("/", function(request, response) {
@@ -22,15 +22,14 @@ app.post("/games", (request, response) => {
   
   const newGame = new Game(publishToAbly, moves);
   games[newGame.id] = newGame;
-
-  const asText = JSON.stringify(newGame.status());
-  response.send(asText);
+  
+  response.send(newGame.status());
 });
 
 app.post("/games/:gameId", (request, response) => {
   const activeGame = games[request.params["gameId"]];
   if (!activeGame) {    
-    response.send(JSON.stringify({ error: "No active game!" }));
+    response.send({ error: "No active game!" });
     return;
   }
 
@@ -40,7 +39,7 @@ app.post("/games/:gameId", (request, response) => {
     request.body.extraParams || {}
   );
 
-  response.send(JSON.stringify(gameResponse));
+  response.send(gameResponse);
 });
 
 

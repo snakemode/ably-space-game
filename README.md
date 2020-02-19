@@ -71,9 +71,8 @@ app.post("/games", (request, response) => {
   
   const newGame = new Game(publishToAbly, moves);
   games[newGame.id] = newGame;
-
-  const asText = JSON.stringify(newGame.status());
-  response.send(asText);
+  
+  response.send(newGame.status());
 });
 ```
 
@@ -91,7 +90,7 @@ When the player clicks on an element, the `sendState` function in the GameClient
 app.post("/games/:gameId", (request, response) => {
   const activeGame = games[request.params["gameId"]];
   if (!activeGame) {    
-    response.send(JSON.stringify({ error: "No active game!" }));
+    response.send({ error: "No active game!" });
     return;
   }
 
@@ -101,7 +100,7 @@ app.post("/games/:gameId", (request, response) => {
     request.body.extraParams || {}
   );
 
-  response.send(JSON.stringify(gameResponse));
+  response.send(gameResponse);
 });
 ```
 
