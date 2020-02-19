@@ -31,9 +31,7 @@ function randomMoveThatIsntTheSameAsTheLast(lastMoveId, totalSelectionCount) {
 }
 
 function ensureSwitchesAreConsistent(actualMove, switchStates) {
-  if (!actualMove) return;
-  if (!actualMove.isSwitch) return;
-  if (actualMove.isSwitch !== true) return;  
+  if (!isSwitch(actualMove)) return; 
     
   if (!switchStates.hasOwnProperty(actualMove.elementId)) {
     switchStates[actualMove.elementId] = actualMove.target;    
@@ -45,12 +43,17 @@ function ensureSwitchesAreConsistent(actualMove, switchStates) {
 
 
 function forceWifiMovesToAlwaysTargetOn(actualMove) {
-  if (!actualMove) return;
-  if (!actualMove.isSwitch) return;
-  if (actualMove.isSwitch !== true) return;
+  if (!isSwitch(actualMove)) return;
   if (actualMove.id !== "wifi") return;
   
   actualMove.target = true;
+}
+
+function isSwitch(actualMove) {
+  if (!actualMove) return false;
+  if (!actualMove.isSwitch) return false;
+  if (actualMove.isSwitch !== true)  return false;
+  return true;
 }
 
 module.exports = createMoves;
