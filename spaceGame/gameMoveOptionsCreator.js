@@ -32,6 +32,7 @@ class MatcherBase {
     let text = this.overloadedHint || this.hintText;
     text = text.replace("${id}", this.id);
     text = text.replace("${target}", this.target);
+    text = text.replace("${targetText}", this.targetText);
     return text;
   }
 }
@@ -51,8 +52,9 @@ class CheckboxMatcher extends MatcherBase {
   constructor(metadata) {
     super(metadata);
     this.target = true;
-    this.isSwitch = true; 
-    this.hintText = "Flip the ${id} switch to ${target}!";
+    this.isSwitch = true;
+    this.targetText = this.target ? "on" : "off";
+    this.hintText = "Switch the ${id} ${targetText}. That'll surprise them!";
   }
     
   succeedsWhen(element, state, extraParams) {
