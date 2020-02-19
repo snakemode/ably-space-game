@@ -38,6 +38,7 @@ html {
 }
 
 body {
+  height: 100vh;
   font-family: 'Tomorrow', sans-serif;
   display: flex;
   flex-direction: column;
@@ -47,6 +48,7 @@ body {
 }
 
 .overlay {
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -69,6 +71,7 @@ body {
 h1 {
   margin: 2em;
   font-size: 2em;
+  text-align: center;
   color: white;
 }
 
