@@ -6,15 +6,19 @@ function createMoves(numberOfMovesToGenerate, fromMoveSelection) {
     for (let i = 0; i < numberOfMovesToGenerate; i++) {
         
         let randomMoveId = Math.floor((Math.random() * fromMoveSelection.length) + 0);
+        
         if (moves.length > 1 && lastMoveId === randomMoveId) {
-          while(lastMoveId === randomMoveId) {
-            randomMoveId = Math.floor((Math.random() * fromMoveSelection.length) + 0);
+          randomMoveId++;
+          if(randomMoveId >= moves.length) {
+            randomMoveId = 0;
           }
         }
       
         const actualMove = fromMoveSelection[randomMoveId]();
 
-        ensureSwitchesAreConsistent(actualMove, switchStates);        
+        ensureSwitchesAreConsistent(actualMove, switchStates);
+        forceWifiMovesToAlwaysTargetOn(actualMove);
+      
         moves.push(actualMove);
         lastMoveId = randomMoveId;
     }
@@ -33,6 +37,16 @@ function ensureSwitchesAreConsistent(actualMove, switchStates) {
     actualMove.target = !switchStates[actualMove.elementId];
     switchStates[actualMove.elementId] = actualMove.target;    
   }  
+}
+
+
+function forceWifiMovesToAlwaysTargetOn(actualMove) {
+  if (!actualMove) return;
+  if (!actualMove.isSwitch) return;
+  if (actualMove.isSwitch !== true) return;
+  if (actualMove.id !== "wifi") return;
+  
+  actualMove.target = true;
 }
 
 module.exports = createMoves;

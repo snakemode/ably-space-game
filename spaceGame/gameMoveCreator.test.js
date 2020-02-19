@@ -11,7 +11,7 @@ describe("When called", () => {
   
   it("won't return a requirement to set a switch to off if it hasn't already been requested to be turned on.", () => {
     const result = gameMoveCreator(1, [ 
-      () => { return { isSwitch: true, elementId: "blah", target: false }; } 
+      () => { return { isSwitch: true, elementId: "blah", target: true }; } 
     ]);
     
     expect(result[0].target).toBe(true);
