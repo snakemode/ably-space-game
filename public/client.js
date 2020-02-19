@@ -3,8 +3,6 @@ const ui = new SpaceGameUi();
 const soundPlayer = new SoundPlayer(false);
 const gameClient = new GameClient(ui.getClickableMetadata(), onServerResponse);
 const control = document.getElementById("control");
-const overlay = document.getElementById("overlay");
-
 ui.addClickHandlers(gameClient, startGame, onUiClick);
 
 async function startGame(clickedElement) {
@@ -13,7 +11,6 @@ async function startGame(clickedElement) {
 }
 
 function onUiClick(clickedElement) {
-  control.classList.remove("wrong");
 
   if (clickedElement.hasAttribute("data-selected")) {
     clickedElement.removeAttribute("data-selected")
@@ -23,19 +20,16 @@ function onUiClick(clickedElement) {
   }
 }  
 
-async function onServerResponse(response, clickedElement) {
+async function onServerResponse(response, clickedElement) {  
+  ui.resetShake();
   ui.showHint(response.hint + " " + response.flavor);
 
   if (response.gameState === "failed") {
     ui.showHint("Oh no! You ran out of time!");
-    overlay.classList.remove("hide", "start");
-    overlay.classList.add("fail");
     return;
   }
   
   if (response.gameState === "complete") {
-    overlay.classList.remove("hide", "start")
-    overlay.classList.add("win");
     ui.showHint("Game complete! Well done! You followed the instructions!");
     return;
   }

@@ -17,6 +17,10 @@ class SpaceGameUi {
   hideSplashScreen() {
     document.getElementById("overlay").classList.add("hide");
   }
+
+  resetShake() {
+    
+  }
   
   showHint(hintText) {
       document.getElementById("text-message-hint").innerText = hintText.trim();
