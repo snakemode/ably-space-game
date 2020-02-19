@@ -28,13 +28,14 @@ async function onServerResponse(response, clickedElement) {
 
   if (response.gameState === "failed") {
     ui.showHint("Oh no! You ran out of time!");
-    overlay.classList.remove("hide")
+    overlay.classList.remove("hide", "start");
     overlay.classList.add("fail");
     return;
   }
   
   if (response.gameState === "complete") {
-    overlay.classList.remove("hide").add("win");
+    overlay.classList.remove("hide", "start")
+    overlay.add("win");
     ui.showHint("Game complete! Well done! You followed the instructions!");
     return;
   }
