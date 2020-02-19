@@ -31,6 +31,7 @@ async function onServerResponse(response, clickedElement) {
 
   if (response.gameState === "failed") {
     ui.showHint("Oh no! You ran out of time!");
+    ui.showOverlay("fail");
     return;
   }
   
