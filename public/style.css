@@ -39,10 +39,10 @@ html {
 
 body {
   height: 100vh;
+  margin: 0;
   font-family: 'Tomorrow', sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background-color: var(--grey-dark);
 }
@@ -126,7 +126,7 @@ p {
       "buttons   lever  toggle  alerts"
       "fire      lever  toggle  alerts"
       "fire      lever  array   array";
-  grid-template-columns: 240px 240px 350px 400px;
+  grid-template-columns: 240px 240px 300px 400px;
   width: fit-content;
   padding: 40px;
   background-color: var(--white);
@@ -278,8 +278,9 @@ p {
 .dial {
   grid-area: dial;
   position: relative;
+  width: 270px;
   height: 150px;
-  margin: 0 40px;
+  margin: 0 auto;
   padding: 20px 40px;
   border-radius: 20px;
   overflow: hidden;
@@ -401,8 +402,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
-  padding: 20px 40px 0;
+  align-items: center;;
 }
 
 .switch {
@@ -461,7 +461,6 @@ p {
   grid-area: alerts;
   display: flex;
   flex-direction: column;
-  align-items: space-between;
   justify-content: space-between;
   height: 380px;
   margin: 0 20px;
