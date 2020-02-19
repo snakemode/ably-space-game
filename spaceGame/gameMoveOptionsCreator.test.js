@@ -49,7 +49,7 @@ describe("When called for a checkbox clickable", () => {
     
         const matcher = sut(clickables)[0]();
         
-        expect(matcher.hint()).toBe("Flip the some-id switch to true!");
+        expect(matcher.hint()).toBe("Switch the some-id off. That'll surprise them!");
     });
   
     it("client can overload hint", () => {
