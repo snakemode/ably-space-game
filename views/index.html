@@ -16,19 +16,19 @@
     
 </head>
 <body>
-  <div class="overlay" id="overlay">
+  <div class="overlay start" id="overlay">
     <div class="overlay-start">
       <h1 class="overlay-title">Welcome Ensign, to your first day aboard the SS Ably!</h1>
       <p>Keep our ship boldy going by following the Captain's commands.<br>
         You'll receive them through our established comms channel.
       </p>
       <p>Good luck!</p>
-      <button class="start" data-start-game>Let's Go! &nbsp; &#128640;</button>
+      <button class="start-button" data-start-game>Let's Go! &nbsp; &#128640;</button>
     </div>
-    <div class="overlay-win hide" id="win">
+    <div class="overlay-win">
       <p>You win</p>
     </div>
-    <div class="overlay-fail hide" id="lose">
+    <div class="overlay-fail">
       <p>You fail</p>
     </div>
   </div>
@@ -46,9 +46,7 @@
         <span class="label">nuclear</span>
       </section>
       <section class="torpedo">
-        <div class="torpedo-button" data-clickable data-hint="Fire photon torpedos! Pew Pew!">
-          Fire!
-        </div>
+        <div class="torpedo-button" id="torpedo" data-clickable data-hint="Fire photon torpedos! Pew Pew!">Fire!</div>
       </section>
       <section class="sliding">
         <h2>Warp</h2>

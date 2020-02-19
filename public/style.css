@@ -48,6 +48,10 @@ body {
   background-color: var(--grey-dark);
 }
 
+button {
+  font-family: 'Tomorrow', sans-serif;
+}
+
 .overlay {
   position: fixed;
   display: flex;
@@ -72,8 +76,6 @@ body {
 .start .overlay-start, .win .overlay-win, .fail .overlay-fail {
   display: contents;
 }
-
-.win .overlay-win
 
 h1 {
   margin: 2em;
@@ -112,7 +114,7 @@ p {
   color: white;
 }
 
-.start {
+.start-button {
   padding: 20px 30px;
   font-size: 3em;
   border: 0;
@@ -122,7 +124,7 @@ p {
   cursor: pointer;
 }
 
-.start:hover {
+.start-button:hover {
   background-color: var(--green)
 }
 
