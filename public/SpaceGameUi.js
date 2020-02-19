@@ -3,7 +3,7 @@ const overlay = document.getElementById("overlay");
 class SpaceGameUi {
   
   getClickables() { return [...document.querySelectorAll(`[data-clickable]`)]; }
-  getStartButton() { return [...document.querySelectorAll(`[data-start-game]`)][0]; }
+  getStartButton() { return [...document.querySelectorAll(`[data-start-game]`)]; }
   
   getClickableMetadata() {
     const clickables = this.getClickables();
@@ -46,6 +46,8 @@ class SpaceGameUi {
         element.addEventListener("click", (sender) => gameClient.sendState(sender.target));
     }
 
-    this.getStartButton().addEventListener("click", (sender) => onStartGame(sender.target)); 
+    for (let startButton of this.getStartButton()) {
+        startButton.addEventListener("click", (sender) => onStartGame(sender.target));
+    }
   }  
 }

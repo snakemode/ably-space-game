@@ -2,12 +2,21 @@ function createMoves(numberOfMovesToGenerate, fromMoveSelection) {
     let moves = [];
     const switchStates = {};
 
+    let lastMoveId = -1;
     for (let i = 0; i < numberOfMovesToGenerate; i++) {
-        const randomMoveId = Math.floor((Math.random() * fromMoveSelection.length) + 0);
+        
+        let randomMoveId = Math.floor((Math.random() * fromMoveSelection.length) + 0);
+        if (moves.length > 1 && lastMoveId === randomMoveId) {
+          while(lastMoveId === randomMoveId) {
+            randomMoveId = Math.floor((Math.random() * fromMoveSelection.length) + 0);
+          }
+        }
+      
         const actualMove = fromMoveSelection[randomMoveId]();
 
         ensureSwitchesAreConsistent(actualMove, switchStates);        
         moves.push(actualMove);
+        lastMoveId = randomMoveId;
     }
     
     return moves;
@@ -19,8 +28,7 @@ function ensureSwitchesAreConsistent(actualMove, switchStates) {
   if (actualMove.isSwitch !== true) return;  
     
   if (!switchStates.hasOwnProperty(actualMove.elementId)) {
-    actualMove.target = true;
-    switchStates[actualMove.elementId] = true;    
+    switchStates[actualMove.elementId] = actualMove.target;    
   } else {    
     actualMove.target = !switchStates[actualMove.elementId];
     switchStates[actualMove.elementId] = actualMove.target;    
