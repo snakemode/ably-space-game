@@ -10,6 +10,7 @@ describe("When called", () => {
   });
   
   it("switches will be required to be alternately toggled", () => {
+    
     const result = gameMoveCreator(4, [ 
       () => { return { isSwitch: true, elementId: "blah", target: true }; } 
     ]);
