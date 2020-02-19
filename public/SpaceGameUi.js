@@ -2,7 +2,6 @@ const control = document.getElementById("control");
 const overlay = document.getElementById("overlay");
 class SpaceGameUi {
   
-
   getClickables() { return [...document.querySelectorAll(`[data-clickable]`)]; }
   getStartButton() { return [...document.querySelectorAll(`[data-start-game]`)][0]; }
   
@@ -34,7 +33,6 @@ class SpaceGameUi {
   shakeControl() {
     control.classList.add("wrong");
   }
-  
   
   showHint(hintText) {
       document.getElementById("text-message-hint").innerText = hintText.trim();

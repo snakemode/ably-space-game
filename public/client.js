@@ -5,7 +5,7 @@ const gameClient = new GameClient(ui.getClickableMetadata(), onServerResponse);
 ui.addClickHandlers(gameClient, startGame, onUiClick);
 
 async function startGame(clickedElement) {
-  console.log("")
+  console.log("start");
   ui.hideOverlay();
   gameClient.startGame(clickedElement);
 }
@@ -20,7 +20,8 @@ function onUiClick(clickedElement) {
   if (clickedElement.hasAttribute("data-resets")) {
       setTimeout(function() {
         clickedElement.removeAttribute("data-selected");
-      }, 2000);
+        clickedElement.parentElement.removeAttribute("data-selected", clickedElement.id);
+      }, Number(clickedElement.getAttribute("data-resets")));
   }
 }  
 
