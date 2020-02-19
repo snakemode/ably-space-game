@@ -6,14 +6,8 @@ function createMoves(numberOfMovesToGenerate, fromMoveSelection) {
     for (let i = 0; i < numberOfMovesToGenerate; i++) {
         
         let randomMoveId = Math.floor((Math.random() * fromMoveSelection.length) + 0);
-        
-        if (moves.length > 1 && lastMoveId === randomMoveId) {
-          randomMoveId++;
-          if(randomMoveId >= moves.length) {
-            randomMoveId = 0;
-          }
-        }
-      
+        randomMoveId = ensureWeDontRepeatMoves(lastMoveId, randomMoveId, fromMoveSelection.length);
+              
         const actualMove = fromMoveSelection[randomMoveId]();
 
         ensureSwitchesAreConsistent(actualMove, switchStates);
@@ -24,6 +18,18 @@ function createMoves(numberOfMovesToGenerate, fromMoveSelection) {
     }
     
     return moves;
+}
+
+function ensureWeDontRepeatMoves(lastMoveId, randomMoveId, totalSelectionCount) { 
+  let attempt = randomMoveId;
+  if (totalSelectionCount > 1 && lastMoveId === attempt) {
+    attempt = attempt + 1;
+    if(attempt >= totalSelectionCount) {
+      attempt = 0;
+    }
+  }
+  
+  return attempt;
 }
 
 function ensureSwitchesAreConsistent(actualMove, switchStates) {
