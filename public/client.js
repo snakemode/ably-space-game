@@ -19,7 +19,8 @@ function onUiClick(clickedElement) {
   }
 }  
 
-async function onServerResponse(response, clickedElement) {  
+async function onServerResponse(response, clickedElement) {
+  console.log('new move');
   document.getElementById("control").classList.remove("wrong");
   ui.showHint(response.hint + " " + response.flavor);
 
@@ -34,6 +35,7 @@ async function onServerResponse(response, clickedElement) {
   }
   
   if (!response.lastMoveSuccessful) {
+    console.log("wrong");
     document.getElementById("control").classList.add("wrong");
     soundPlayer.errorSound();
     return;
