@@ -1,5 +1,8 @@
+const control = document.getElementById("control");
+const overlay = document.getElementById("overlay");
 class SpaceGameUi {
   
+
   getClickables() { return [...document.querySelectorAll(`[data-clickable]`)]; }
   getStartButton() { return [...document.querySelectorAll(`[data-start-game]`)][0]; }
   
@@ -14,16 +17,22 @@ class SpaceGameUi {
     }));  
   }
   
-  hideSplashScreen() {
-    document.getElementById("overlay").classList.add("hide");
+  hideOverlay() {
+    overlay.classList.remove("start");
+    overlay.classList.add("hide");
+  }
+
+  showOverlay(overlayType) {
+    overlay.classList.add(overlayType);
+    overlay.classList.remove("hide");
   }
 
   resetShake() {
-    document.getElementById("control").classList.remove("wrong");
+    control.classList.remove("wrong");
   }
   
   shakeControl() {
-    document.getElementById("control").classList.add("wrong");
+    control.classList.add("wrong");
   }
   
   

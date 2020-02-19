@@ -5,17 +5,22 @@ const gameClient = new GameClient(ui.getClickableMetadata(), onServerResponse);
 ui.addClickHandlers(gameClient, startGame, onUiClick);
 
 async function startGame(clickedElement) {
-  ui.hideSplashScreen();
+  ui.hideOverlay();
   gameClient.startGame(clickedElement);
 }
 
 function onUiClick(clickedElement) {
-
   if (clickedElement.hasAttribute("data-selected")) {
     clickedElement.removeAttribute("data-selected")
   } else {
     clickedElement.setAttribute("data-selected", "")
     clickedElement.parentElement.setAttribute("data-selected", clickedElement.id);
+  }
+  if (clickedElement.hasAttribute("data-resets")) {
+      setTimeout(function() {
+        clickedElement.removeAttribute("data-selected")
+        alert("Hello"); 
+      }, 2000);
   }
 }  
 
@@ -30,6 +35,7 @@ async function onServerResponse(response, clickedElement) {
   
   if (response.gameState === "complete") {
     ui.showHint("Game complete! Well done! You followed the instructions!");
+    ui.showOverlay("win");
     return;
   }
   
