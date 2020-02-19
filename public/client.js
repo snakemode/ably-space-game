@@ -35,7 +35,7 @@ async function onServerResponse(response, clickedElement) {
   
   if (response.gameState === "complete") {
     overlay.classList.remove("hide", "start")
-    overlay.add("win");
+    overlay.classList.add("win");
     ui.showHint("Game complete! Well done! You followed the instructions!");
     return;
   }
