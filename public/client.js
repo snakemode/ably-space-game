@@ -26,7 +26,7 @@ function onUiClick(clickedElement) {
 
 async function onServerResponse(response, clickedElement) {  
   ui.resetShake();
-  ui.showHint(response.hint + " " + response.flavor);
+  ui.showHint(response.hint);
 
   if (response.gameState === "failed") {
     ui.showHint("Oh no! You ran out of time!");
