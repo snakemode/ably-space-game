@@ -2,7 +2,6 @@
 const ui = new SpaceGameUi();
 const soundPlayer = new SoundPlayer(false);
 const gameClient = new GameClient(ui.getClickableMetadata(), onServerResponse);
-const control = document.getElementById("control");
 ui.addClickHandlers(gameClient, startGame, onUiClick);
 
 async function startGame(clickedElement) {
@@ -35,7 +34,7 @@ async function onServerResponse(response, clickedElement) {
   }
   
   if (!response.lastMoveSuccessful) {
-    control.classList.add("wrong");
+    ui.shakeControl();
     soundPlayer.errorSound();
     return;
   }

@@ -19,8 +19,13 @@ class SpaceGameUi {
   }
 
   resetShake() {
-    
+    document.getElementById("control").classList.remove("wrong");
   }
+  
+  shakeControl() {
+    document.getElementById("control").classList.add("wrong");
+  }
+  
   
   showHint(hintText) {
       document.getElementById("text-message-hint").innerText = hintText.trim();
