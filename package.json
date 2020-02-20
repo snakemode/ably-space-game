@@ -1,5 +1,5 @@
 {
-  "name": "keep-texting-and-nobody-explodes",
+  "name": "Ably Space Game",
   "version": "0.0.1",
   "description": "A stress inducing game of button pressing and notifications",
   "main": "server.js",
@@ -20,7 +20,7 @@
     "node": "10.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/florentine-crayfish-xqtpugytnl"
+    "url": "https://glitch.com/edit/#!/ably-space-game"
   },
   "license": "MIT",
   "keywords": [
