@@ -1,5 +1,5 @@
 const fetch = require("node-fetch");
-const apiUrl = "https://maker.ifttt.com/trigger/ably-space-game/with/key/dZGwxamQRfH-kGsb9mnKpr3vg7kvUYHfNgjzhZRRzaW";
+const apiUrl = "https://rest.ably.io/channels/space-game/messages";
 const enabled = true;
 
 async function onGameStateChanged(status) {
@@ -16,6 +16,7 @@ async function sendToApi(jsonBody) {
       await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        key: process.env.ABLY_API_KEY,
         body: JSON.stringify(jsonBody)
       });
 
