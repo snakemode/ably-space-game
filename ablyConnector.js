@@ -6,7 +6,7 @@ async function onGameStateChanged(status) {
   if (!enabled) return;
 
   if (status.gameState == "active") {
-    const jsonBody = { value1: status.hint, value2: status.flavor };
+    const jsonBody = {"data":{ value1: status.hint, value2: status.flavor }};
     await sendToApi(jsonBody);
   }
 }
