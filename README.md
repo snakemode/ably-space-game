@@ -1,6 +1,6 @@
 # Ably Space Game
 
-In this example, we're going to demonstrait how to use `Ably Channels` with the **IF This Then That** `IFTTT` API.
+In this example, we're going to demonstrte how to use `Ably Channels` with the **IF This Then That** `IFTTT` API.
 
 ## What are we building?
 
@@ -13,9 +13,7 @@ These kinds of co-op puzzle games are often fast paced, and plenty of fun at par
 
 ## How is this going to interact with Ably?
 
-- Gonna send a message to the Ably hub
-- It's gonna trigger at thing on IFTTT
-- The player gets to respond to the triggered thing
+- The game publishes message "commands" to an Ably channel 
 
 ## Building the game
 
@@ -27,7 +25,7 @@ The client side portion of the game, the UI, is a set of HTML5 buttons and widge
 Each of the clickable elements in our control panel is made up of markup that looks a little bit like this:
 
 ```html
-<div class="button green" id="hydrogen" data-clickable></div>
+<div class="button" id="hydrogen" data-clickable></div>
 ```
 
 Each clickable element is made up of a few things:
@@ -221,12 +219,6 @@ We have access to exactly the same gameStatus properties as our game does in our
 During application startup in `server.js`, we're importing our `ablyConnector` file as `publishToAbly`, and passing it into each of our games as they're ceated.
 
 ### Sending Ably messages
-
-- Reference Ably JS API
-- Get API key
-- Add callback code to `ablyConnector.js`
-
-- We're currently sending messages to IFTTT using the `Ably REST API`.
-- This is because we need to disabled the `Ably Message Envelope` for the IFTTT integration to work correctly.
+need to disabled the `Ably Message Envelope` for the IFTTT integration to work correctly.
 - This is only supported on the API (or is it also on the settings for the channel?)
 - If it is, we can just use the Ably SDK and change channel setup instructions.
