@@ -1,6 +1,6 @@
 # Ably Space Game
 
-In this example, we're going to demonstrte how to use `Ably Channels` with the **IF This Then That** `IFTTT` API.
+In this example, we're going to demonstrte how to use *Ably Channels* with the **IF This Then That** API.
 
 ## What are we building?
 
