@@ -1,6 +1,6 @@
 # Ably Space Game
 
-In this example, we're going to demonstrte how to use *Ably Channels* to trigger events with *IF This Then That*.
+In this example, we're going to demonstrte how to use [Ably Channels](https://www.ably.io/channels) to trigger events with [If This Then That](https://ifttt.com/).
 
 ## What are we building?
 
