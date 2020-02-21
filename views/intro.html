@@ -10,16 +10,17 @@
       <link href="https://fonts.googleapis.com/css?family=Tomorrow&display=swap" rel="stylesheet">    
   </head>
   <body style="overflow: auto;">
-    <h1>Instructions</h1>
+    <h1>Instructions &nbsp;&nbsp;<div class="glitchButton"></div><script src="https://button.glitch.me/button.js"></script>
+    </h1>
     <section class="intro">
       <h2 class="intro-title">What is this?</h2>
-      <p class="intro-text">This game is an example of how one might send data to an  Ably realtime data channel.</p>
-      <p class="intro-text">In order to play the game we will be using Ably Reactor tools which will trigger an IfThisThenThat rule to post the next move of the game to a Slack channel.</p>
+      <p class="intro-text">This game is an example of sending realtime data to an Ably channel for use by another application.</p>
+      <p class="intro-text">In order to play the game we will be using Ably Reactor tools which will trigger an IfThisThenThat rule to post the next move of the game to a Slack channel. (Don't worry, these instructions look long, but the process is actually very quick!)</p>
       <h3 class="intro-subtitle">You will need:</h3>
       <ul>
-        <li>An Ably account - you can login or sign up to an Ably account for free at <a class="intro-link" href="https://www.ably.io/">https://www.ably.io/</a></li>
+        <li>An Ably account - you can login or sign up for free at <a class="intro-link" href="https://www.ably.io/">https://www.ably.io/</a></li>
         <li>IFTTT account, login or sign up at <a class="intro-link" href="https://ifttt.com/">https://ifttt.com/</a></li>
-        <li>A Slack account and a workspace to send messages to, sign in or create a workspace here <a class="intro-link" href="https://slack.com/signin">https://slack.com/signin</a></li>
+        <li>A Slack account and a workspace to send messages to, sign in or create a workspace at <a class="intro-link" href="https://slack.com/signin">https://slack.com/signin</a></li>
       </ul>
   
       <h2 class="intro-title">Setup</h2>
@@ -36,7 +37,7 @@
         <li>Click the "Create key" button</li>
       </ol>
 
-      <p class="intro-text">Scroll down if necessary, and copy and paste your new API key to a text file for later use in the application.</p>
+      <p class="intro-text">Scroll down if necessary, and copy your new API key. Paste the API key in the <span class="code">.env</span> file in the game's root directory.</p>
 
       <h2 class="intro-title">Creating an Ably Reactor Rule</h2>
 
