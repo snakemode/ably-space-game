@@ -838,3 +838,12 @@ p {
 li {
   line-height: 1.5em;
 }
+
+.important {
+  color: var(--red)
+}
+
+.code {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: var();
+}
