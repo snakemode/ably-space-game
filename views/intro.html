@@ -9,12 +9,12 @@
       <link rel="stylesheet" href="/style.css">
       <link href="https://fonts.googleapis.com/css?family=Tomorrow&display=swap" rel="stylesheet">    
   </head>
-  <body>
+  <body style="overflow: auto;">
     <h1>Instructions</h1>
     <section class="intro">
       <h2 class="intro-title">What is this?</h2>
       <p class="intro-text">This game is an example of how one might send data to an  Ably realtime data channel.</p>
-      <p class="intro-text">In order to play the game we will be using Ably Reactor tools which will trigger an If This Then That rule which will post the next move of the game to a slack channel.</p>
+      <p class="intro-text">In order to play the game we will be using Ably Reactor tools which will trigger an IfThisThenThat rule to post the next move of the game to a Slack channel.</p>
       <h3 class="intro-subtitle">You will need:</h3>
       <ul>
         <li>An Ably account - you can login or sign up to an Ably account for free at <a class="intro-link" href="https://www.ably.io/">https://www.ably.io/</a></li>
@@ -24,19 +24,12 @@
   
       <h2 class="intro-title">Setup</h2>
 
-      <p class="intro-text">We're going to need an Ably API key for use by your browser application. For our purposes, only one API key is required. If you extend the tutorial with your own functionality (you may wish to create a separate API key for the IFTTT if you need it to have a different set of permissions than those assigned for use by the browser app).</p>
+      <p class="intro-text">The game needs your Ably API key in order to publish messages to a channel</p>
 
-      <p class="intro-text">First, log into your Ably dashboard, find the app you're going to be using for this tutorial (the "Sandbox" app is probably fine), then click "Manage App".</p>
-
-      <a class="intro-link" href="/images/tutorials/reactor/reactor-event-ably-apikey-1.png" target="_blank">
-        <img src="/images/tutorials/reactor/reactor-event-ably-apikey-1.png" style="width: 100%" alt="Manage your Ably app">
-      </a>
+      <p class="intro-text">Log into your Ably dashboard and select or create an app to use for this game (the "Sandbox" app is probably fine), then click "Manage App".</p>
 
       <p class="intro-text">Select the "API Keys" tab, and click "Create a new API key":</p>
 
-      <a class="intro-link" href="/images/tutorials/reactor/reactor-event-ably-apikey-2.png" target="_blank">
-        <img src="/images/tutorials/reactor/reactor-event-ably-apikey-2.png" style="width: 100%" alt="Create a new API key">
-      </a>
       <ol>
         <li>Enter a name for your API key</li>
         <li>Select only the "publish" and "subscribe" options</li>

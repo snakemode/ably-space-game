@@ -797,17 +797,20 @@ p {
 
 .intro {
   max-width: 1000px;
-  height: calc(90)
+  margin-bottom: 40px;
   padding: 0px 40px;
   border-radius: 20px;
   font-family: Arial, Helvetica, sans-serif;
   background-color: var(--white);
-  overflow: scroll;
+  color: var(--indigo);
 }
 
 .intro-title {
-  text-align: left;
   margin: 2em 0 1em;
+  padding: 10px;
+  text-align: left;
+  color: white;
+  background-color: var(--green)
 }
 
 .intro-subtitle {
@@ -820,14 +823,18 @@ p {
   font-size: 1.1em;
   text-align: left;
   line-height: 1.5em;
-  color: var(--indigo);
+  color: inherit;
 }
 
 .intro-link {
-  color: var(--blue);
+  color: var(--blue-dark);
   text-decoration: none;
 }
 
 .intro-link:hover {
-  color: var(--turquoise);
+  color: var(--turquoise-dark);
+}
+
+li {
+  line-height: 1.5em;
 }
