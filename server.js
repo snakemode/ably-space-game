@@ -16,6 +16,11 @@ app.get("/", function(request, response) {
   response.sendFile(__dirname + "/views/index.html");
 });
 
+app.get("/intro", function(request, response) {
+  response.sendFile(__dirname + "/views/intro.html");
+});
+
+
 app.post("/games", (request, response) => { 
   const moveOptionsFromClientClickables = createMoveOptions(request.body.clickables);  
   const moves = createMoves(10, moveOptionsFromClientClickables);  
@@ -40,10 +45,6 @@ app.post("/games/:gameId", (request, response) => {
   );
 
   response.send(gameResponse);
-});
-
-app.get("/instructions"), function(request, response) {
-  response.sendFile(__dirname + "/views/intro.html");
 });
 
 
