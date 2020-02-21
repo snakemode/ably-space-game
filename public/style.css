@@ -105,13 +105,21 @@ p {
   max-width: 900px;
   font-size: 1.6em;
   text-align: center;
-  line-height: 1.4em;
+  line-height: 1.5em;
   color: white;
 }
 
 .overlay-title {
   font-size: 4vw;
   color: white;
+}
+
+.overlay-link {
+  color: var(--yellow);
+}
+
+.overlay-link:hover {
+  color: var(--orange);
 }
 
 .start-button {
