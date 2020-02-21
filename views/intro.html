@@ -12,15 +12,17 @@
   <body>
     <h1>Instructions</h1>
     <section class="intro">
-      <h2>What is this?</h2>
+      <h2 class="intro-title">What is this?</h2>
       <p class="intro-text">This game is an example of how one might send data to an  Ably realtime data channel.</p>
-      <p class="intro-text">In order to play the game we will be using Ably Reactor tools which will trigger an If This Then That rule which will post the next move of the game to a slack channel</p>
-
-      <p class="intro-text">You can login or sign up to an Ably account for free at <a class="intro-link" href="https://www.ably.io/">https://www.ably.io/</a>.
-      <br>You'll also need an IFTTT account, login or sign up at <a class="intro-link" href="https://ifttt.com/">https://ifttt.com/</a>.
-      And finally you'll need an account with Slack and a workspace to send messages to, sign in or create a workspace here <a class="intro-link" href="https://slack.com/signin">https://slack.com/signin</a></p>
-
-      <h2>Setup</h2>
+      <p class="intro-text">In order to play the game we will be using Ably Reactor tools which will trigger an If This Then That rule which will post the next move of the game to a slack channel.</p>
+      <h3 class="intro-subtitle">You will need:</h3>
+      <ul>
+        <li>An Ably account - you can login or sign up to an Ably account for free at <a class="intro-link" href="https://www.ably.io/">https://www.ably.io/</a></li>
+        <li>IFTTT account, login or sign up at <a class="intro-link" href="https://ifttt.com/">https://ifttt.com/</a></li>
+        <li>A Slack account and a workspace to send messages to, sign in or create a workspace here <a class="intro-link" href="https://slack.com/signin">https://slack.com/signin</a></li>
+      </ul>
+  
+      <h2 class="intro-title">Setup</h2>
 
       <p class="intro-text">We're going to need an Ably API key for use by your browser application. For our purposes, only one API key is required. If you extend the tutorial with your own functionality (you may wish to create a separate API key for the IFTTT if you need it to have a different set of permissions than those assigned for use by the browser app).</p>
 
@@ -43,7 +45,7 @@
 
       <p class="intro-text">Scroll down if necessary, and copy and paste your new API key to a text file for later use in the application.</p>
 
-      <h2>Creating an Ably Reactor Rule</h2>
+      <h2 class="intro-title">Creating an Ably Reactor Rule</h2>
 
       <p class="intro-text">We'll need to create a Reactor Event Rule in your Ably dashboard. This is what will trigger the IFTTT event.</p>
 
@@ -54,7 +56,7 @@
         <li>Click the "Choose" button under "Reactor Event" type</li>
       </ol>
 
-      <h2>Creating an IFTTT Reactor Event</h2>
+      <h2 class="intro-title">Creating an IFTTT Reactor Event</h2>
 
       <p class="intro-text">Choose the "IFTTT" service integration option</p>
 
@@ -73,7 +75,7 @@
 
       <p class="intro-text">You have now set up an IFTTT Reactor event, but we'll also need to create an Applet on IFTTT for it to trigger.</p>
 
-      <h2>Creating an IFTTT Applet</h2>
+      <h2 class="intro-title">Creating an IFTTT Applet</h2>
 
       <ol>
         <li>Visit <a class="intro-link" href="https://ifttt.com/">https://ifttt.com/</a> (log in if you have not already)</li>

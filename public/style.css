@@ -797,14 +797,26 @@ p {
 
 .intro {
   max-width: 1000px;
-  padding: 20px 40px;
+  height: calc(90)
+  padding: 0px 40px;
   border-radius: 20px;
+  font-family: Arial, Helvetica, sans-serif;
   background-color: var(--white);
+  overflow: scroll;
+}
+
+.intro-title {
+  text-align: left;
+  margin: 2em 0 1em;
+}
+
+.intro-subtitle {
+  position: static;
+  transform: none;
 }
 
 .intro-text {
   max-width: auto;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 1.1em;
   text-align: left;
   line-height: 1.5em;
@@ -812,7 +824,6 @@ p {
 }
 
 .intro-link {
-  font-family: Arial, Helvetica, sans-serif;
   color: var(--blue);
   text-decoration: none;
 }
