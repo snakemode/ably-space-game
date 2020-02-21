@@ -794,3 +794,14 @@ p {
       transform:translate(0px, 0px) rotate(0deg)
   }
 }
+
+.intro {
+  padding: 20px 40px;
+  border-radius: 20px;
+  background-color: var(--white);
+}
+
+.intro-text {
+  font-size: 1em;
+  line-height: 1.4em;
+}
