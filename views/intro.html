@@ -12,23 +12,27 @@
   <body>
     <h1>Instructions</h1>
     <section class="intro">
-      <p>In order to play this game you will need to hook up your ably account to your IFTTT account. You can login or sign up to an Ably account for free at <a href="https://www.ably.io/">https://www.ably.io/</a>.
-      You'll also need an IFTTT account, login or sign up at <a href="https://ifttt.com/">https://ifttt.com/</a>.
-      And finally you'll need an account with Slack and a workspace to send messages to, sign in or create a workspace here <a href="https://slack.com/signin">https://slack.com/signin</a></p>
+      <h2>What is this?</h2>
+      <p class="intro-text">This game is an example of how one might send data to an  Ably realtime data channel.</p>
+      <p class="intro-text">In order to play the game we will be using Ably Reactor tools which will trigger an If This Then That rule which will post the next move of the game to a slack channel</p>
+
+      <p class="intro-text">You can login or sign up to an Ably account for free at <a class="intro-link" href="https://www.ably.io/">https://www.ably.io/</a>.
+      <br>You'll also need an IFTTT account, login or sign up at <a class="intro-link" href="https://ifttt.com/">https://ifttt.com/</a>.
+      And finally you'll need an account with Slack and a workspace to send messages to, sign in or create a workspace here <a class="intro-link" href="https://slack.com/signin">https://slack.com/signin</a></p>
 
       <h2>Setup</h2>
 
-      <p>We're going to need an Ably API key for use by your browser application. For our purposes, only one API key is required. If you extend the tutorial with your own functionality (you may wish to create a separate API key for the IFTTT if you need it to have a different set of permissions than those assigned for use by the browser app).</p>
+      <p class="intro-text">We're going to need an Ably API key for use by your browser application. For our purposes, only one API key is required. If you extend the tutorial with your own functionality (you may wish to create a separate API key for the IFTTT if you need it to have a different set of permissions than those assigned for use by the browser app).</p>
 
-      <p>First, log into your Ably dashboard, find the app you're going to be using for this tutorial (the "Sandbox" app is probably fine), then click "Manage App".</p>
+      <p class="intro-text">First, log into your Ably dashboard, find the app you're going to be using for this tutorial (the "Sandbox" app is probably fine), then click "Manage App".</p>
 
-      <a href="/images/tutorials/reactor/reactor-event-ably-apikey-1.png" target="_blank">
+      <a class="intro-link" href="/images/tutorials/reactor/reactor-event-ably-apikey-1.png" target="_blank">
         <img src="/images/tutorials/reactor/reactor-event-ably-apikey-1.png" style="width: 100%" alt="Manage your Ably app">
       </a>
 
-      <p>Select the "API Keys" tab, and click "Create a new API key":</p>
+      <p class="intro-text">Select the "API Keys" tab, and click "Create a new API key":</p>
 
-      <a href="/images/tutorials/reactor/reactor-event-ably-apikey-2.png" target="_blank">
+      <a class="intro-link" href="/images/tutorials/reactor/reactor-event-ably-apikey-2.png" target="_blank">
         <img src="/images/tutorials/reactor/reactor-event-ably-apikey-2.png" style="width: 100%" alt="Create a new API key">
       </a>
       <ol>
@@ -37,11 +41,11 @@
         <li>Click the "Create key" button</li>
       </ol>
 
-      <p>Scroll down if necessary, and copy and paste your new API key to a text file for later use in the application.</p>
+      <p class="intro-text">Scroll down if necessary, and copy and paste your new API key to a text file for later use in the application.</p>
 
       <h2>Creating an Ably Reactor Rule</h2>
 
-      <p>We'll need to create a Reactor Event Rule in your Ably dashboard. This is what will trigger the IFTTT event.</p>
+      <p class="intro-text">We'll need to create a Reactor Event Rule in your Ably dashboard. This is what will trigger the IFTTT event.</p>
 
       <ol>
         <li>Go to your Ably Dashboard</li>
@@ -52,9 +56,9 @@
 
       <h2>Creating an IFTTT Reactor Event</h2>
 
-      <p>Choose the "IFTTT" service integration option</p>
+      <p class="intro-text">Choose the "IFTTT" service integration option</p>
 
-      <p>On the resulting form we'll need an IFTTT key to connect Ably to IFTTT with webhooks.</p>
+      <p class="intro-text">On the resulting form we'll need an IFTTT key to connect Ably to IFTTT with webhooks.</p>
 
       <ol>
         <li>Click the "open IFTTT Webhook Settings" button (this will take you to the IFTTT web app)</li>
@@ -67,21 +71,21 @@
         <li>Click "Create"</li>
       </ol>
 
-      <p>You have now set up an IFTTT Reactor event, but we'll also need to create an Applet on IFTTT for it to trigger.</p>
+      <p class="intro-text">You have now set up an IFTTT Reactor event, but we'll also need to create an Applet on IFTTT for it to trigger.</p>
 
       <h2>Creating an IFTTT Applet</h2>
 
       <ol>
-        <li>Visit <a href="https://ifttt.com/">https://ifttt.com/</a> (log in if you have not already)</li>
+        <li>Visit <a class="intro-link" href="https://ifttt.com/">https://ifttt.com/</a> (log in if you have not already)</li>
         <li>Click "Explore" in the top right hand corner</li>
-        <li>Scroll until you find the "Create your own" button (or visit <a href="https://ifttt.com/create">https://ifttt.com/create</a>)</li>
+        <li>Scroll until you find the "Create your own" button (or visit <a class="intro-link" href="https://ifttt.com/create">https://ifttt.com/create</a>)</li>
         <li>Search for "webhooks" in the searchbox</li>
         <li>Click the "Webhooks" button</li>
         <li>Click the "Receive a web request" section</li>
         <li>Add the name for the Webhook event that you created earlier (eg channel_message_published)</li>
       </ol>
 
-      <p>Next we will need to choose a service that we want to hook our published message up to. In this case we're going to choose Slack, but you could use any number or services that IFTTT provides.</p>
+      <p class="intro-text">Next we will need to choose a service that we want to hook our published message up to. In this case we're going to choose Slack, but you could use any number or services that IFTTT provides.</p>
 
       <ol>
         <li>Click the "&plus; That" which should now be presented to you</li>
@@ -92,9 +96,9 @@
         <li>Allow the requested permissions</li>
       </ol>
 
-      <p>The final stage of our setup will be choosing an action to trigger in Slack. In this case we want to post to a channel. The IFTTT Slack service allows you to post to channels, to private groups or to send direct messages. For the purpose of this tutorial we'll be sending ourselves private messages (for the sake of not filling your slack channels with messages!)</p>
+      <p class="intro-text">The final stage of our setup will be choosing an action to trigger in Slack. In this case we want to post to a channel. The IFTTT Slack service allows you to post to channels, to private groups or to send direct messages. For the purpose of this tutorial we'll be sending ourselves private messages (for the sake of not filling your slack channels with messages!)</p>
 
-      <p>We'll be sending the body of the message that was published to your Ably channel to slack, so for this tutorial we're only going to send one value as the message body, but you could customise this as much as you like.</p>
+      <p class="intro-text">We'll be sending the body of the message that was published to your Ably channel to slack, so for this tutorial we're only going to send one value as the message body, but you could customise this as much as you like.</p>
 
       <ol>
         <li>Click "Post to channel"</li>
@@ -111,7 +115,7 @@
         <li>Click "Finish"</li>
       </ol>
 
-     <p>You have now set up your Ably channel to post to Slack using IFTTT!</p>
+     <p class="intro-text">You have now set up your Ably channel to post to Slack using IFTTT!</p>
     </section>
     
   </body>
