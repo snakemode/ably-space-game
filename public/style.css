@@ -861,3 +861,7 @@ li {
   background-color: var(--white);
 
 }
+
+#text-message-hint {
+  display: none;
+}
