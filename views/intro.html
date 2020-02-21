@@ -10,8 +10,98 @@
       <link href="https://fonts.googleapis.com/css?family=Tomorrow&display=swap" rel="stylesheet">    
   </head>
   <body>
-    <h2>
-      Intro
-    </h2>
+    <h1>Instructions</h1>
+    <section class="intro">In order to play this game you will need to hook up your ably account to your IFTTT account.
+      you can login or sign up to an Ably account for free at <a href="">https://www.ably.io/</a>https://www.ably.io/.
+You'll also need an IFTTT account, login or sign up at <a href="">https://ifttt.com/</a>https://ifttt.com/.
+And finally you'll need an account with Slack and a workspace to send messages to, sign in or create a workspace here <a href="">https://slack.com/signin</a>https://slack.com/signin
+
+<h2>Setup</h2>
+
+We're going to need an Ably API key for use by your browser application. For our purposes, only one API key is required. If you extend the tutorial with your own functionality (you may wish to create a separate API key for the IFTTT if you need it to have a different set of permissions than those assigned for use by the browser app).
+
+First, log into your Ably dashboard, find the app you're going to be using for this tutorial (the "Sandbox" app is probably fine), then click "Manage App".
+
+<a href="/images/tutorials/reactor/reactor-event-ably-apikey-1.png" target="_blank">
+  <img src="/images/tutorials/reactor/reactor-event-ably-apikey-1.png" style="width: 100%" alt="Manage your Ably app">
+</a>
+
+Select the "API Keys" tab, and click "Create a new API key":
+
+<a href="/images/tutorials/reactor/reactor-event-ably-apikey-2.png" target="_blank">
+  <img src="/images/tutorials/reactor/reactor-event-ably-apikey-2.png" style="width: 100%" alt="Create a new API key">
+</a>
+
+<ol>Enter a name for your API key</ol>
+<ol>Select only the "publish" and "subscribe" options</ol>
+<ol>Click the "Create key" button</ol>
+
+Scroll down if necessary, and copy and paste your new API key to a text file for later use in the application.
+
+<h2>Creating an Ably Reactor Rule</h2>
+
+We'll need to create a Reactor Event Rule in your Ably dashboard. This is what will trigger the IFTTT event.
+
+<ol>Go to your Ably Dashboard</ol>
+<ol>Choose the "Reactor" tab</ol>
+<ol>Click "New Reactor Rule" button</ol>
+<ol>Click the "Choose" button under "Reactor Event" type</ol>
+
+<h2>Creating an IFTTT Reactor Event</h2>
+
+Choose the "IFTTT" service integration option
+
+On the resulting form we'll need an IFTTT key to connect Ably to IFTTT with webhooks. 
+
+<ol>Click the "open IFTTT Webhook Settings" button (this will take you to the IFTTT web app)</ol>
+<ol>On the resulting page click "Documentation"</ol>
+<ol>Copy your key from the top of the documentation page</ol>
+<ol>Go back to your Ably Reactor Integration Rule Settings</ol>
+<ol>Paste the key into the "IFTTT Webhook key" input.</ol>
+<ol>Give the Webhook event a name (eg channel_message_published)</ol>
+<ol>Set up a channel filter if necessary</ol>
+<ol>Click "Create"</ol>
+
+You have now set up an IFTTT Reactor event, but we'll also need to create an Applet on IFTTT for it to trigger.
+
+<h2>Creating an IFTTT Applet</h2>
+
+<ol>Visit <a href="">https://ifttt.com/</a>https://ifttt.com/ (log in if you have not already)</ol>
+<ol>Click "Explore" in the top right hand corner</ol>
+<ol>Scroll until you find the "Create your own" button (or visit <a href="">https://ifttt.com/create</a>https://ifttt.com/create)</ol>
+<ol>Search for "webhooks" in the searchbox</ol>
+<ol>Click the "Webhooks" button</ol>
+<ol>Click the "Receive a web request" section</ol>
+<ol>Add the name for the Webhook event that you created earlier (eg channel_message_published)</ol>
+
+Next we will need to choose a service that we want to hook our published message up to. In this case we're going to choose Slack, but you could use any number or services that IFTTT provides.
+
+<ol>Click the "&plus; That" which should now be presented to you</ol>
+<ol>Search for Slack</ol>
+<ol>Click Slack</ol>
+<ol>Click Connect</ol>
+<ol>Log in to your slack workplace in the resulting popup</ol>
+<ol>Allow the requested permissions</ol>
+
+The final stage of our setup will be choosing an action to trigger in Slack. In this case we want to post to a channel. The IFTTT Slack service allows you to post to channels, to private groups or to send direct messages. For the purpose of this tutorial we'll be sending ourselves private messages (for the sake of not filling your slack channels with messages!)
+
+We'll be sending the body of the message that was published to your Ably channel to slack, so for this tutorial we're only going to send one value as the message body, but you could customise this as much as you like.
+
+<ol>Click "Post to channel"</ol>
+<ol>In the resulting form, under "Which channnel":</ol>
+#<ol>select Direct Messages </ol>
+#<ol>select your own Slack handle</ol>
+<ol>Under "Message":</ol>
+#<ol>delete the content in the textbox </ol>
+#<ol>click "Add ingredient"</ol>
+#<ol>Add "Value1"</ol>
+<ol>Under "Title URL" add "Captain Picard" (or the captain name of your choice!)</ol>
+<ol>You can even add a thumbnail avatar of your captain if you'd like by pasting a url to your chosen image</ol>
+<ol>Click "Create Action"</ol>
+<ol>Click "Finish"</ol>
+
+You have now set up your Ably channel to post to Slack using IFTTT! 
+    </section>
+    
   </body>
 </html>
