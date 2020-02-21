@@ -13,7 +13,12 @@ These kinds of co-op puzzle games are often fast paced, and plenty of fun at par
 
 ## How is this going to interact with Ably?
 
-- The game publishes message "commands" to an Ably channel 
+The game publishes message "commands" to an Ably channel. Take a look at the *ablyConnector.js* file in the root, this uses the Ably REST API to publish to an Ably channel.
+The important part to note here is that IFTTT requires the data it receives to be in the following JSON format:
+```JSON
+{"value1":"foo", "value2":"bar", "value3":"baz"}
+```
+Without this format, it is possible to trigger an event, but not to send cusomised messages. In the case of this game, we'll be sending only value1, which will contain the move command.
 
 ## Building the game
 
