@@ -8,11 +8,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "ably": "^1.1.24",
     "body-parser": "latest",
-    "node-fetch": "latest",
+    "express": "^4.17.1",
     "jest": "latest",
-    "ably": "^1.1.24"
+    "node-fetch": "latest"
   },
   "devDependencies": {
     "jest": "latest"

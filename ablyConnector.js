@@ -1,4 +1,4 @@
-const Ably = require('ably');
+const ably = require('ably');
 const fetch = require('node-fetch');
 const apiUrl = "https://rest.ably.io/channels/space-game/messages?key=" + process.env.ABLY_API_KEY;
 const enabled = true;
@@ -7,13 +7,13 @@ async function onGameStateChanged(status) {
   if (!enabled) return;
 
   if (status.gameState == "active") {
-    const jsonBody = {"data": { value1: status.hint }};
+    const jsonBody = { value1: status.hint };
     await sendToApi(jsonBody);
   }
 }
 
 async function sendToApi(jsonBody) {
-  let client = new Ably.Realtime(process.env.ABLY_API_KEY)
+  let client = new ably.Realtime(process.env.ABLY_API_KEY)
 
   const channel = client.channels.get('space-game');
 
