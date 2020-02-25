@@ -12,7 +12,7 @@ async function sendToApi(jsonBody) {
   const client = new ably.Realtime(process.env.ABLY_API_KEY)
   const channel = client.channels.get('space-game');
 
-  channel.publish('ably-space-game', jsonBody);  
+  channel.publish('channel_message_published', jsonBody);  
 }
 
 module.exports = onGameStateChanged;
