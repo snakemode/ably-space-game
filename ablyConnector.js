@@ -1,4 +1,5 @@
-const fetch = require("node-fetch");
+const Ably = require('ably');
+const fetch = require('node-fetch');
 const apiUrl = "https://rest.ably.io/channels/space-game/messages?key=" + process.env.ABLY_API_KEY;
 const enabled = true;
 
@@ -12,10 +13,11 @@ async function onGameStateChanged(status) {
 }
 
 async function sendToApi(jsonBody) {
+  let client = new Ably.Realtime(process.env.ABLY_API_KEY)
 
-//var channel = window.ably.channels.get('space-game');
-  console.log("here", this, jsonBody);
-//channel.publish('ably-space-game', jsonBody);  
+  const channel = client.channels.get('space-game');
+
+  channel.publish('ably-space-game', jsonBody);  
   
 //     try {
 //       await fetch(apiUrl, {
