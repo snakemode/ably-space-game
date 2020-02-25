@@ -13,9 +13,9 @@ async function onGameStateChanged(status) {
 
 async function sendToApi(jsonBody) {
 
-var channel = window.ably.channels.get('space-game');
-  console.log("here", channel, jsonBody);
-channel.publish('ably-space-game', jsonBody);  
+//var channel = window.ably.channels.get('space-game');
+  console.log("here", this, jsonBody);
+//channel.publish('ably-space-game', jsonBody);  
   
 //     try {
 //       await fetch(apiUrl, {
