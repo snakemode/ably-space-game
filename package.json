@@ -1,5 +1,5 @@
 {
-  "name": "Ably Space Game",
+  "name": "ably-space-game",
   "version": "0.0.1",
   "description": "A stress inducing game of button pressing and notifications",
   "main": "server.js",
@@ -8,11 +8,10 @@
     "test": "jest"
   },
   "dependencies": {
-    "ably": "^1.1.24",
-    "body-parser": "latest",
     "express": "^4.17.1",
+    "body-parser": "latest",
     "jest": "latest",
-    "node-fetch": "latest"
+    "ably": "^1.1.24"
   },
   "devDependencies": {
     "jest": "latest"
