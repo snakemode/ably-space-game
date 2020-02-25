@@ -1,8 +1,6 @@
 const ably = require('ably');
-const enabled = true;
 
 async function onGameStateChanged(status) {
-  if (!enabled) return;
 
   if (status.gameState == "active") {
     const jsonBody = { value1: status.hint };
